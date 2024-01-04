@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>{{ titre }}</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contener">
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Le trajet du bus {{ titre }}:</ion-card-title>
+      <span *ngFor="let stop of busStop">
+        {{ stop }} - 
+      </span>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

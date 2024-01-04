@@ -1,17 +1,55 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
-      Tab 2
+      Trouver une Bus
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Rechercher une Bus:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+        <ion-item>
+          <ion-label>Depart: </ion-label>
+          <ion-select aria-label="debut" value="c" slot="end" [(ngModel)]="depart">
+            <ion-select-option value="c">choisir</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop">{{ stop }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Arrive: </ion-label>
+          <ion-select aria-label="arrive" value="c" slot="end" [(ngModel)]="fin">
+            <ion-select-option value="c">choisir</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop">{{ stop }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+      <ion-button expand="block" (click)="findBus()">
+        <ion-text>Rechercher</ion-text>
+        <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="contener" *ngIf="result">
+    <ion-card *ngFor="let bus of result">
+      <ion-card-content class="desc">
+        <ion-card-title>{{ bus.BUS_NAME }}</ion-card-title>
+        <ion-text>Couleur du plaque: {{ bus.BUS_PLAQUE || 'auccun'}}</ion-text>
+        <ion-text>Longueur du trajet: {{ bus.LONG }}</ion-text>
+        <ion-text>Temps de circulation: {{ bus.TIME }}</ion-text>
+        <ion-text>Votre trajet:
+          <span *ngFor="let stop of bus.YOUR_TRAJET">{{ stop }}-</span>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

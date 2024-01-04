@@ -1,17 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
-      Tab 1
+      Tous les bus
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container" *ngIf="chargeShow==true">
+    <ion-spinner name="circles"></ion-spinner>
+    <ion-label id="label">Chargement ...</ion-label>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="buslist" *ngIf="chargeShow==false">
+    <ion-card *ngFor="let bus of allBus">
+      <ion-card-content>
+        <ion-list>
+          <ion-item routerLink="../../bus" [queryParams]="{bus_id: bus.BUS_ID, bus_name: bus.BUS_NAME}">
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+            <ion-label>{{ bus.BUS_NAME }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>
