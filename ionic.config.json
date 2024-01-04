@@ -1,0 +1,7 @@
+{
+  "name": "bus-mj",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
