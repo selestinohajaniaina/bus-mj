@@ -7,7 +7,7 @@
 
 <ion-content [fullscreen]="true" class="contener">
   <div class="bus-image">
-    <app-bus-img />
+    <app-bus-img [busColor]="bus.color" [firstBand]="bus.band[0]" [secondBand]="bus.band[1] || bus.band[0]" [busBoard]="bus.board"/>
   </div>
   <ion-card>
     <ion-card-content>

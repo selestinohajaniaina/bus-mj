@@ -3,7 +3,7 @@
     <ion-content>
       
       <div class="bus-image">
-        <app-bus-img />
+        <app-bus-img [busColor]="busDetail.color" [firstBand]="busDetail.band[0]" [secondBand]="busDetail.band[1] || busDetail.band[0]" [busBoard]="busDetail.board"/>
       </div>
       <p class="name">{{busDetail.label}}</p>
       <ion-card (click)="modal.dismiss()">

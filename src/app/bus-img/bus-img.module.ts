@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BusImgComponent } from './bus-img.component';
 
@@ -9,6 +9,8 @@ import { BusImgComponent } from './bus-img.component';
   imports: [
     CommonModule
   ],
-  exports: [BusImgComponent]
+  exports: [BusImgComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class BusImgModule { }

@@ -49,7 +49,7 @@ export class BusPage implements OnInit {
       case 'white':
         return 'blanc';
       default:
-        return;
+        return "toute couleur";
     }
   }
 
