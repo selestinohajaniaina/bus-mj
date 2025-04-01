@@ -1,16 +1,96 @@
 .container {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
+    width: fit-content;
+    margin: 1% auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transform: translateY(-50%);
+}
+
+.content {
+    height: 100%;
+    background-image: url('../../assets/map-img.png')!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+    padding: 0;
+
+    .titre {
+        background: var(--ion-color-warning);
+        padding: 2%;
+        color: white;
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            margin: 2% 0 5% 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 25pt;
+        }
+
+        p {
+            opacity: 0.7;
+            text-align: justify;
+        }
+    }
+}
+
+.profil {
+    border: red solid 1px;
+    width: 100vw;
+}
+
+.buslist {
+    ion-card {
+        border-radius: 20px;
+    }
 }
 
 #label {
     font-weight: bold;
     padding-left: 10px;
 }
+
+ion-modal#example-modal {
+    --width: fit-content;
+    --min-width: 250px;
+    --height: fit-content;
+    --border-radius: 6px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  }
+  
+  ion-modal#example-modal h1 {
+    margin: 20px 20px 10px 20px;
+  }
+  
+  ion-modal#example-modal ion-icon {
+    margin-right: 6px;
+    width: 48px;
+    height: 48px;
+    padding: 4px 0;
+    color: #aaaaaa;
+  }
+  
+  ion-modal#example-modal .wrapper {
+    margin-bottom: 10px;
+
+    ion-item a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ion-color-dark);
+    }
+
+    ion-item p {
+        opacity: 0.6;
+        font-size: medium;
+        max-width: 70vw;
+        text-align: justify;
+        margin: 0;
+    }
+  }

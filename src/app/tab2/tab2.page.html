@@ -1,55 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="warning">
-    <ion-title>
-      Trouver une Bus
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <div class="titre">
+    <h1>Deplacement</h1>
+    <p>Prendre facilement votre bus avec l'application, identifier une arret que vous voullez commencer votre route.</p>
+  </div>
+  <ion-card class="search">
     <ion-card-header>
-      <ion-card-title>Rechercher une Bus:</ion-card-title>
+      <ion-card-title>Rechercher votre Arret:</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list>
+      <ion-list lines="none">
 
         <ion-item>
           <ion-label>Depart: </ion-label>
-          <ion-select aria-label="debut" value="c" slot="end" [(ngModel)]="depart">
+          <ion-select label="" value="c" slot="end" [(ngModel)]="depart">
             <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop">{{ stop }}</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop.key">{{ stop.value }}</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label>Arrive: </ion-label>
-          <ion-select aria-label="arrive" value="c" slot="end" [(ngModel)]="fin">
+          <ion-select label="" value="c" slot="end" [(ngModel)]="fin">
             <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop">{{ stop }}</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop.key">{{ stop.value }}</ion-select-option>
           </ion-select>
         </ion-item>
 
       </ion-list>
-      <ion-button expand="block" (click)="findBus()">
+      <ion-button expand="block" shape="round" (click)="findBus()">
         <ion-text>Rechercher</ion-text>
         <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>
       </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <div class="contener" *ngIf="result">
-    <ion-card *ngFor="let bus of result">
+  <div class="contener" *ngIf="result && result.length">
+    <ion-title>Prenez les bus suivants:</ion-title>
+    <ion-card *ngFor="let bus of result" id="open-modal-{{bus.BUS_ID}}">
       <ion-card-content class="desc">
-        <ion-card-title>{{ bus.BUS_NAME }}</ion-card-title>
-        <ion-text>Couleur du plaque: {{ bus.BUS_PLAQUE || 'auccun'}}</ion-text>
-        <ion-text>Longueur du trajet: {{ bus.LONG }}</ion-text>
-        <ion-text>Temps de circulation: {{ bus.TIME }}</ion-text>
-        <ion-text>Votre trajet:
-          <span *ngFor="let stop of bus.YOUR_TRAJET">{{ stop }}-</span>
-        </ion-text>
+        <ion-card-title>{{ busLabel(bus.BUS_ID).label }}</ion-card-title>
+        <ion-text>{{ stopLabel(depart) }} ... {{ stopLabel(fin) }}</ion-text>
+        <p> <ion-badge>{{bus.ROAD.length}}</ion-badge>Arrets</p>
       </ion-card-content>
+      <app-modal-bus [bus]="bus"/>
     </ion-card>
   </div>
+
+  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre "{{ stopLabel(depart) }}" et "{{ stopLabel(fin) }}", choisir une autre arret. Collaborer avec nous pour ameliorer notre application</i></div>
 
 </ion-content>

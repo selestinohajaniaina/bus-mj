@@ -1,17 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="warning">
-    <ion-title>
-      BUS-MJ-CARTE
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="titre">
+    <h1>
+      <ion-icon name="map-outline" size="large"></ion-icon>
+      On va ou ?
+    </h1>
+    <p>Vous pensez d'aller au {{ valueSearch || 'petit plage' }}? Rechercher rapidement ici la bonne bus vers votre destination.</p>
+    <div class="button">
+      <ion-input type="search" placeholder="Quel place vous-souvienez ?" [(ngModel)]="stop"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
+      <div class="stop-indice" *ngIf="isShowStopHelp">
+        <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.key)">
+          <ion-card-content>
+            <ion-icon name="locate-outline" size="small"></ion-icon>
+            <ion-text>{{ stop.value }}</ion-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
 
-  <app-explore-container name="Visionnage avec carte"></app-explore-container>
+  <div class="wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#ffc409" fill-opacity="1" d="M0,288L60,293.3C120,299,240,309,360,288C480,267,600,213,720,197.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+    </svg>
+  </div>
+
+  <div class="contener" *ngIf="busFilter && busFilter.length">
+    <ion-text>Les bus s'arrete dans cette point:</ion-text>
+    <ion-card *ngFor="let bus of busFilter" routerLink="../../bus" [queryParams]="{bus_id: bus.busId}">
+      <ion-card-content class="desc">
+        <ion-card-title>{{getBusLabel(bus.busId)}}</ion-card-title>
+        <ion-text>{{getStopAtPosition(bus.stops, 0)}} > .. ><ion-text color="primary">{{stopLabel(idSearch)}}</ion-text>...</ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="school-bus" *ngIf="!busFilter || busFilter.length == 0">
+    <ion-img src="assets/school-bus.gif"></ion-img>
+  </div>
 </ion-content>

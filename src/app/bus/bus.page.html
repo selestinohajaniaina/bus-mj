@@ -6,12 +6,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="contener">
+  <div class="bus-image">
+    <app-bus-img />
+  </div>
   <ion-card>
     <ion-card-content>
-      <ion-card-title>Le trajet du bus {{ titre }}:</ion-card-title>
-      <span *ngFor="let stop of busStop">
-        {{ stop }} - 
-      </span>
-    </ion-card-content>
+      <ion-card-title>Marque a connaitre cette bus:</ion-card-title>
+      <div class="desc">La couleur du bus: <ion-badge [color]="ionColorOf(bus.color)">{{ colorOf(bus.color) }}</ion-badge></div>
+      <div class="desc">La couleur du bande au cote: <ion-badge *ngFor="let c of bus.band" [color]="ionColorOf(c)">{{ colorOf(c) }}</ion-badge></div>
+      <div class="desc">La couleur du plaque: <ion-badge [color]="ionColorOf(bus.board || 'white')">{{ colorOf(bus.board || '') }}</ion-badge></div>
+      </ion-card-content>
   </ion-card>
+  <div class="arret" *ngIf="busStop && busStop.length">
+    <div class="bus-desc">Il avait {{ busStop.length }} arret connue dans cette ligne, du point de debut "{{ labelOf(busStop[0]) }}" jusqu'au "{{ labelOf(busStop[busStop.length -1]) }}".</div>
+    <div>Trajet du circulation:</div>
+    <app-stop-list [StopList]="busStop"/>
+  </div>
+  <div class="data_empty"><i>les donnee n'est pas encore complet, collaborer avec nous pour l'amelioration des donnees</i></div>
+  
 </ion-content>

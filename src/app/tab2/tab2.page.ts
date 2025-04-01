@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { getAllStop, getBus } from 'bus-mj';
+import { busAt, getAllBus, getAllStop, getBus, getStop, getStopLabel } from 'bus-mj';
+import { Stop } from '../interface/bus';
 
 @Component({
   selector: 'app-tab2',
@@ -9,38 +9,42 @@ import { getAllStop, getBus } from 'bus-mj';
 })
 export class Tab2Page {
 
-  public allStop: [];
+  public allStop: Stop[];
   public result: [{
-    BUS_ID: number,
-    BUS_NAME: string,
-    BUS_PLAQUE: string,
-    LONG: string,
-    TIME: string,
-    YOUR_TRAJET: []
+    BUS_ID: string,
+    ROAD: string[]
   }];
   public depart: string = 'c';
   public fin: string = 'c';
+  public isShowEmpty: boolean = false;
 
   constructor(
-    private alertControler: AlertController
   ) {}
 
-  async ngOnInit() {
-    this.allStop = await getAllStop();
-    
+  ngOnInit() {
+    this.allStop = getAllStop();
   }
 
-  async findBus() {
-    if(this.depart != 'c' && this.fin != 'c') {
-      this.result = await getBus(this.depart, this.fin);
-      console.log(this.result);
-
+  findBus() {
+    if(this.depart == 'c' || this.fin == 'c') {
+      alert('Choisir l\'arret du depart et celle d\'arrive');
+    }else if(this.depart == this.fin){
+      alert('Les deux arrets doivent etre different');
     }else{
-      this.alertControler.create({
-        message: 'Choisir l\'arret du depart et celle d\'arrive'
-      });
+      this.isShowEmpty = false;
+      this.result = getBus(this.depart, this.fin);
+      if(!this.result[0]) {
+        this.isShowEmpty = true;
+      }
     }
-    
+  }
+
+  busLabel(busId: string) {
+    return busAt(busId);
+  }
+  
+  stopLabel(stopId: string) {
+    return getStopLabel(stopId);
   }
 
 }

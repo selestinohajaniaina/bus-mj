@@ -1,6 +1,41 @@
-.desc {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
+.titre {
+    background: var(--ion-color-warning);
+    padding: 10% 5%;
+    color: white;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+
+    h1 {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    p {
+        opacity: 0.7;
+        text-align: justify;
+        padding-bottom: 20%;
+    }
+}
+
+.search {
+    margin: -15% 10% 0 10%;
+    border-radius: 20px;
+}
+
+.contener {
+    p {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    ion-title {
+        margin: 5% 0;
+    }
+}
+
+.emptyFilter {
+    text-align: center;
+    font-size: small;
+    opacity: 0.6;
+    margin-top: 10px;
 }

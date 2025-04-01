@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { BusPageRoutingModule } from './bus-routing.module';
 
 import { BusPage } from './bus.page';
+import { BusImgModule } from '../bus-img/bus-img.module';
+import { StopListModule } from '../stop-list/stop-list.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BusPageRoutingModule
+    BusPageRoutingModule,
+    BusImgModule,
+    StopListModule
   ],
   declarations: [BusPage]
 })
