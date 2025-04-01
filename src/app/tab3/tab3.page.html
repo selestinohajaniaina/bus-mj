@@ -2,11 +2,11 @@
   <div class="titre">
     <h1>
       <ion-icon name="map-outline" size="large"></ion-icon>
-      On va ou ?
+      On va où ?
     </h1>
-    <p>Vous pensez d'aller au {{ valueSearch || 'petit plage' }}? Rechercher rapidement ici la bonne bus vers votre destination.</p>
+    <p>Vous pensez aller à {{ valueSearch || 'petit plage' }}? Recherchez rapidement ici le bon bus pour votre destination.</p>
     <div class="button">
-      <ion-input type="search" placeholder="Quel place vous-souvienez ?" [(ngModel)]="stop"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
+      <ion-input type="search" placeholder="De quel endroit vous souvenez-vous ?" [(ngModel)]="stop"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
       <div class="stop-indice" *ngIf="isShowStopHelp">
         <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.key)">
           <ion-card-content>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="contener" *ngIf="busFilter && busFilter.length">
-    <ion-text>Les bus s'arrete dans cette point:</ion-text>
+    <ion-text>Les bus s'arrêtent à ce point :</ion-text>
     <ion-card *ngFor="let bus of busFilter" routerLink="../../bus" [queryParams]="{bus_id: bus.busId}">
       <ion-card-content class="desc">
         <ion-card-title>{{getBusLabel(bus.busId)}}</ion-card-title>

@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <div class="titre">
-    <h1>Deplacement</h1>
-    <p>Prendre facilement votre bus avec l'application, identifier une arret que vous voullez commencer votre route.</p>
+    <h1>Déplacement</h1>
+    <p>Prenez facilement votre bus avec l'application. Identifiez un arrêt où vous souhaitez commencer votre trajet.</p>
   </div>
   <ion-card class="search">
     <ion-card-header>
@@ -46,6 +46,6 @@
     </ion-card>
   </div>
 
-  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre "{{ stopLabel(depart) }}" et "{{ stopLabel(fin) }}", choisir une autre arret. Collaborer avec nous pour ameliorer notre application</i></div>
+  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre "{{ stopLabel(depart) }}" et "{{ stopLabel(fin) }}",  Veuillez choisir un autre arrêt. Collaborez avec nous pour améliorer notre application.</i></div>
 
 </ion-content>

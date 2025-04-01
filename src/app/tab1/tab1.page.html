@@ -6,7 +6,7 @@
         <ion-icon name="search-outline" routerLink="/tabs/tab3" size="large"></ion-icon>
       </div>
       <h1>Bus Nakay</h1>
-      <p>Avec Bus Nakay, deplacement facile, chemin assure, emplacement connue, navigation hors ligne.</p>
+      <p>Avec Bus Nakay, déplacement facile, trajet assuré, emplacement connu et navigation hors ligne.</p>
       <div class="button">
         <ion-button expand="round" routerLink="/tabs/tab2"><ion-icon slot="start" name="walk-outline"></ion-icon>Commencer<ion-icon slot="end" name="arrow-forward-outline"></ion-icon> </ion-button>
       </div>
@@ -19,14 +19,23 @@
   
           <ion-list>
             <ion-item (click)="modal.dismiss()">
-              <p>Application de recherche de trajet dans les transport public au Majunga.<br>Envoyez-nous un email si vous avez des amelioration. Utilser l'API avec <ion-badge color="light">npm install bus-mj</ion-badge></p>
+              <p>Application de recherche de trajet dans les transport public au Majunga. <br>
+                Envoyez-nous un email si vous avez des amelioration. Utilser l'API avec <ion-badge color="light">npm install bus-mj</ion-badge></p>
             </ion-item>
             <ion-item (click)="modal.dismiss()">
               <a href="https://npmjs.com/package/bus-mj" target="_blank">
-                <ion-icon name="code-outline"></ion-icon>
+                <ion-icon name="logo-nodejs"></ion-icon>
                 <ion-label>API bus-mj</ion-label>
               </a>
             </ion-item>
+
+            <ion-item (click)="modal.dismiss()">
+              <a href="https://github.com/selestinohajaniaina/bus-mahajanga-api" target="_blank">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <ion-label>Code source collaboratif</ion-label>
+              </a>
+            </ion-item>
+
             <ion-item (click)="modal.dismiss()">
               <a href="mailto:seha.karoka@gmail.com">
                 <ion-icon name="mail-outline"></ion-icon>

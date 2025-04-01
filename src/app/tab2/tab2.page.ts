@@ -27,9 +27,9 @@ export class Tab2Page {
 
   findBus() {
     if(this.depart == 'c' || this.fin == 'c') {
-      alert('Choisir l\'arret du depart et celle d\'arrive');
+      alert("Choisissez l\'arrêt de départ et celui d'arrivée.");
     }else if(this.depart == this.fin){
-      alert('Les deux arrets doivent etre different');
+      alert('Les deux arrêts doivent être différents.');
     }else{
       this.isShowEmpty = false;
       this.result = getBus(this.depart, this.fin);
