@@ -1,0 +1,47 @@
+
+.progress {
+    position: relative;
+    padding: 0 1rem 0 3.5rem;
+    margin: 2rem 0 0;
+    list-style: none;
+  }
+  
+  .progress__item {
+    position: relative;
+    padding-bottom: 10px;
+  
+    // line height
+    &:before {
+      content: "";
+      position: absolute;
+      left: -1.2rem;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background: var(--ion-color-secondary);
+      border: 1px solid var(--ion-color-secondary);
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -1.5rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ion-color-primary);
+      border: 1px solid var(--ion-color-primary);
+    }
+    //Hide border for Last Step
+    &:last-child {
+      &:before {
+        border: none;
+        background: transparent;
+      }
+    }
+  }
+  
+  .progress__title {
+    padding: 0;
+    margin: 0;
+  }

@@ -1,0 +1,24 @@
+<ion-modal trigger="open-modal-{{bus.BUS_ID}}" [initialBreakpoint]="0.75" [breakpoints]="[0.75, 1]" #modal>
+  <ng-template>
+    <ion-content>
+      
+      <div class="bus-image">
+        <app-bus-img />
+      </div>
+      <p class="name">{{busDetail.label}}</p>
+      <ion-card (click)="modal.dismiss()">
+        <ion-card-content>
+          <ion-card-title>Marque a connaitre cette bus:</ion-card-title>
+          <div class="desc">La couleur du bus: <ion-badge [color]="ionColorOf(busDetail.color)">{{ colorOf(busDetail.color) }}</ion-badge></div>
+          <div class="desc">La couleur du bande au cote: <ion-badge *ngFor="let c of busDetail.band" [color]="ionColorOf(c)">{{ colorOf(c) }}</ion-badge></div>
+          <div class="desc">La couleur du plaque: <ion-badge [color]="ionColorOf(busDetail.board || 'white')">{{ colorOf(busDetail.board || '') }}</ion-badge></div>
+        </ion-card-content>
+      </ion-card>
+      <div class="arret">
+        <div>Votre Trajet:</div>
+        <app-stop-list [StopList]="bus.ROAD"/>
+      </div>
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>
