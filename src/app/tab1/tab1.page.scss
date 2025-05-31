@@ -83,7 +83,11 @@ ion-modal#example-modal {
         justify-content: flex-start;
         gap: 10px;
         text-decoration: none;
-        color: var(--ion-color-dark);
+        color: black;
+
+        ion-label {
+            opacity: 0.6;
+        }
     }
 
     ion-item p {
@@ -94,3 +98,9 @@ ion-modal#example-modal {
         margin: 0;
     }
   }
+
+.wave {
+    path {
+        fill: var(--ion-color-warning);
+    }
+}

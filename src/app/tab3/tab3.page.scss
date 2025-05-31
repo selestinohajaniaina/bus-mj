@@ -52,3 +52,9 @@
         width: 30%;
     }
 }
+
+.wave {
+    path {
+        fill: var(--ion-color-warning);
+    }
+}
