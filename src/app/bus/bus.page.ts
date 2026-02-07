@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { busAt, getStop, getStopLabel } from 'bus-mj';
-import { Bus } from '../interface/bus';
+import { busAt } from 'bus-mj';
+import { Members, Relation } from '../interface/bus';
 
 @Component({
   selector: 'app-bus',
@@ -11,35 +11,29 @@ import { Bus } from '../interface/bus';
 export class BusPage implements OnInit {
 
   public titre!: string;
-  private bus_id: string = this.route.snapshot.queryParams['bus_id'];
-  public bus: Bus;
-  public busStop!: string[];
-  public color = {
-    yellow: 'jaune',
-    blue: 'bleu',
-    green: 'vert',
-    red: 'rouge',
-  };
+  private bus_id: string = this.route.snapshot.queryParams['relation_id'];
+  public bus: Relation;
+  public stops: Members[] = [];
 
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.bus_id = this.route.snapshot.queryParams['bus_id'];
-    this.bus = busAt(this.bus_id);
-    this.titre = this.bus.label;
-    this.busStop = getStop(this.bus_id);
-  }
-
-  labelOf(stopId: string) {
-    return getStopLabel(stopId);
+    this.bus_id = this.route.snapshot.queryParams['relation_id'];
+    this.bus = busAt(Number(this.bus_id));
+    this.titre = this.bus.tags.name;
+    this.stops = this.bus.members.filter(m => m.role === 'stop');
+    console.log(this.bus);
+    
   }
 
   colorOf(propriety: string) {
     switch (propriety) {
       case 'yellow':
         return 'jaune';
+      case 'orange':
+        return 'orange';
       case 'blue':
         return 'bleu';
       case 'green':

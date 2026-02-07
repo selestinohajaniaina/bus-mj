@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { busAt, getAllBus, getAllStop, getBus, getStop, getStopLabel } from 'bus-mj';
-import { Stop } from '../interface/bus';
+import { busAt, getAllBus, getAllStop, getBus, getStop } from 'bus-mj';
+import { Node } from '../interface/bus';
 
 @Component({
   selector: 'app-tab2',
@@ -9,13 +9,10 @@ import { Stop } from '../interface/bus';
 })
 export class Tab2Page {
 
-  public allStop: Stop[];
-  public result: [{
-    BUS_ID: string,
-    ROAD: string[]
-  }];
-  public depart: string = 'c';
-  public fin: string = 'c';
+  public allStop: Node[];
+  public result: Relation[] = [];
+  public depart: string | number = 'c';
+  public fin: string | number = 'c';
   public isShowEmpty: boolean = false;
 
   constructor(
@@ -23,6 +20,7 @@ export class Tab2Page {
 
   ngOnInit() {
     this.allStop = getAllStop();
+    this.allStop.sort((a, b) => a.label.localeCompare(b.label));
   }
 
   findBus() {
@@ -32,7 +30,7 @@ export class Tab2Page {
       alert('Les deux arrêts doivent être différents.');
     }else{
       this.isShowEmpty = false;
-      this.result = getBus(this.depart, this.fin);
+      this.result = getBus(Number(this.depart), Number(this.fin));
       if(!this.result[0]) {
         this.isShowEmpty = true;
       }
@@ -40,11 +38,11 @@ export class Tab2Page {
   }
 
   busLabel(busId: string) {
-    return busAt(busId);
+    // return busAt(busId);
   }
   
   stopLabel(stopId: string) {
-    return getStopLabel(stopId);
+    // return getStopLabel(stopId);
   }
 
 }

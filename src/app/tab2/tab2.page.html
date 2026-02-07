@@ -14,7 +14,7 @@
           <ion-label>Depart: </ion-label>
           <ion-select label="" value="c" slot="end" [(ngModel)]="depart">
             <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop.key">{{ stop.value }}</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop.id">{{ stop.label }}</ion-select-option>
           </ion-select>
         </ion-item>
 
@@ -22,7 +22,7 @@
           <ion-label>Arrive: </ion-label>
           <ion-select label="" value="c" slot="end" [(ngModel)]="fin">
             <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop.key">{{ stop.value }}</ion-select-option>
+            <ion-select-option *ngFor="let stop of allStop" [value]="stop.id">{{ stop.label }}</ion-select-option>
           </ion-select>
         </ion-item>
 
@@ -36,16 +36,16 @@
 
   <div class="contener" *ngIf="result && result.length">
     <ion-title>Prenez les bus suivants:</ion-title>
-    <ion-card *ngFor="let bus of result" id="open-modal-{{bus.BUS_ID}}">
+    <ion-card *ngFor="let bus of result" id="open-modal-{{bus.id}}">
       <ion-card-content class="desc">
-        <ion-card-title>{{ busLabel(bus.BUS_ID).label }}</ion-card-title>
-        <ion-text>{{ stopLabel(depart) }} ... {{ stopLabel(fin) }}</ion-text>
-        <p> <ion-badge>{{bus.ROAD.length}}</ion-badge>Arrets</p>
+        <ion-card-title>{{ bus.tags.name }}</ion-card-title>
+        <!-- <ion-text>{{ stopLabel(depart) }} ... {{ stopLabel(fin) }}</ion-text>
+        <p> <ion-badge>{{bus.members.length}}</ion-badge>Arrets</p> -->
       </ion-card-content>
-      <app-modal-bus [bus]="bus"/>
+      <!-- <app-modal-bus [bus]="bus"/> -->
     </ion-card>
   </div>
 
-  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre "{{ stopLabel(depart) }}" et "{{ stopLabel(fin) }}",  Veuillez choisir un autre arrêt. Collaborez avec nous pour améliorer notre application.</i></div>
+  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre " " et " ",  Veuillez choisir un autre arrêt. Collaborez avec nous pour améliorer notre application.</i></div>
 
 </ion-content>

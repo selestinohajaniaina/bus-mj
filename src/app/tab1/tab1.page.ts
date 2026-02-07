@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { getAllBus } from 'bus-mj';
-import { Bus } from '../interface/bus';
+import { Relation } from '../interface/bus';
 
 @Component({
   selector: 'app-tab1',
@@ -9,10 +9,9 @@ import { Bus } from '../interface/bus';
 })
 export class Tab1Page {
 
-  public allBus: {id: string, desc: Bus}[];
+  public allBus: Relation[];
   public chargeShow: boolean = true;
-  public Bus: Bus;
-  public isOpen: boolean = false;
+  public Bus: Relation;
 
   constructor() {}
 
@@ -25,7 +24,7 @@ export class Tab1Page {
   }
 
   listBus() {
-    this.allBus = Object.entries(getAllBus()).map((e) => {return {id: e[0], desc: e[1]}});
+    this.allBus = getAllBus();
   }
 
 }

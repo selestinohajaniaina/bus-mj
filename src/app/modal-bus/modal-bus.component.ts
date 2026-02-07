@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Bus } from '../interface/bus';
+// import { Bus } from '../interface/bus';
 import { IonModal } from '@ionic/angular';
 import { busAt } from 'bus-mj';
 
@@ -16,12 +16,12 @@ export class ModalBusComponent  implements OnInit {
   };
   @Input() stopList: string;
   @Input() trigger: string;
-  public busDetail: Bus;
+  // public busDetail: Bus;
 
   constructor() { }
 
   ngOnInit() {
-    this.busDetail = busAt(this.bus.BUS_ID);
+    // this.busDetail = busAt(this.bus.BUS_ID);
   }
 
   colorOf(propriety: string) {

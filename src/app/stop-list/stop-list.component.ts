@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { getStopLabel } from 'bus-mj';
+import { Members } from '../interface/bus';
 
 @Component({
   selector: 'app-stop-list',
@@ -7,14 +7,10 @@ import { getStopLabel } from 'bus-mj';
   styleUrls: ['./stop-list.component.scss'],
 })
 export class StopListComponent  implements OnInit {
-  @Input() StopList: string[];
+  @Input() StopList: Members[];
 
   constructor() { }
 
   ngOnInit() {}
-
-  labelOf(stopId: string) {
-    return getStopLabel(stopId);
-  }
 
 }

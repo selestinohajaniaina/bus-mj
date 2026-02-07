@@ -8,10 +8,10 @@
     <div class="button">
       <ion-input type="search" placeholder="De quel endroit vous souvenez-vous ?" [(ngModel)]="stop"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
       <div class="stop-indice" *ngIf="isShowStopHelp">
-        <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.key)">
+        <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.id)">
           <ion-card-content>
             <ion-icon name="locate-outline" size="small"></ion-icon>
-            <ion-text>{{ stop.value }}</ion-text>
+            <ion-text>{{ stop.label }}</ion-text>
           </ion-card-content>
         </ion-card>
       </div>
@@ -26,10 +26,10 @@
 
   <div class="contener" *ngIf="busFilter && busFilter.length">
     <ion-text>Les bus s'arrêtent à ce point :</ion-text>
-    <ion-card *ngFor="let bus of busFilter" routerLink="../../bus" [queryParams]="{bus_id: bus.busId}">
+    <ion-card *ngFor="let bus of busFilter" routerLink="../../bus" [queryParams]="{bus_id: bus.id}">
       <ion-card-content class="desc">
-        <ion-card-title>{{getBusLabel(bus.busId)}}</ion-card-title>
-        <ion-text>{{getStopAtPosition(bus.stops, 0)}} > .. ><ion-text color="primary">{{stopLabel(idSearch)}}</ion-text>...</ion-text>
+        <ion-card-title>{{ bus.tags.name }}</ion-card-title>
+        <!-- <ion-text>{{getStopAtPosition(bus.stops, 0)}} > .. ><ion-text color="primary">{{stopLabel(idSearch)}}</ion-text>...</ion-text> -->
       </ion-card-content>
     </ion-card>
   </div>

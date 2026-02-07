@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Bus, Stop } from '../interface/bus';
-import { getAllBus, getAllStop, getStop, getStopLabel } from 'bus-mj';
+import { getAllBus, getAllStop } from 'bus-mj';
 
 @Component({
   selector: 'app-tab3',
@@ -10,11 +9,11 @@ import { getAllBus, getAllStop, getStop, getStopLabel } from 'bus-mj';
 export class Tab3Page {
 
   public allStop: Stop[];
-  public idSearch: string;
+  public idSearch: number;
   public valueSearch: string;
-  private allBus: {id: string, desc: Bus}[];
+  private allBus: Relation[];
   public busStops: {busId: string, stops: string[]}[];
-  public busFilter: {busId: string, stops: string[]}[];
+  public busFilter: Relation[];
   public isShowStopHelp: boolean = false;
   public stopFiltered: Stop[];
 
@@ -39,36 +38,34 @@ export class Tab3Page {
   
   completeData() {
     this.allStop = getAllStop();
-    this.allBus = Object.entries(getAllBus()).map((e) => {return {id: e[0], desc: e[1]}});
-    this.busStops = this.allBus.map((e) => { return{busId: e.id, stops: getStop(e.id)} });
+    this.allBus = getAllBus();
   }
 
-  stopLabel(stopId: string) {
-    return getStopLabel(stopId);
+  // stopLabel(stopId: string) {
+  //   return getStopLabel(stopId);
+  // }
+
+  // getBusLabel(busId: string) {
+  //   return this.allBus.filter((e)=> e.id == busId)[0].desc.label;
+  // }
+
+  // getStopAtPosition(stops: string[], position: number) {
+  //   return this.stopLabel(stops[position] == this.idSearch ? stops[stops.length - 1] : stops[position]);
+  // }
+
+  filterBusByStop(stopId: number) {
+    this.busFilter = this.allBus.filter((e) => e.members.includes(e.members.filter((m) => m.type == 'stop' && m.ref == stopId)[0]));
+    console.log(this.busFilter);
   }
 
-  getBusLabel(busId: string) {
-    return this.allBus.filter((e)=> e.id == busId)[0].desc.label;
-  }
-
-  getStopAtPosition(stops: string[], position: number) {
-    return this.stopLabel(stops[position] == this.idSearch ? stops[stops.length - 1] : stops[position]);
-  }
-
-  filterBusByStop(stopId: string) {
-    this.busFilter = this.busStops.filter((e) => e.stops.includes(stopId));
-    // console.log(this.busFilter);
-  }
-
-  choisir(key: string) {
-    this.idSearch = key;
-    this.valueSearch = this.stopLabel(this.idSearch);
+  choisir(id: number) {
+    this.valueSearch = this.allStop.filter((e) => e.id == id)[0].label;
     this.isShowStopHelp = false;
-    this.filterBusByStop(this.idSearch);
+    this.filterBusByStop(id);
   }
 
   filterStop(value: string) {
-    return this.allStop.filter((e) => e.value.toLowerCase().includes(value.toLowerCase()));
+    return this.allStop.filter((e) => e.label.toLowerCase().includes(value.toLowerCase()));
   }
 
 }
