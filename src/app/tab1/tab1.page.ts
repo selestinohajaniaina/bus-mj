@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { getAllBus } from 'bus-mj';
-import { Relation } from '../interface/bus';
+import { Bus } from '../interface/bus';
+import { findBusAll } from 'bus-mj';
 
 @Component({
   selector: 'app-tab1',
@@ -9,22 +9,19 @@ import { Relation } from '../interface/bus';
 })
 export class Tab1Page {
 
-  public allBus: Relation[];
+  public allBus: Bus[];
   public chargeShow: boolean = true;
-  public Bus: Relation;
+  public Bus: Bus;
 
   constructor() {}
 
   ngOnInit() {
-    // this.allBus = await getAllBus();
+    this.allBus = findBusAll();
     setTimeout(() => {
-      this.chargeShow = this.allBus? false : true;
+      this.chargeShow = this.allBus.length === 0 ? true : false;    
     }, 1000);
-    this.listBus();
-  }
-
-  listBus() {
-    this.allBus = getAllBus();
+    this.allBus.map(bus => console.log(bus.tags.color));
+    
   }
 
 }

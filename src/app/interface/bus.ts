@@ -1,9 +1,11 @@
-export interface Relation {
+export interface Bus {
   type: string,
   id: number,
-  members: Members[],
+  members: Stop[],
   tags: {
-    colour: string,
+    color: string,
+    band: string[],
+    board: string |null,
     fee: string,
     from: string,
     name: string,
@@ -16,19 +18,12 @@ export interface Relation {
     to: string,
     type: string
   }
-}
+};
 
-export interface Members {
-    type: string,
-    ref: number,
-    role: string,
-    label: string
-}
-
-export interface Node {
+export interface Stop {
   type: string,
   id: number,
   lat: number,
   lon: number,
-  label: string
+  label: string | null,
 }

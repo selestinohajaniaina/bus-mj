@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 // import { Bus } from '../interface/bus';
 import { IonModal } from '@ionic/angular';
-import { busAt } from 'bus-mj';
+import { findBusDetailById } from 'bus-mj';
 
 @Component({
   selector: 'app-modal-bus',

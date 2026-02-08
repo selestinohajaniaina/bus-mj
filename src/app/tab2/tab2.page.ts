@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { busAt, getAllBus, getAllStop, getBus, getStop } from 'bus-mj';
-import { Node } from '../interface/bus';
+import { findBusByTwoStop, findStopAll } from 'bus-mj';
+import { Stop, Bus } from '../interface/bus';
 
 @Component({
   selector: 'app-tab2',
@@ -9,8 +9,8 @@ import { Node } from '../interface/bus';
 })
 export class Tab2Page {
 
-  public allStop: Node[];
-  public result: Relation[] = [];
+  public allStop: Stop[];
+  public result: Bus[] = [];
   public depart: string | number = 'c';
   public fin: string | number = 'c';
   public isShowEmpty: boolean = false;
@@ -19,8 +19,7 @@ export class Tab2Page {
   ) {}
 
   ngOnInit() {
-    this.allStop = getAllStop();
-    this.allStop.sort((a, b) => a.label.localeCompare(b.label));
+    this.allStop = findStopAll().sort((a, b) => a.label!.localeCompare(b.label!));
   }
 
   findBus() {
@@ -29,8 +28,10 @@ export class Tab2Page {
     }else if(this.depart == this.fin){
       alert('Les deux arrêts doivent être différents.');
     }else{
+      console.log(this.depart, this.fin);
+      
       this.isShowEmpty = false;
-      this.result = getBus(Number(this.depart), Number(this.fin));
+      this.result = findBusByTwoStop(Number(this.depart), Number(this.fin));
       if(!this.result[0]) {
         this.isShowEmpty = true;
       }

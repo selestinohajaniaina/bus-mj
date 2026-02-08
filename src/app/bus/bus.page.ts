@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { busAt } from 'bus-mj';
-import { Members, Relation } from '../interface/bus';
+import { findBusDetailById } from 'bus-mj';
+import { Bus, Stop } from '../interface/bus';
 
 @Component({
   selector: 'app-bus',
@@ -12,8 +12,8 @@ export class BusPage implements OnInit {
 
   public titre!: string;
   private bus_id: string = this.route.snapshot.queryParams['relation_id'];
-  public bus: Relation;
-  public stops: Members[] = [];
+  public bus: Bus;
+  public stops: Stop[] = [];
 
   constructor(
     private route: ActivatedRoute
@@ -21,9 +21,9 @@ export class BusPage implements OnInit {
 
   ngOnInit() {
     this.bus_id = this.route.snapshot.queryParams['relation_id'];
-    this.bus = busAt(Number(this.bus_id));
+    this.bus = findBusDetailById(Number(this.bus_id));
     this.titre = this.bus.tags.name;
-    this.stops = this.bus.members.filter(m => m.role === 'stop');
+    this.stops = this.bus.members;
     console.log(this.bus);
     
   }
@@ -50,6 +50,8 @@ export class BusPage implements OnInit {
   ionColorOf(propriety: string) {
     switch (propriety) {
       case 'yellow':
+        return 'warning';
+      case 'orange':
         return 'warning';
       case 'blue':
         return 'primary';

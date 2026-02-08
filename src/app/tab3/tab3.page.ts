@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { getAllBus, getAllStop } from 'bus-mj';
+import { Bus, Stop } from '../interface/bus';
+import { findStopAll, findBusAll, findBusByOneStop } from 'bus-mj';
 
 @Component({
   selector: 'app-tab3',
@@ -10,14 +11,14 @@ export class Tab3Page {
 
   public allStop: Stop[];
   public idSearch: number;
-  public valueSearch: string;
-  private allBus: Relation[];
+  public valueSearch: string | null;
+  private allBus: Bus[];
   public busStops: {busId: string, stops: string[]}[];
-  public busFilter: Relation[];
+  public busFilter: Bus[];
   public isShowStopHelp: boolean = false;
   public stopFiltered: Stop[];
 
-  public get stop() {
+  public get stop(): string | null {
     return this.valueSearch;
   }
 
@@ -37,35 +38,32 @@ export class Tab3Page {
   }
   
   completeData() {
-    this.allStop = getAllStop();
-    this.allBus = getAllBus();
+    this.allStop = findStopAll();
+    this.allBus = findBusAll();
   }
 
-  // stopLabel(stopId: string) {
-  //   return getStopLabel(stopId);
-  // }
-
-  // getBusLabel(busId: string) {
-  //   return this.allBus.filter((e)=> e.id == busId)[0].desc.label;
-  // }
-
-  // getStopAtPosition(stops: string[], position: number) {
-  //   return this.stopLabel(stops[position] == this.idSearch ? stops[stops.length - 1] : stops[position]);
-  // }
-
-  filterBusByStop(stopId: number) {
-    this.busFilter = this.allBus.filter((e) => e.members.includes(e.members.filter((m) => m.type == 'stop' && m.ref == stopId)[0]));
-    console.log(this.busFilter);
+  stopLabel(stopId: number) {
+    // return getStopLabel(stopId);
   }
 
+  getBusLabel(busId: number) {
+    return this.allBus.filter((e)=> e.id == busId)[0].tags.name;
+  }
+
+  getStopAtPosition(stops: string[], position: number) {
+    // return this.stopLabel(stops[position] == this.idSearch ? stops[stops.length - 1] : stops[position]);
+  }
+  
   choisir(id: number) {
     this.valueSearch = this.allStop.filter((e) => e.id == id)[0].label;
     this.isShowStopHelp = false;
-    this.filterBusByStop(id);
+    this.busFilter = findBusByOneStop(id);
+    console.log(id,this.busFilter);
+
   }
 
   filterStop(value: string) {
-    return this.allStop.filter((e) => e.label.toLowerCase().includes(value.toLowerCase()));
+    return this.allStop.filter((e) => e.label!.toLowerCase().includes(value.toLowerCase()));
   }
 
 }

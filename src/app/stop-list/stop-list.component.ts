@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Members } from '../interface/bus';
+import { Stop } from '../interface/bus';
 
 @Component({
   selector: 'app-stop-list',
@@ -7,7 +7,7 @@ import { Members } from '../interface/bus';
   styleUrls: ['./stop-list.component.scss'],
 })
 export class StopListComponent  implements OnInit {
-  @Input() StopList: Members[];
+  @Input() StopList: Stop[];
 
   constructor() { }
 
