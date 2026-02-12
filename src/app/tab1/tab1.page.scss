@@ -39,8 +39,44 @@
 }
 
 .profil {
-    border: red solid 1px;
     width: 100vw;
+}
+
+.couter {
+    padding: 0 2%;
+}
+
+.cooperativelist {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    
+    ion-card {
+        flex: 0 0 40vw; 
+        border-radius: 33px;
+        width: 40vw;
+        aspect-ratio: 1 / 1;
+
+        ion-card-subtitle {
+            border-radius: 20px;
+            text-align: center;
+            background: var(--ion-color-primary);
+            padding: 2px;
+        }
+
+        .nbr-container {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            height: fit-content;
+            margin: 0 auto;
+
+            h1 {
+                font-size: 65pt;
+                font-weight: bolder;
+            }
+        }
+    }
 }
 
 .buslist {
@@ -100,6 +136,8 @@ ion-modal#example-modal {
   }
 
 .wave {
+    margin: 0 0 -100px 0;
+    
     path {
         fill: var(--ion-color-warning);
     }

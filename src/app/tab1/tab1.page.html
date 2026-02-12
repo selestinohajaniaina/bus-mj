@@ -59,7 +59,39 @@
       <ion-spinner name="circles"></ion-spinner>
       <ion-label id="label">Chargement ...</ion-label>
     </div>
+
+    <p class="couter">{{ allCooperative.length }} cooperative(s)</p>
+
+    <div class="cooperativelist">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle color="light">TOUS COOPERATIVE</ion-card-subtitle>
+          <div class="nbr-container">
+            <h1>{{ allBus.length }}</h1>
+            <div class="icon-text">
+              <ion-icon name="flag-outline" size="large"></ion-icon>
+              <p>Bus</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngFor="let coop of allCooperative; let i = index" >
+        <ion-card-content>
+          <ion-card-subtitle color="light" [style.background]="'var(--ion-color-' + getBusColor(i) + ')'">COOPERATIVE {{ coop }}</ion-card-subtitle>
+          <div class="nbr-container">
+            <h1>{{ getBusByCooperative(coop) }}</h1>
+            <div class="icon-text">
+              <ion-icon name="flag-outline" size="large"></ion-icon>
+              <p>Bus</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
   
+    <p class="couter">{{ allBus.length }} ligne(s)</p>
+
     <div class="buslist" *ngIf="chargeShow==false">
       <ion-card *ngFor="let bus of allBus" routerLink="../../bus" [queryParams]="{relation_id: bus.id}">
         <ion-card-content>
