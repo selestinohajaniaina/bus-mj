@@ -42,8 +42,12 @@
     width: 100vw;
 }
 
-.couter {
-    padding: 0 2%;
+.counter {
+    margin: 0 2%;
+    padding: 5px 10px;
+    width: fit-content;
+    background: var(--ion-color-warning);
+    border-radius: 8px;
 }
 
 .cooperativelist {
@@ -136,7 +140,7 @@ ion-modal#example-modal {
   }
 
 .wave {
-    margin: 0 0 -100px 0;
+    margin: -1px 0 -100px 0;
     
     path {
         fill: var(--ion-color-warning);
