@@ -15,6 +15,7 @@
       <div class="desc">Couleur du bus: <ion-badge [color]="ionColorOf(bus.tags.color)">{{ colorOf(bus.tags.color) }}</ion-badge></div>
       <div class="desc">Couleur de la bande sur le côté: <ion-badge *ngFor="let c of bus.tags.band" [color]="ionColorOf(c)">{{ colorOf(c) }}</ion-badge></div>
       <div class="desc">Couleur de la plaque: <ion-badge [color]="ionColorOf(bus.tags.board || 'white')">{{ colorOf(bus.tags.board || '') }}</ion-badge></div>
+      <div class="desc">Operateur: <ion-badge [style.background]="getOperatorColor(bus.tags.operator)">{{ bus.tags.operator }}</ion-badge></div>
       </ion-card-content>
   </ion-card>
   <div class="arret" *ngIf="stops && stops.length">
