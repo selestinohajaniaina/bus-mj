@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Bus, Stop } from '../interface/bus';
-import { findStopAll, findBusAll, findBusByOneStop } from 'bus-mj';
+import { findStopAll, findBusAll, findBusByOneStop, findBusByStopLabel } from 'bus-mj';
 
 @Component({
   selector: 'app-tab3',
@@ -42,28 +42,38 @@ export class Tab3Page {
     this.allBus = findBusAll();
   }
 
-  stopLabel(stopId: number) {
-    // return getStopLabel(stopId);
-  }
-
   getBusLabel(busId: number) {
     return this.allBus.filter((e)=> e.id == busId)[0].tags.name;
   }
 
-  getStopAtPosition(stops: string[], position: number) {
-    // return this.stopLabel(stops[position] == this.idSearch ? stops[stops.length - 1] : stops[position]);
+  getStopLabelAtPosition(members: Stop[], position: number) {
+    return members[position].label;
   }
   
-  choisir(id: number) {
-    this.valueSearch = this.allStop.filter((e) => e.id == id)[0].label;
+  choisir(label: string) {
+    this.valueSearch = this.allStop.filter((e) => e.label == label)[0].label;
     this.isShowStopHelp = false;
-    this.busFilter = findBusByOneStop(id);
-    console.log(id,this.busFilter);
+    this.busFilter = findBusByStopLabel(label);
+    console.log(label,this.busFilter);
 
   }
 
   filterStop(value: string) {
     return this.allStop.filter((e) => e.label!.toLowerCase().includes(value.toLowerCase()));
+  }
+
+  getOperatorColor(operator: string): string {
+    const map: { [k: string]: string } = {
+      MAMI: '#1E88E5',
+      'KOFIBE/ KOFIMARE': '#009688',
+      MAHATSINJO: '#8E24AA',
+      TAMBATRA: '#43A047',
+      'NY ANTSIKA': '#E53935',
+      AMBONDRONA: '#FFB300',
+      MIRAY: '#00ACC1',
+      AINA: '#D81B60',
+    };
+    return map[operator] || '#607D8B';
   }
 
 }
