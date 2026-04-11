@@ -8,25 +8,31 @@
       <ion-card-title>Rechercher votre Arret:</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list lines="none">
+      
+      <div class="button">
+        <ion-input type="search" placeholder="Saisir l’arrêt de départ" [(ngModel)]="stop" (ionFocus)="onFocus(1)" (ionBlur)="onBlur(1)"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
+        <div class="stop-indice" *ngIf="isShowStopHelp">
+          <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.label!)">
+            <ion-card-content>
+              <ion-icon name="locate-outline" size="small"></ion-icon>
+              <ion-text>{{ stop.label }}</ion-text>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
 
-        <ion-item>
-          <ion-label>Depart: </ion-label>
-          <ion-select label="" value="c" slot="end" [(ngModel)]="depart">
-            <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop.id">{{ stop.label }}</ion-select-option>
-          </ion-select>
-        </ion-item>
+      <div class="button">
+        <ion-input type="search" placeholder="Saisir l’arrêt de destination" [(ngModel)]="stop" (ionFocus)="onFocus(2)" (ionBlur)="onBlur(2)"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
+        <div class="stop-indice" *ngIf="isShowStopHelp">
+          <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.label!)">
+            <ion-card-content>
+              <ion-icon name="locate-outline" size="small"></ion-icon>
+              <ion-text>{{ stop.label }}</ion-text>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
 
-        <ion-item>
-          <ion-label>Arrive: </ion-label>
-          <ion-select label="" value="c" slot="end" [(ngModel)]="fin">
-            <ion-select-option value="c">choisir</ion-select-option>
-            <ion-select-option *ngFor="let stop of allStop" [value]="stop.id">{{ stop.label }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-
-      </ion-list>
       <ion-button expand="block" shape="round" (click)="findBus()">
         <ion-text>Rechercher</ion-text>
         <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>

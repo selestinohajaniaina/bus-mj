@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { findBusByTwoStop, findStopAll } from 'bus-mj';
+import { findBusByStopLabel, findBusByTwoStop, findStopAll } from 'bus-mj';
 import { Stop, Bus } from '../interface/bus';
 
 @Component({
@@ -14,6 +14,23 @@ export class Tab2Page {
   public depart: string | number = 'c';
   public fin: string | number = 'c';
   public isShowEmpty: boolean = false;
+  public valueSearch: string | null;
+  public stopFiltered: Stop[];
+  public isShowStopHelp: boolean = false;
+  public busFilter: Bus[];
+
+  public get stop(): string | null {
+    return this.valueSearch;
+  }
+
+  public set stop(value: string) {
+    this.valueSearch = value;
+    this.isShowStopHelp = true;
+    this.stopFiltered = this.filterStop(this.valueSearch);
+    if(this.valueSearch.length == 0) {
+      this.isShowStopHelp = false;
+    }
+  }
 
   constructor(
   ) {}
@@ -44,6 +61,24 @@ export class Tab2Page {
   
   stopLabel(stopId: string) {
     // return getStopLabel(stopId);
+  }
+
+  filterStop(value: string) {
+    return this.allStop.filter((e) => e.label!.toLowerCase().includes(value.toLowerCase()));
+  }
+
+  choisir(label: string) {
+    this.valueSearch = this.allStop.filter((e) => e.label == label)[0].label;
+    this.isShowStopHelp = false;
+    this.busFilter = findBusByStopLabel(label);
+  }
+
+  onFocus(inputNumber: number) {
+    console.log('focus:', inputNumber);
+  }
+
+  onBlur(inputNumber: number) {
+    console.log('perdu le focus: ', inputNumber);
   }
 
 }
