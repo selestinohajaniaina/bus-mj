@@ -58,7 +58,7 @@
     </div>
 
     <ion-button expand="block" shape="round" (click)="findBus()">
-      <ion-text>Rechercher</ion-text>
+      <ion-text>Lancer la rechercher</ion-text>
       <ion-icon
         aria-hidden="true"
         name="search-circle-outline"
@@ -68,21 +68,21 @@
   </div>
 
   <div class="contener" *ngIf="result && result.length">
-    <ion-title>Prenez les bus suivants:</ion-title>
+    <ion-title>Prenez les bus suivants ({{ result.length }}):</ion-title>
     <ion-card *ngFor="let bus of result" id="open-modal-{{bus.id}}">
       <ion-card-content class="desc">
         <ion-card-title>{{ bus.tags.name }}</ion-card-title>
-        <!-- <ion-text>{{ stopLabel(depart) }} ... {{ stopLabel(fin) }}</ion-text>
-        <p> <ion-badge>{{bus.members.length}}</ion-badge>Arrets</p> -->
+        <ion-text>{{ bus.members[0].label }} ... {{ bus.members[bus.members.length - 1].label }}</ion-text>
+        <p> <ion-badge>{{bus.members.length}}</ion-badge>Arrets</p>
       </ion-card-content>
-      <!-- <app-modal-bus [bus]="bus"/> -->
+      <app-modal-bus [trigger]="'open-modal-' + bus.id" [bus]="bus"  />
     </ion-card>
   </div>
 
   <div *ngIf="isShowEmpty" class="emptyFilter">
-    <i
-      >Pas des Bus direct entre " {{ depart }} " et " {{ fin }} ", Veuillez choisir un autre arrêt.
-      Collaborez avec nous pour améliorer notre application.</i
-    >
+    <i>
+      Pas des Bus direct entre " {{ departOld }} " et " {{ finOld }} ", Veuillez choisir un autre arrêt. <br>
+      [Collaborez avec nous pour améliorer notre application.]
+    </i>
   </div>
 </ion-content>

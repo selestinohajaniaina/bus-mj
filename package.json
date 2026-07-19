@@ -28,8 +28,9 @@
     "@capacitor/keyboard": "5.0.7",
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.0.0",
-    "bus-mj": "^2.2.2",
+    "bus-mj": "^2.2.4",
     "ionicons": "^7.0.0",
+    "maplibre-gl": "^5.24.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
