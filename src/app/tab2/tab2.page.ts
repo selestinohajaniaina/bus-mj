@@ -7,8 +7,6 @@ import {
 } from 'bus-mj';
 import { Stop, Bus } from '../interface/bus';
 
-// import * as maplibregl from 'maplibre-gl';
-
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -63,13 +61,6 @@ export class Tab2Page {
     this.allStop = findStopAll().sort((a, b) =>
       a.label!.localeCompare(b.label!)
     );
-
-    // const map = new maplibregl.Map({
-    //   container: 'maps', // container id
-    //   style: 'https://tiles.openfreemap.org/styles/positron', // style URL
-    //   center: [46.3167, -15.7167], // starting position [lng, lat]
-    //   zoom: 12, // starting zoom
-    // });
   }
 
   findBus() {

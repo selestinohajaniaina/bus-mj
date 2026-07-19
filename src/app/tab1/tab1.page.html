@@ -2,56 +2,39 @@
   <div class="content">
     <div class="titre">
       <div class="menu">
-        <ion-icon id="open-modal" name="person-circle-outline" size="large"></ion-icon>
-        <ion-icon name="search-outline" routerLink="/tabs/tab3" size="large"></ion-icon>
+        <ion-icon
+          name="person-circle-outline"
+          size="large"
+        ></ion-icon>
+        <ion-icon
+          name="search-outline"
+          routerLink="/tabs/tab2"
+          size="large"
+        ></ion-icon>
       </div>
       <h1>Bus Nakay</h1>
-      <p>Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus, suivez votre trajet et naviguez sans connexion.</p>
+      <p>
+        Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus,
+        suivez votre trajet et naviguez sans connexion.
+      </p>
       <div class="button">
-        <ion-button expand="round" routerLink="/tabs/tab2"><ion-icon slot="start" name="walk-outline"></ion-icon>Commencer<ion-icon slot="end" name="arrow-forward-outline"></ion-icon> </ion-button>
+        <ion-button expand="round" routerLink="/tabs/tab2"
+          ><ion-icon slot="start" name="walk-outline"></ion-icon
+          >Commencer<ion-icon
+            slot="end"
+            name="arrow-forward-outline"
+          ></ion-icon>
+        </ion-button>
       </div>
     </div>
-    
-    <ion-modal id="example-modal" trigger="open-modal" #modal>
-      <ng-template>
-        <div class="wrapper">
-          <h1>Bus Nakay</h1>
-  
-          <ion-list>
-            <ion-item (click)="modal.dismiss()">
-              <p>Application dédiée à la recherche et à l’optimisation des trajets en transports publics à Majunga.<br>
-                Envie d’améliorer le projet ? Intégrez et exploitez l’API via
-                  <ion-badge color="light">npm install bus-mj</ion-badge> </p>
-            </ion-item>
-           <ion-item button (click)="modal.dismiss()" href="https://www.npmjs.com/package/bus-mj" target="_blank">
-            <ion-icon slot="start" name="logo-nodejs"></ion-icon>
-            <ion-label>
-              <h3>API bus-mj</h3>
-              <p>Documentation et installation npm</p>
-            </ion-label>
-          </ion-item>
-
-          <ion-item button (click)="modal.dismiss()" href="https://github.com/selestinohajaniaina/bus-mahajanga-api" target="_blank">
-            <ion-icon slot="start" name="code-slash-outline"></ion-icon>
-            <ion-label>
-              <h3>Code source</h3>
-              <p>Projet open source collaboratif</p>
-            </ion-label>
-          </ion-item>
-
-          <ion-item (click)="modal.dismiss()" href="mailto:selestinoolivier@gmail.com">
-            <ion-icon name="mail-outline"></ion-icon>
-            <ion-label>selestinoolivier&#64;gmail.com</ion-label>
-          </ion-item>
-
-          </ion-list>
-        </div>
-      </ng-template>
-    </ion-modal>
 
     <div class="wave">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#ffd534" fill-opacity="1" d="M0,288L60,293.3C120,299,240,309,360,288C480,267,600,213,720,197.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+        <path
+          fill="#ffd534"
+          fill-opacity="1"
+          d="M0,288L60,293.3C120,299,240,309,360,288C480,267,600,213,720,197.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+        ></path>
       </svg>
     </div>
 
@@ -65,7 +48,11 @@
     <div class="cooperativelist">
       <ion-card>
         <ion-card-content>
-          <ion-card-subtitle color="light" [style.background]="getOperatorColor('')">TOUS COOPERATIVE</ion-card-subtitle>
+          <ion-card-subtitle
+            color="light"
+            [style.background]="getOperatorColor('')"
+            >TOUS COOPERATIVE</ion-card-subtitle
+          >
           <div class="nbr-container">
             <h1>{{ allBus.length }}</h1>
             <div class="icon-text">
@@ -76,9 +63,13 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngFor="let coop of allCooperative; let i = index" >
+      <ion-card *ngFor="let coop of allCooperative; let i = index">
         <ion-card-content>
-          <ion-card-subtitle color="light" [style.background]="getOperatorColor(coop)">{{ coop }}</ion-card-subtitle>
+          <ion-card-subtitle
+            color="light"
+            [style.background]="getOperatorColor(coop)"
+            >{{ coop }}</ion-card-subtitle
+          >
           <div class="nbr-container">
             <h1>{{ getBusByCooperative(coop) }}</h1>
             <div class="icon-text">
@@ -89,11 +80,15 @@
         </ion-card-content>
       </ion-card>
     </div>
-  
+
     <p class="counter">{{ allBus.length }} ligne(s)</p>
 
     <div class="buslist" *ngIf="chargeShow==false">
-      <ion-card *ngFor="let bus of allBus" routerLink="../../bus" [queryParams]="{relation_id: bus.id}">
+      <ion-card
+        *ngFor="let bus of allBus"
+        routerLink="../../bus"
+        [queryParams]="{relation_id: bus.id}"
+      >
         <ion-card-content>
           <ion-list lines="none">
             <ion-item>
@@ -101,7 +96,10 @@
               <ion-icon name="bus-outline" slot="start"></ion-icon>
               <ion-label>
                 {{ bus.tags.name }}
-                <ion-badge [style.background]="getOperatorColor(bus.tags.operator)">{{ bus.tags.operator }}</ion-badge>
+                <ion-badge
+                  [style.background]="getOperatorColor(bus.tags.operator)"
+                  >{{ bus.tags.operator }}</ion-badge
+                >
               </ion-label>
             </ion-item>
           </ion-list>
@@ -109,5 +107,4 @@
       </ion-card>
     </div>
   </div>
-
 </ion-content>

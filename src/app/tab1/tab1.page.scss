@@ -7,7 +7,7 @@
 
 .content {
     height: 100%;
-    background-image: url('../../assets/map-img.png')!important;
+    background-image: url('../../assets/map-img.png') !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -15,12 +15,15 @@
     padding: 0;
 
     .titre {
+        position: relative;
         background: var(--ion-color-warning);
         padding: 2%;
         color: white;
 
         .menu {
-            display: flex;
+            position: absolute;
+            top: 0;
+            right: 0;
             justify-content: space-between;
             margin: 2% 0 5% 0;
         }
@@ -54,9 +57,9 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
-    
+
     ion-card {
-        flex: 0 0 40vw; 
+        flex: 0 0 40vw;
         border-radius: 33px;
         width: 40vw;
         aspect-ratio: 1 / 1;
@@ -94,54 +97,9 @@
     padding-left: 10px;
 }
 
-ion-modal#example-modal {
-    --width: fit-content;
-    --min-width: 250px;
-    --height: fit-content;
-    --border-radius: 6px;
-    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
-  }
-  
-  ion-modal#example-modal h1 {
-    margin: 20px 20px 10px 20px;
-  }
-  
-  ion-modal#example-modal ion-icon {
-    margin-right: 6px;
-    width: 48px;
-    height: 48px;
-    padding: 4px 0;
-    color: #aaaaaa;
-  }
-  
-  ion-modal#example-modal .wrapper {
-    margin-bottom: 10px;
-
-    ion-item a {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        text-decoration: none;
-        color: black;
-
-        ion-label {
-            opacity: 0.6;
-        }
-    }
-
-    ion-item p {
-        opacity: 0.6;
-        font-size: medium;
-        max-width: 70vw;
-        text-align: justify;
-        margin: 0;
-    }
-  }
-
 .wave {
     margin: -1px 0 -100px 0;
-    
+
     path {
         fill: var(--ion-color-warning);
     }

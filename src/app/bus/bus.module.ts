@@ -9,6 +9,7 @@ import { BusPageRoutingModule } from './bus-routing.module';
 import { BusPage } from './bus.page';
 import { BusImgModule } from '../bus-img/bus-img.module';
 import { StopListModule } from '../stop-list/stop-list.module';
+import { MapsModule } from '../maps/maps.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { StopListModule } from '../stop-list/stop-list.module';
     IonicModule,
     BusPageRoutingModule,
     BusImgModule,
-    StopListModule
+    StopListModule,
+    MapsModule
   ],
   declarations: [BusPage]
 })

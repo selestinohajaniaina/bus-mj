@@ -1,0 +1,31 @@
+<ion-modal
+  id="example-modal"
+  [trigger]="triggerElementId"
+  #modal
+  (ionModalDidPresent)="initMap()"
+>
+  <ng-template>
+    <div class="wrapper" width="100px" height="100px">
+      <div class="title-container">
+
+        <div class="title">
+
+          <p class="title-pill">{{ title }}</p>
+
+          <ion-button
+            class="close-button"
+            slot="icon-only"
+            shape="round"
+            color="light"
+            size="small"
+            (click)="modal.dismiss()"
+          >
+            <ion-icon name="close" size="small"></ion-icon>
+          </ion-button>
+          
+        </div>
+      </div>
+      <div id="maplibregl"></div>
+    </div>
+  </ng-template>
+</ion-modal>
