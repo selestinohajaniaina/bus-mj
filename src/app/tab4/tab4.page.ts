@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+   public paletteToggle!: boolean;
 
-  constructor() { }
+  constructor() {
+    const theme = localStorage.getItem("theme");
+    this.paletteToggle = theme == "dark" ? true : false;
+  }
 
   ngOnInit() {
+  }
+
+  toggleChange(event: CustomEvent) {
+    this.toggleDarkPalette(event.detail.checked);
+  }
+
+   // Add or remove the "ion-palette-dark" class on the html element
+  toggleDarkPalette(shouldAdd: boolean) {
+    document.documentElement.classList.toggle('ion-palette-dark', shouldAdd);
+    localStorage.setItem("theme", shouldAdd ? "dark" : "light");
   }
 
 }

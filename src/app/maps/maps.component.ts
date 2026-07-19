@@ -26,7 +26,14 @@ export class MapsComponent implements OnInit {
   ];
   private used = 0;
 
-  constructor() {}
+  constructor() {
+    const theme = localStorage.getItem("theme");
+    if(theme == "dark") {
+      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/dark';
+    } else {
+      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/positron';
+    }
+  }
 
   ngOnInit() {}
 
