@@ -4,6 +4,7 @@ import { ModalBusComponent } from './modal-bus.component';
 import { IonicModule } from '@ionic/angular';
 import { BusImgModule } from '../bus-img/bus-img.module';
 import { StopListModule } from '../stop-list/stop-list.module';
+import { MapsModule } from '../maps/maps.module';
 
 
 
@@ -13,7 +14,8 @@ import { StopListModule } from '../stop-list/stop-list.module';
     CommonModule,
     IonicModule,
     BusImgModule,
-    StopListModule
+    StopListModule,
+    MapsModule
   ],
   exports: [ModalBusComponent]
 })

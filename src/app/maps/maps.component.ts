@@ -19,12 +19,21 @@ export class MapsComponent implements OnInit {
   private mapZoom: number = 13;
   private mapStyleUrl: string = 'https://tiles.openfreemap.org/styles/positron';
 
+  private palette = [
+    '#e63946', '#457b9d', '#2a9d8f', '#f4a261', '#9d4edd',
+    '#e76f51', '#06d6a0', '#118ab2', '#ffb703', '#fb8500',
+    '#8338ec', '#ff006e', '#3a86ff', '#06a77d', '#d62828',
+  ];
+  private used = 0;
+
   constructor() {}
 
   ngOnInit() {}
 
   initMap() {
     console.log('init map');
+
+    this.used = 0;
 
     if (this.stop) {
       this.mapCenter = {
@@ -90,13 +99,16 @@ export class MapsComponent implements OnInit {
         },
       });
 
+      const choise = this.used;
+      this.used++;
+
       this.map.addLayer({
         id: 'ma-route-layer',
         type: 'line',
         source: 'ma-route',
         layout: { 'line-join': 'round', 'line-cap': 'round' },
         paint: {
-          'line-color': '#e63946',
+          'line-color': this.palette[choise],
           'line-width': 5,
         },
       });
