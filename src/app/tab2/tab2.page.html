@@ -1,44 +1,71 @@
 <ion-content [fullscreen]="true">
   <div class="titre">
     <h1>Déplacement</h1>
-    <p>Prenez facilement votre bus avec l'application. Identifiez un arrêt où vous souhaitez commencer votre trajet.</p>
+    <p>
+      Prenez facilement votre bus avec l'application. Identifiez un arrêt où
+      vous souhaitez commencer votre trajet.
+    </p>
   </div>
-  <ion-card class="search">
+  <ion-card class="search-title">
     <ion-card-header>
-      <ion-card-title>Rechercher votre Arret:</ion-card-title>
+      <ion-card-title class="ion-text-center">Rechercher votre Arret</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      
-      <div class="button">
-        <ion-input type="search" placeholder="Saisir l’arrêt de départ" [(ngModel)]="stop" (ionFocus)="onFocus(1)" (ionBlur)="onBlur(1)"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
-        <div class="stop-indice" *ngIf="isShowStopHelp">
-          <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.label!)">
-            <ion-card-content>
-              <ion-icon name="locate-outline" size="small"></ion-icon>
-              <ion-text>{{ stop.label }}</ion-text>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </div>
-
-      <div class="button">
-        <ion-input type="search" placeholder="Saisir l’arrêt de destination" [(ngModel)]="stop" (ionFocus)="onFocus(2)" (ionBlur)="onBlur(2)"><ion-icon name="search-outline" slot="start"></ion-icon></ion-input>
-        <div class="stop-indice" *ngIf="isShowStopHelp">
-          <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.label!)">
-            <ion-card-content>
-              <ion-icon name="locate-outline" size="small"></ion-icon>
-              <ion-text>{{ stop.label }}</ion-text>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </div>
-
-      <ion-button expand="block" shape="round" (click)="findBus()">
-        <ion-text>Rechercher</ion-text>
-        <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>
-      </ion-button>
-    </ion-card-content>
   </ion-card>
+
+  <div class="search">
+    <div class="input-search">
+      <ion-input
+        type="search"
+        placeholder="Arrêt de départ"
+        [(ngModel)]="stop_1"
+        (ionFocus)="onFocus(1)"
+        (ionBlur)="onBlur(1)"
+        ><ion-icon name="search-outline" slot="start"></ion-icon
+      ></ion-input>
+      <div class="stop-indice" *ngIf="isShowStopHelp">
+        <ion-card
+          *ngFor="let stop of stopFiltered"
+          (click)="choisir(stop.label!)"
+        >
+          <ion-card-content>
+            <ion-icon name="locate-outline" size="small"></ion-icon>
+            <ion-text>{{ stop.label }}</ion-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <div class="input-search">
+      <ion-input
+        type="search"
+        placeholder="Arrêt de destination"
+        [(ngModel)]="stop_2"
+        (ionFocus)="onFocus(2)"
+        (ionBlur)="onBlur(2)"
+        ><ion-icon name="search-outline" slot="start"></ion-icon
+      ></ion-input>
+      <div class="stop-indice" *ngIf="isShowStopHelp2">
+        <ion-card
+          *ngFor="let stop of stopFiltered"
+          (click)="choisir2(stop.label!)"
+        >
+          <ion-card-content>
+            <ion-icon name="locate-outline" size="small"></ion-icon>
+            <ion-text>{{ stop.label }}</ion-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <ion-button expand="block" shape="round" (click)="findBus()">
+      <ion-text>Rechercher</ion-text>
+      <ion-icon
+        aria-hidden="true"
+        name="search-circle-outline"
+        slot="end"
+      ></ion-icon>
+    </ion-button>
+  </div>
 
   <div class="contener" *ngIf="result && result.length">
     <ion-title>Prenez les bus suivants:</ion-title>
@@ -52,6 +79,10 @@
     </ion-card>
   </div>
 
-  <div *ngIf="isShowEmpty" class="emptyFilter"> <i>Pas des Bus direct entre " " et " ",  Veuillez choisir un autre arrêt. Collaborez avec nous pour améliorer notre application.</i></div>
-
+  <div *ngIf="isShowEmpty" class="emptyFilter">
+    <i
+      >Pas des Bus direct entre " {{ depart }} " et " {{ fin }} ", Veuillez choisir un autre arrêt.
+      Collaborez avec nous pour améliorer notre application.</i
+    >
+  </div>
 </ion-content>

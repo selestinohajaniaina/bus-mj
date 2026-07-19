@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { findBusByStopLabel, findBusByTwoStop, findStopAll } from 'bus-mj';
+import { findBusByStopLabel, findBusByTwoStop, findStopAll, findBusByTwoStopLabel } from 'bus-mj';
 import { Stop, Bus } from '../interface/bus';
 
 @Component({
@@ -11,24 +11,39 @@ export class Tab2Page {
 
   public allStop: Stop[];
   public result: Bus[] = [];
-  public depart: string | number = 'c';
-  public fin: string | number = 'c';
+  public depart: string = 'c';
+  public fin: string = 'c';
   public isShowEmpty: boolean = false;
   public valueSearch: string | null;
+  public valueSearch2: string | null;
   public stopFiltered: Stop[];
   public isShowStopHelp: boolean = false;
+  public isShowStopHelp2: boolean = false;
   public busFilter: Bus[];
 
-  public get stop(): string | null {
+  public get stop_1(): string | null {
     return this.valueSearch;
   }
 
-  public set stop(value: string) {
+  public set stop_1(value: string) {
     this.valueSearch = value;
     this.isShowStopHelp = true;
     this.stopFiltered = this.filterStop(this.valueSearch);
     if(this.valueSearch.length == 0) {
       this.isShowStopHelp = false;
+    }
+  }
+
+  public get stop_2(): string | null {
+    return this.valueSearch2;
+  }
+
+  public set stop_2(value: string) {
+    this.valueSearch2 = value;
+    this.isShowStopHelp2 = true;
+    this.stopFiltered = this.filterStop(this.valueSearch2);
+    if(this.valueSearch2.length == 0) {
+      this.isShowStopHelp2 = false;
     }
   }
 
@@ -48,7 +63,7 @@ export class Tab2Page {
       console.log(this.depart, this.fin);
       
       this.isShowEmpty = false;
-      this.result = findBusByTwoStop(Number(this.depart), Number(this.fin));
+      this.result = findBusByTwoStopLabel(this.depart, this.fin);
       if(!this.result[0]) {
         this.isShowEmpty = true;
       }
@@ -69,7 +84,15 @@ export class Tab2Page {
 
   choisir(label: string) {
     this.valueSearch = this.allStop.filter((e) => e.label == label)[0].label;
+    this.depart = this.valueSearch ? this.valueSearch : 'c';
     this.isShowStopHelp = false;
+    this.busFilter = findBusByStopLabel(label);
+  }
+
+  choisir2(label: string) {
+    this.valueSearch2 = this.allStop.filter((e) => e.label == label)[0].label;
+    this.fin = this.valueSearch2 ? this.valueSearch2 : 'c';
+    this.isShowStopHelp2 = false;
     this.busFilter = findBusByStopLabel(label);
   }
 
