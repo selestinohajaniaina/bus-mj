@@ -17,7 +17,6 @@
     .titre {
         position: relative;
         background: var(--ion-color-warning);
-        padding: 2%;
         color: white;
 
         .menu {
@@ -25,7 +24,7 @@
             top: 0;
             right: 0;
             justify-content: space-between;
-            margin: 2% 0 5% 0;
+            margin: 16px;
         }
 
         h1 {

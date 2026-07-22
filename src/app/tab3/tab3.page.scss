@@ -1,13 +1,13 @@
-
 .page {
     display: flex;
     flex-direction: column;
+    position: relative;
     height: 100%;
 
     .titre {
         background: var(--ion-color-warning);
         color: white;
-    
+
         h1 {
             margin: 0;
             font-weight: bold;
@@ -16,7 +16,7 @@
             align-items: center;
             gap: 5%;
         }
-    
+
         p {
             opacity: 0.7;
             text-align: justify;
@@ -24,10 +24,25 @@
     }
 
     #maplibreglTab3 {
-      flex: 1;
-      min-height: 0;
-      width: 100%;
-      height: 100%;
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .action-button {
+        position: absolute;
+        // bottom: 0;
+        // display: flex;
+        // flex-direction: column;
+        left: 16px;
+        //   bottom: 16px;
+        border: red solid 1px;
+
+        .action-button ion-fab-button {
+            //   margin-bottom: 10px;
+            position:static;
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 <ion-modal
   trigger="open-modal-{{ bus.id }}"
   [initialBreakpoint]="0.75"
-  [breakpoints]="[0, 0.25, 0.5, 0.75, 0.85]"
+  [breakpoints]="[0, 0.75, 1]"
   #modal
 >
   <ng-template>
@@ -55,8 +55,14 @@
       </div>
 
       <ion-fab slot="fixed" vertical="top" horizontal="end">
-        <ion-fab-button id="open-maps-modal-detail">
+        <ion-fab-button id="open-maps-modal-detail" size="small">
           <ion-icon name="map"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-fab slot="fixed" vertical="top" horizontal="start">
+        <ion-fab-button color="light" (click)="modal.dismiss()" size="small">
+          <ion-icon name="chevron-down-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
 

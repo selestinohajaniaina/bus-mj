@@ -3,10 +3,23 @@
     <div class="titre ion-padding">
       <h1>Vous ne savez pas où vous êtes ?</h1>
       <p>
-        Ne vous inquiétez pas, choisissez l'arrêt le plus proche de l'endroit où vous vous trouvez.
+        Ne vous inquiétez pas, choisissez l'arrêt le plus proche de l'endroit où
+        vous vous trouvez.
       </p>
     </div>
 
     <div id="maplibreglTab3"></div>
+
+    <div class="action-button ion-margin">
+      <ion-fab>
+        <ion-fab-button color="light" size="small" (click)="setToMyPosition()">
+          <ion-icon name="search"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="light" size="small">
+          <ion-icon name="locate"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+
   </div>
 </ion-content>
