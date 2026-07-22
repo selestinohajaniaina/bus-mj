@@ -5,6 +5,7 @@ import { Coordinates, MapMarker } from '../interface/Map';
 import * as maplibregl from 'maplibre-gl';
 import { Geolocation } from '@capacitor/geolocation';
 import { Capacitor } from '@capacitor/core';
+import * as turf from '@turf/turf';
 
 @Component({
   selector: 'app-tab3',
@@ -39,8 +40,6 @@ export class Tab3Page {
   }
 
   initMap() {
-    console.log('init map');
-
     this.mapCenter = { longitude: 46.3167, latitude: -15.7167 };
 
     this.map = new maplibregl.Map({
@@ -71,6 +70,62 @@ export class Tab3Page {
       .addTo(this.map);
   }
 
+  setCenter(coordinate: Coordinates, zoom: number = 16, speed: number = 1.5) {
+    this.map.flyTo({
+      center: [
+        this.myPosition.longitude,
+        this.myPosition.latitude
+      ],
+      zoom: zoom,
+      speed: speed
+    });
+  }
+
+  drawDistance(coordinate1: Coordinates, coordinate2: Coordinates, text: string = '') {
+    const routeId = `route-${Math.abs(coordinate1.longitude + coordinate1.latitude + coordinate2.longitude + coordinate2.latitude)}-${text}`
+    this.map.addSource(routeId, {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [coordinate1.longitude, coordinate1.latitude],
+            [coordinate2.longitude, coordinate2.latitude]
+          ]
+        }
+      }
+    });
+
+    this.map.addLayer({
+      id: `${routeId}-line`,
+      type: 'line',
+      source: routeId,
+      paint: {
+        'line-color': '#0d6efd',
+        'line-width': 4
+      }
+    });
+
+    this.map.addLayer({
+      id: `${routeId}-label`,
+      type: 'symbol',
+      source: routeId,
+      layout: {
+        'symbol-placement': 'line',
+        'text-field': text,
+        'text-size': 14,
+        'text-offset': [0, -1]
+      },
+      paint: {
+        'text-color': '#757575',
+        'text-halo-color': '#fff',
+        'text-halo-width': 2
+      }
+    });
+  }
+
   async getGPS() {
     if (Capacitor.getPlatform() === 'web') {
       this.getWebPosition();
@@ -84,13 +139,18 @@ export class Tab3Page {
       name: 'geolocation'
     });
     if (status.state == "granted") {
-      console.log(status);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           this.haveGPSPermission = true;
           this.myPosition = { longitude: position.coords.longitude, latitude: position.coords.latitude, label: "Vous etes ici" };
           this.mySpeed = position.coords.speed ?? 0;
-          this.addMarker(this.myPosition, true)
+          this.addMarker(this.myPosition, true);
+          this.setCenter(this.myPosition);
+          const stopNearsMe = this.getNearsStop(this.myPosition);
+          stopNearsMe.map((e) => {
+            this.drawDistance(this.myPosition, { longitude: e.lon, latitude: e.lat }, `${Math.round(e.distance)} m`);
+          });
+
         },
         (error) => {
           this.haveGPSPermission = false;
@@ -114,7 +174,39 @@ export class Tab3Page {
       const position = await Geolocation.getCurrentPosition({ enableHighAccuracy: true });
       this.myPosition = { longitude: Number(position.coords.longitude), latitude: Number(position.coords.latitude), label: "Vous etes ici" };
       this.mySpeed = position.coords.speed ?? 0;
+      this.addMarker(this.myPosition, true);
+      this.setCenter(this.myPosition);
+      const stopNearsMe = this.getNearsStop(this.myPosition);
+      stopNearsMe.map((e) => {
+        this.drawDistance(this.myPosition, { longitude: e.lon, latitude: e.lat }, `${Math.round(e.distance)} m`);
+      });
     }
+  }
+
+  getNearsStop(coordinate: Coordinates) {
+    const myPoint = turf.point([
+      coordinate.longitude,
+      coordinate.latitude
+    ]);
+
+    const sortedStops = this.allStop
+      .map(stop => ({
+        ...stop,
+        distance: turf.distance(
+          myPoint,
+          turf.point([stop.lon, stop.lat]),
+          { units: 'meters' }
+        )
+      }))
+      .sort((a, b) => a.distance - b.distance);
+
+    const nearbyStops = sortedStops
+      .filter(stop => stop.distance <= 300)
+      .slice(0, 10);
+
+    return nearbyStops.length > 0
+      ? nearbyStops
+      : sortedStops.slice(0, 1);
   }
 
 }
