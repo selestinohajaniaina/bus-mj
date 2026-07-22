@@ -40,12 +40,16 @@ export class MapsComponent implements OnInit {
   initMap() {
     console.log('init map');
 
+    let semiData = 0;
+
     this.used = 0;
 
     if (this.stop) {
+      semiData = Math.round(this.stop.length / 4);
+
       this.mapCenter = {
-        longitude: this.stop[0].lon,
-        latitude: this.stop[0].lat,
+        longitude: this.stop[semiData].lon,
+        latitude: this.stop[semiData].lat,
       };
     } else if (this.routes) {
       // this.mapCenter = {longitude: this.stop[0][0].lon, latitude: this.stop[0][0].lat};

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Bus, Stop } from '../interface/bus';
-import { findStopAll, findBusAll, findBusByOneStop, findBusByStopLabel } from 'bus-mj';
+import { findStopAll } from 'bus-mj';
+import { Coordinates, MapMarker } from '../interface/Map';
+import * as maplibregl from 'maplibre-gl';
+import { Geolocation } from '@capacitor/geolocation';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-tab3',
@@ -9,71 +13,108 @@ import { findStopAll, findBusAll, findBusByOneStop, findBusByStopLabel } from 'b
 })
 export class Tab3Page {
 
+  private map: maplibregl.Map;
+  private mapCenter: Coordinates;
+  private mapZoom: number = 13;
+  private mapStyleUrl: string = 'https://tiles.openfreemap.org/styles/positron';
+  private haveGPSPermission: boolean = false;
+  private myPosition: MapMarker;
+  private mySpeed: number = 0;
+
   public allStop: Stop[];
-  public idSearch: number;
-  public valueSearch: string | null;
-  private allBus: Bus[];
-  public busStops: {busId: string, stops: string[]}[];
-  public busFilter: Bus[];
-  public isShowStopHelp: boolean = false;
-  public stopFiltered: Stop[];
 
-  public get stop(): string | null {
-    return this.valueSearch;
-  }
-
-  public set stop(value: string) {
-    this.valueSearch = value;
-    this.isShowStopHelp = true;
-    this.stopFiltered = this.filterStop(this.valueSearch);
-    if(this.valueSearch.length == 0) {
-      this.isShowStopHelp = false;
+  constructor() {
+    const theme = localStorage.getItem("theme");
+    if (theme == "dark") {
+      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/dark';
+    } else {
+      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/positron';
     }
   }
 
-  constructor() {}
-
   ngOnInit() {
-    this.completeData();
-  }
-  
-  completeData() {
     this.allStop = findStopAll();
-    this.allBus = findBusAll();
+    this.initMap();
+    this.getGPS();
   }
 
-  getBusLabel(busId: number) {
-    return this.allBus.filter((e)=> e.id == busId)[0].tags.name;
+  initMap() {
+    console.log('init map');
+
+    this.mapCenter = { longitude: 46.3167, latitude: -15.7167 };
+
+    this.map = new maplibregl.Map({
+      container: 'maplibreglTab3',
+      style: this.mapStyleUrl,
+      center: [this.mapCenter.longitude, this.mapCenter.latitude],
+      zoom: this.mapZoom,
+    });
+
+    if (this.allStop) {
+      this.allStop.map((e) => {
+        this.addMarker({
+          longitude: e.lon,
+          latitude: e.lat,
+          label: String(e.label),
+        });
+      });
+    }
+
   }
 
-  getStopLabelAtPosition(members: Stop[], position: number) {
-    return members[position].label;
-  }
-  
-  choisir(label: string) {
-    this.valueSearch = this.allStop.filter((e) => e.label == label)[0].label;
-    this.isShowStopHelp = false;
-    this.busFilter = findBusByStopLabel(label);
-    console.log(label,this.busFilter);
-
+  addMarker(_marker: MapMarker, isMyPosition = false) {
+    const marker = new maplibregl.Marker({
+      color: isMyPosition ? '#e74c3c' : '#3FB1CE'
+    })
+      .setLngLat([_marker.longitude, _marker.latitude])
+      .setPopup(new maplibregl.Popup().setText(_marker.label))
+      .addTo(this.map);
   }
 
-  filterStop(value: string) {
-    return this.allStop.filter((e) => e.label!.toLowerCase().includes(value.toLowerCase()));
+  async getGPS() {
+    if (Capacitor.getPlatform() === 'web') {
+      this.getWebPosition();
+    } else {
+      this.getNativePosition();
+    }
   }
 
-  getOperatorColor(operator: string): string {
-    const map: { [k: string]: string } = {
-      MAMI: '#1E88E5',
-      'KOFIBE/ KOFIMARE': '#009688',
-      MAHATSINJO: '#8E24AA',
-      TAMBATRA: '#43A047',
-      'NY ANTSIKA': '#E53935',
-      AMBONDRONA: '#FFB300',
-      MIRAY: '#00ACC1',
-      AINA: '#D81B60',
-    };
-    return map[operator] || '#607D8B';
+  async getWebPosition() {
+    const status = await navigator.permissions.query({
+      name: 'geolocation'
+    });
+    if (status.state == "granted") {
+      console.log(status);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.haveGPSPermission = true;
+          this.myPosition = { longitude: position.coords.longitude, latitude: position.coords.latitude, label: "Vous etes ici" };
+          this.mySpeed = position.coords.speed ?? 0;
+          this.addMarker(this.myPosition, true)
+        },
+        (error) => {
+          this.haveGPSPermission = false;
+        },
+        {
+          enableHighAccuracy: true
+        }
+      );
+    }
+  }
+
+  async getNativePosition() {
+    const permissions = await Geolocation.checkPermissions();
+    if (permissions.location === 'granted') {
+      this.haveGPSPermission = true;
+    } else {
+      const reqPermissions = await Geolocation.requestPermissions();
+      this.haveGPSPermission = reqPermissions.location === 'granted';
+    }
+    if (this.haveGPSPermission) {
+      const position = await Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+      this.myPosition = { longitude: Number(position.coords.longitude), latitude: Number(position.coords.latitude), label: "Vous etes ici" };
+      this.mySpeed = position.coords.speed ?? 0;
+    }
   }
 
 }
