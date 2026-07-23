@@ -32,16 +32,13 @@
 
     .action-button {
         position: absolute;
-        // bottom: 0;
-        // display: flex;
-        // flex-direction: column;
-        left: 16px;
-        //   bottom: 16px;
-        border: red solid 1px;
+        bottom: 0;
+        z-index: 1000;
 
-        .action-button ion-fab-button {
-            //   margin-bottom: 10px;
-            position:static;
+        ion-fab {
+            position: static; // désactive le positionnement absolu par défaut
+            display: flex;
+            flex-direction: column;
         }
     }
 

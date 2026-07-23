@@ -10,16 +10,18 @@
 
     <div id="maplibreglTab3"></div>
 
-    <div class="action-button ion-margin">
+    <div class="action-button">
       <ion-fab>
-        <ion-fab-button color="light" size="small" (click)="setToMyPosition()">
+        <ion-fab-button color="light" size="small" id="open-modal-search">
           <ion-icon name="search"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button color="light" size="small">
+        <ion-fab-button color="light" size="small" (click)="setToMyPosition()">
           <ion-icon name="locate"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </div>
+
+    <app-modal-search />
 
   </div>
 </ion-content>

@@ -1,0 +1,23 @@
+ion-img {
+    width: 25vw;
+    margin: 16px auto;
+}
+
+.input-search {
+    position: relative;
+    margin: 20px 0;
+    border: #3f3f3f23 solid 1px;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.contener {
+    p {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    ion-title {
+        margin: 5% 0;
+    }
+}
