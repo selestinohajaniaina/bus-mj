@@ -74,19 +74,10 @@ export class Tab2Page {
       this.finOld = this.fin;
       this.isShowEmpty = false;
       this.result = findBusByTwoStopLabel(this.depart, this.fin);
-      console.log('result: ', this.result);
       if (!this.result[0]) {
         this.isShowEmpty = true;
       }
     }
-  }
-
-  busLabel(busId: string) {
-    // return busAt(busId);
-  }
-
-  stopLabel(stopId: string) {
-    // return getStopLabel(stopId);
   }
 
   filterStop(value: string) {

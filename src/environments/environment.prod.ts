@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  searchUrl: ''
+  searchUrl: 'https://nominatim.openstreetmap.org/search'
 };

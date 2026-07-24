@@ -21,7 +21,7 @@
       </ion-fab>
     </div>
 
-    <app-modal-search />
+    <app-modal-search [allStop]="allStop" [myPosition]="myPosition" (osmDataEmit)="showOsmData($event)"/>
 
   </div>
 </ion-content>

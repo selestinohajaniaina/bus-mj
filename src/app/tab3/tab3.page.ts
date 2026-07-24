@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Bus, Stop } from '../interface/bus';
 import { findStopAll } from 'bus-mj';
-import { Coordinates, MapMarker } from '../interface/Map';
+import { Coordinates, MapMarker, OSMResult } from '../interface/Map';
 import * as maplibregl from 'maplibre-gl';
 import { Geolocation } from '@capacitor/geolocation';
 import { Capacitor } from '@capacitor/core';
@@ -19,6 +19,7 @@ export class Tab3Page {
   private mapStyleUrl: string = 'https://tiles.openfreemap.org/styles/positron';
   private haveGPSPermission: boolean = false;
   private mySpeed: number = 0;
+  private markedPlace: Coordinates[] = [];
 
   public myPosition: MapMarker;
   public allStop: Stop[];
@@ -59,9 +60,9 @@ export class Tab3Page {
     }
   }
 
-  addMarker(_marker: MapMarker, isMyPosition = false) {
+  addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
     const marker = new maplibregl.Marker({
-      color: isMyPosition ? '#e74c3c' : '#3FB1CE',
+      color: _color,
     })
       .setLngLat([_marker.longitude, _marker.latitude])
       .setPopup(new maplibregl.Popup().setText(_marker.label))
@@ -70,7 +71,7 @@ export class Tab3Page {
 
   setCenter(coordinate: Coordinates, zoom: number = 16, speed: number = 1.5) {
     this.map.flyTo({
-      center: [this.myPosition.longitude, this.myPosition.latitude],
+      center: [coordinate.longitude, coordinate.latitude],
       zoom: zoom,
       speed: speed,
     });
@@ -87,9 +88,6 @@ export class Tab3Page {
         coordinate2.longitude +
         coordinate2.latitude
     )}-${text}`;
-
-    console.log("id route", routeId);
-    
 
     this.map.addSource(routeId, {
       type: 'geojson',
@@ -152,7 +150,7 @@ export class Tab3Page {
           label: 'Vous etes ici',
         };
         this.mySpeed = position.coords.speed ?? 0;
-        this.addMarker(this.myPosition, true);
+        this.addMarker(this.myPosition, '#e74c3c');
         this.setCenter(this.myPosition);
         const stopNearsMe = this.getNearsStop(this.myPosition);
 
@@ -179,7 +177,7 @@ export class Tab3Page {
     if (this.myPosition) {
       this.setCenter(this.myPosition);
     } else {
-      this.getGPS;
+      this.getGPS();
     }
   }
 
@@ -201,7 +199,7 @@ export class Tab3Page {
         label: 'Vous etes ici',
       };
       this.mySpeed = position.coords.speed ?? 0;
-      this.addMarker(this.myPosition, true);
+      this.addMarker(this.myPosition, '#e74c3c');
       this.setCenter(this.myPosition);
       const stopNearsMe = this.getNearsStop(this.myPosition);
       this.map.on('load', () => {
@@ -233,5 +231,44 @@ export class Tab3Page {
       .slice(0, 10);
 
     return nearbyStops.length > 0 ? nearbyStops : sortedStops.slice(0, 1);
+  }
+
+  showOsmData(data: OSMResult) {
+    const longitude = Number(data.lon);
+    const latitude = Number(data.lat);
+    const label = data.name;
+    if (data.nearStopLength > 0) {
+      const place = this.markedPlace.find(
+        (p) => p.longitude === longitude && p.latitude === latitude
+      );
+
+      if (!place) {
+        this.markedPlace.push({ longitude, latitude });
+        this.addMarker({ longitude, latitude, label }, '#f39c12');
+        data.nearStop.map((dis: Stop) => {
+          const _distance = this.getDistance(
+            [longitude, latitude],
+            [dis.lon, dis.lat]
+          );
+          this.drawDistance(
+            { longitude, latitude },
+            { longitude: dis.lon, latitude: dis.lat },
+            this.getDisplayDistance(_distance)
+          );
+        });
+      }
+    }
+    this.setCenter({ longitude, latitude }, 19);
+  }
+
+  getDistance(point1: turf.Coord, point2: turf.Coord) {
+    return turf.distance(point1, point2, { units: 'meters' });
+  }
+
+  getDisplayDistance(distance: number) {
+    if (distance >= 1000) {
+      return `${(distance / 1000).toFixed(1)} km`;
+    }
+    return `${Math.round(distance)} m`;
   }
 }
