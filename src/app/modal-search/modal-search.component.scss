@@ -30,11 +30,16 @@ ion-img {
     }
     .desc {
         position: relative;
-        ion-button {
+        .btn-action {
             position: absolute;
             bottom: 2px;
             right: 0;
             transform: scale(0.8);
+            
+            .save {
+                --background: none;
+                color: inherit;
+            }
         }
     }
 }

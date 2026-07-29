@@ -5,6 +5,7 @@ import { MapMarker, OSMResult } from '../interface/Map';
 import { Stop } from '../interface/bus';
 import { Coordinates } from '../interface/Map';
 import * as turf from '@turf/turf';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-modal-search',
@@ -24,9 +25,9 @@ export class ModalSearchComponent implements OnInit {
   public placeResult: OSMResult[];
   public placeResultLength: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storage: StorageService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   find() {
     if (this.querySearch == '' || !this.querySearch) {
@@ -48,6 +49,7 @@ export class ModalSearchComponent implements OnInit {
         .subscribe({
           next: (result: any) => {
             this.chargeShow = false;
+            console.log(result);
 
             result.map((e: OSMResult) => {
               const distance = this.getDistance(
@@ -75,7 +77,7 @@ export class ModalSearchComponent implements OnInit {
             const OsmStopResult = this.stopToOsmResult(stopResult);
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
             this.placeResultLength = this.placeResult.length;
-            
+
           },
           error: (err: any) => {
             this.chargeShow = false;
@@ -87,6 +89,12 @@ export class ModalSearchComponent implements OnInit {
           },
         });
     }
+  }
+
+  isSaved(place_id: number): boolean {
+    return this.storage.getAllMyPlaces().some(
+      place => place.place_id === place_id
+    );
   }
 
   getNearsStop(coordinate: Coordinates) {
@@ -131,6 +139,7 @@ export class ModalSearchComponent implements OnInit {
         turf.point([st.lon, st.lat])
       );
       return {
+        place_id: st.id,
         display_name: String(st.label),
         name: String(st.label),
         lon: st.lon,
