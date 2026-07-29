@@ -27,6 +27,8 @@ export class Tab2Page {
   public isShowStopHelp2: boolean = false;
   public busFilter: Bus[];
 
+  public searchByStop: boolean = true;
+
   public get stop_1(): string | null {
     return this.valueSearch;
   }

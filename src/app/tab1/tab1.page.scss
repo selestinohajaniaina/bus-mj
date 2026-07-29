@@ -68,6 +68,7 @@
             text-align: center;
             background: var(--ion-color-primary);
             padding: 2px;
+            color: white;
         }
 
         .nbr-container {
@@ -88,6 +89,10 @@
 .buslist {
     ion-card {
         border-radius: 20px;
+
+        .bus-icon {
+            transform: scale(1.5);
+        }
     }
 }
 

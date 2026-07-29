@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { ModalBusModule } from '../modal-bus/modal-bus.module';
+import { ModalChooseModule } from '../modal-choose/modal-choose.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ModalBusModule } from '../modal-bus/modal-bus.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    ModalBusModule
+    ModalBusModule,
+    ModalChooseModule
   ],
   declarations: [Tab2Page]
 })
