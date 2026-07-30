@@ -15,6 +15,26 @@
             name="search-outline" slot="start"></ion-icon></ion-input>
       </div>
 
+      @if (isStorageEmpty) {
+        <ion-text color="light" size="small">Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.</ion-text>
+        <ion-button expand="block" shape="round" (click)="goToSearch(); modalChoose.dismiss()">
+          <ion-text>Accéder à la recherche</ion-text>
+          <ion-icon aria-hidden="true" name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+      }
+
+
+      <ion-card *ngFor="let p of placeResult; let i = index">
+        <ion-card-content class="desc">
+          <ion-card-title>{{ p.name }}</ion-card-title>
+          <ion-text>{{ p.display_name }}</ion-text>
+          <p>
+            <ion-badge color="success">{{ p.display_distance }}</ion-badge>
+            @if( p.nearStopLength > 0 ) {
+            {{ p.nearStopLength }} Arret(s) proche } @else { Arret bus }
+          </p>
+        </ion-card-content>
+      </ion-card>
 
       <ion-fab slot="fixed" vertical="top" horizontal="start">
         <ion-fab-button color="light" (click)="modalChoose.dismiss()" size="small">

@@ -21,7 +21,7 @@ export class StorageService {
   /**
  * Recherche des lieux par nom ou nom complet.
  */
-getMyPlacesByName(search: string): OSMResult[] {
+getMyPlacesByName(search: string): OSMResultStored[] {
   const keyword = search.trim().toLowerCase();
 
   return this.getAllMyPlaces().filter(place =>
