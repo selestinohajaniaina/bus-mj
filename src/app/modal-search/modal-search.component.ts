@@ -91,10 +91,18 @@ export class ModalSearchComponent implements OnInit {
     }
   }
 
-  isSaved(place_id: number): boolean {
+  isSaved(place: OSMResult): boolean {
     return this.storage.getAllMyPlaces().some(
-      place => place.place_id === place_id
+      p => p.osm_id === place.osm_id
     );
+  }
+
+  save(place: OSMResult) {
+    this.storage.addMyPlace(place);
+  }
+
+  unSave(place: OSMResult) {
+    this.storage.removeMyPlace(place.osm_id);
   }
 
   getNearsStop(coordinate: Coordinates) {
@@ -139,7 +147,7 @@ export class ModalSearchComponent implements OnInit {
         turf.point([st.lon, st.lat])
       );
       return {
-        place_id: st.id,
+        osm_id: st.id,
         display_name: String(st.label),
         name: String(st.label),
         lon: st.lon,

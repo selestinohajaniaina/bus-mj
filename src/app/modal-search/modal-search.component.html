@@ -46,9 +46,14 @@
                 <ion-icon name="location" slot="start" size="small"></ion-icon>
                 <ion-text>Afficher</ion-text>
               </ion-button>
-              <ion-button shape="round" size="small" class="save">
+              @if( p.nearStopLength > 0 ) {
+              <ion-button *ngIf="isSaved(p)" shape="round" size="small" class="save" (click)="unSave(p)">
                 <ion-icon slot="icon-only" name="bookmark" size="small"></ion-icon>
               </ion-button>
+              <ion-button *ngIf="!isSaved(p)" shape="round" size="small" class="save" (click)="save(p)">
+                <ion-icon slot="icon-only" name="bookmark-outline" size="small"></ion-icon>
+              </ion-button>
+              }
             </div>
           </ion-card-content>
         </ion-card>

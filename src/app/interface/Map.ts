@@ -10,7 +10,7 @@ export interface MapMarker extends Coordinates {
 }
 
 export interface OSMResult {
-  place_id: number,
+  osm_id: number,
   display_name: string,
   name: string,
   lon: string | number,

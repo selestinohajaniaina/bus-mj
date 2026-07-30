@@ -40,16 +40,16 @@ getMyPlacesByName(search: string): OSMResult[] {
   /**
    * Ajoute un nouveau lieu.
    */
-  addMyPlace(place: OSMResultStored): void {
+  addMyPlace(place: OSMResult): void {
     const places = this.getAllMyPlaces();
 
     const exists = places.some(
-      p => p.place_id === place.place_id
+      p => p.osm_id === place.osm_id
     );
 
     if (!exists) {
-      place.saved_at = new Date().toISOString();
-      places.push(place);
+      const _place = { ...place, saved_at: new Date().toISOString()}
+      places.push(_place);
       this.saveMyPlaces(places);
     }
   }
@@ -59,7 +59,7 @@ getMyPlacesByName(search: string): OSMResult[] {
    */
   removeMyPlace(placeId: number): void {
     const places = this.getAllMyPlaces().filter(
-      place => place.place_id !== placeId
+      place => place.osm_id !== placeId
     );
 
     this.saveMyPlaces(places);
