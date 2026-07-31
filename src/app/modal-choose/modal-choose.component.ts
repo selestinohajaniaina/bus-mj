@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StorageService } from '../service/storage.service';
 import { OSMResultStored } from '../interface/Map';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ModalChooseComponent implements OnInit {
 
   @Input() trigger: string;
+  @Output() OSMResultChooseEmitter: EventEmitter<OSMResultStored> = new EventEmitter();
 
   public valueSearch: string = '';
   public placeResult: OSMResultStored[];
@@ -37,6 +38,10 @@ export class ModalChooseComponent implements OnInit {
 
   goToSearch() {
     this.router.navigate(['/tabs/tab3']);
+  }
+
+  chooseOSMResult(element: OSMResultStored) {
+    this.OSMResultChooseEmitter.emit(element);
   }
 
 }

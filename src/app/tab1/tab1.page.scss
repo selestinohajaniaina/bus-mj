@@ -62,6 +62,7 @@
         border-radius: 33px;
         width: 40vw;
         aspect-ratio: 1 / 1;
+        max-width: 180px;
 
         ion-card-subtitle {
             border-radius: 20px;
@@ -89,6 +90,7 @@
 .buslist {
     ion-card {
         border-radius: 20px;
+        max-width: 800px;
 
         .bus-icon {
             transform: scale(1.5);

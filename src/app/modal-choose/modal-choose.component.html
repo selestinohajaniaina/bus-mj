@@ -25,7 +25,7 @@
 
 
       <ion-card *ngFor="let p of placeResult; let i = index">
-        <ion-card-content class="desc">
+        <ion-card-content class="desc" (click)="chooseOSMResult(p); modalChoose.dismiss()">
           <ion-card-title>{{ p.name }}</ion-card-title>
           <ion-text>{{ p.display_name }}</ion-text>
           <p>
