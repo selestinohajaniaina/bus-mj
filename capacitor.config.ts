@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.bus-nakay',
+  appId: 'com.selestino.busnakay',
   appName: 'bus nakay',
   webDir: 'www',
   server: {

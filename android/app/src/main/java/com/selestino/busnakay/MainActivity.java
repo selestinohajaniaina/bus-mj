@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.selestino.busnakay;
 
 import com.getcapacitor.BridgeActivity;
 
