@@ -1,9 +1,4 @@
-<ion-modal
-  trigger="open-modal-search"
-  [initialBreakpoint]="0.75"
-  [breakpoints]="[0, 0.75, 1]"
-  #modalSearch
->
+<ion-modal trigger="open-modal-search" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.75, 1]" #modalSearch>
   <ng-template>
     <ion-content class="ion-padding">
       <ion-img src="assets/map.gif" />
@@ -21,12 +16,8 @@
       </ion-text>
 
       <div class="input-search">
-        <ion-input
-          type="search"
-          placeholder="Adresse ou lieu à Mahajanga"
-          [(ngModel)]="querySearch"
-          ><ion-icon name="search-outline" slot="start"></ion-icon
-        ></ion-input>
+        <ion-input type="search" placeholder="Adresse ou lieu à Mahajanga" [(ngModel)]="querySearch"><ion-icon
+            name="search-outline" slot="start"></ion-icon></ion-input>
       </div>
       <ion-button expand="block" shape="round" (click)="find()">
         <ion-text>Lancer la rechercher</ion-text>
@@ -34,9 +25,7 @@
       </ion-button>
 
       <div class="contener">
-        <ion-title size="small" color="medium"
-          >Resultats de votre recherche ({{ placeResultLength }}):</ion-title
-        >
+        <ion-title size="small" color="medium">Resultats de votre recherche ({{ placeResultLength }}):</ion-title>
         <div class="spin" *ngIf="chargeShow == true">
           <ion-spinner name="circles"></ion-spinner>
           <ion-label id="label">Recherche en cour ...</ion-label>
@@ -52,10 +41,20 @@
               @if( p.nearStopLength > 0 ) {
               {{ p.nearStopLength }} Arret(s) proche } @else { Arret bus }
             </p>
-            <ion-button shape="round" size="small" (click)="afficherSurCarte(p); modalSearch.dismiss()">
-              <ion-icon aria-hidden="true" name="location" slot="start" size="small"></ion-icon>
-              <ion-text>Afficher</ion-text>
-            </ion-button>
+            <div class="btn-action">
+              <ion-button shape="round" size="small" (click)="afficherSurCarte(p); modalSearch.dismiss()">
+                <ion-icon name="location" slot="start" size="small"></ion-icon>
+                <ion-text>Afficher</ion-text>
+              </ion-button>
+              @if( p.nearStopLength > 0 ) {
+              <ion-button *ngIf="isSaved(p)" shape="round" size="small" class="save" (click)="unSave(p)">
+                <ion-icon slot="icon-only" name="bookmark" size="small"></ion-icon>
+              </ion-button>
+              <ion-button *ngIf="!isSaved(p)" shape="round" size="small" class="save" (click)="save(p)">
+                <ion-icon slot="icon-only" name="bookmark-outline" size="small"></ion-icon>
+              </ion-button>
+              }
+            </div>
           </ion-card-content>
         </ion-card>
         @if(placeResult.length == 0 && chargeShow == false) {
@@ -66,11 +65,7 @@
       </div>
 
       <ion-fab slot="fixed" vertical="top" horizontal="start">
-        <ion-fab-button
-          color="light"
-          (click)="modalSearch.dismiss()"
-          size="small"
-        >
+        <ion-fab-button color="light" (click)="modalSearch.dismiss()" size="small">
           <ion-icon name="chevron-down"></ion-icon>
         </ion-fab-button>
       </ion-fab>

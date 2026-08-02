@@ -84,9 +84,9 @@ export class Tab3Page {
   ) {
     const routeId = `route-${Math.abs(
       coordinate1.longitude +
-        coordinate1.latitude +
-        coordinate2.longitude +
-        coordinate2.latitude
+      coordinate1.latitude +
+      coordinate2.longitude +
+      coordinate2.latitude
     )}-${text}`;
 
     this.map.addSource(routeId, {
@@ -154,15 +154,24 @@ export class Tab3Page {
         this.setCenter(this.myPosition);
         const stopNearsMe = this.getNearsStop(this.myPosition);
 
-        this.map.on('load', () => {
-          stopNearsMe.map((e) => {
-            this.drawDistance(
-              this.myPosition,
-              { longitude: e.lon, latitude: e.lat },
-              `${Math.round(e.distance)}m`
-            );
-          });
+        stopNearsMe.map((e) => {
+          this.drawDistance(
+            this.myPosition,
+            { longitude: e.lon, latitude: e.lat },
+            `${Math.round(e.distance)}m`
+          );
         });
+
+        // this.map.on('load', () => {
+        // stopNearsMe.map((e) => {
+        //   this.drawDistance(
+        //     this.myPosition,
+        //     { longitude: e.lon, latitude: e.lat },
+        //     `${Math.round(e.distance)}m`
+        //   );
+        // });
+        // });
+
       },
       (error) => {
         this.haveGPSPermission = false;

@@ -6,6 +6,7 @@ import {
   findBusByTwoStopLabel,
 } from 'bus-mj';
 import { Stop, Bus } from '../interface/bus';
+import { OSMResultStored } from '../interface/Map';
 
 @Component({
   selector: 'app-tab2',
@@ -13,8 +14,13 @@ import { Stop, Bus } from '../interface/bus';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
+  public firstBtnLabel: string = "Lieu de départ";
+  public secondBtnLabel: string = "Lieu de destination";
+  public firstData: OSMResultStored;
+  public secondData: OSMResultStored;
   public allStop: Stop[];
   public result: Bus[] = [];
+  public busResult: Bus[] = [];
   public depart: string = 'c';
   public fin: string = 'c';
   public departOld: string = 'c';
@@ -26,6 +32,8 @@ export class Tab2Page {
   public isShowStopHelp: boolean = false;
   public isShowStopHelp2: boolean = false;
   public busFilter: Bus[];
+
+  public searchByStop: boolean = true;
 
   public get stop_1(): string | null {
     return this.valueSearch;
@@ -107,11 +115,47 @@ export class Tab2Page {
     this.busFilter = findBusByStopLabel(label);
   }
 
-  onFocus(inputNumber: number) {
-    console.log('focus:', inputNumber);
+  OSMResultChooseFirst(data: OSMResultStored) {
+    this.firstBtnLabel = data.name;
+    this.firstData = data;
+  }
+  
+  OSMResultChooseSecond(data: OSMResultStored) {
+    this.secondBtnLabel = data.name;
+    this.secondData = data;
   }
 
-  onBlur(inputNumber: number) {
-    console.log('perdu le focus: ', inputNumber);
+  findBusByPlace() {
+    if(this.firstData && this.secondData && this.firstData.osm_id == this.secondData.osm_id) {
+      alert("Les deux lieux doivent etre different");
+    } else if(this.firstData && this.secondData) {
+
+      this.SearchBusByOSMResult(this.firstData, this.secondData);
+
+    } else {
+      alert("Veuillez tous remplir.");
+    }
   }
+
+  SearchBusByOSMResult(begin: OSMResultStored, end: OSMResultStored) {
+
+    const stopNearBegin: Stop[] = begin.nearStop;
+    const stopNearEnd: Stop[] = end.nearStop;
+
+    const busFoundByNearStop: Bus[] = [];
+
+    stopNearBegin.map((stopBegin: Stop) => {
+      stopNearEnd.map((stopEnd: Stop) => {
+        const busFound: Bus[] = findBusByTwoStop(stopBegin.id, stopEnd.id);
+        busFoundByNearStop.concat(busFound);
+        console.log( stopBegin.label, " et ", stopEnd.label, " = ", busFound );
+        
+      });
+    });
+
+    this.result = busFoundByNearStop;
+
+  }
+
+
 }

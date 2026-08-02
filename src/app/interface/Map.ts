@@ -10,6 +10,7 @@ export interface MapMarker extends Coordinates {
 }
 
 export interface OSMResult {
+  osm_id: number,
   display_name: string,
   name: string,
   lon: string | number,
@@ -19,4 +20,8 @@ export interface OSMResult {
   display_distance: string,
   nearStop: Stop[],
   nearStopLength: number
+}
+
+export interface OSMResultStored extends OSMResult {
+  saved_at: string
 }

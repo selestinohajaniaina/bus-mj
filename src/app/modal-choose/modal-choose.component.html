@@ -1,0 +1,47 @@
+<ion-modal [trigger]="trigger" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.75, 1]" #modalChoose>
+  <ng-template>
+    <ion-content class="ion-padding">
+
+      <ion-img src="assets/map.gif" />
+
+      <ion-title>RECHERCHER UN LIEU ENREGISTRÉ</ion-title>
+
+      <ion-text color="medium">
+        Recherchez un lieu enregistré pour afficher votre itinéraire.
+      </ion-text>
+
+      <div class="input-search">
+        <ion-input type="search" placeholder="Adresse ou lieu à Mahajanga" [(ngModel)]="querySearch"><ion-icon
+            name="search-outline" slot="start"></ion-icon></ion-input>
+      </div>
+
+      @if (isStorageEmpty) {
+        <ion-text color="light" size="small">Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.</ion-text>
+        <ion-button expand="block" shape="round" (click)="goToSearch(); modalChoose.dismiss()">
+          <ion-text>Accéder à la recherche</ion-text>
+          <ion-icon aria-hidden="true" name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+      }
+
+
+      <ion-card *ngFor="let p of placeResult; let i = index">
+        <ion-card-content class="desc" (click)="chooseOSMResult(p); modalChoose.dismiss()">
+          <ion-card-title>{{ p.name }}</ion-card-title>
+          <ion-text>{{ p.display_name }}</ion-text>
+          <p>
+            <ion-badge color="success">{{ p.display_distance }}</ion-badge>
+            @if( p.nearStopLength > 0 ) {
+            {{ p.nearStopLength }} Arret(s) proche } @else { Arret bus }
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-fab slot="fixed" vertical="top" horizontal="start">
+        <ion-fab-button color="light" (click)="modalChoose.dismiss()" size="small">
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
