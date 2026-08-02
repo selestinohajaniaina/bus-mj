@@ -14,8 +14,8 @@ import { OSMResultStored } from '../interface/Map';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  public firstBtnLabel: string = "Lieu de départ";
-  public secondBtnLabel: string = "Lieu de destination";
+  public firstBtnLabel: string = 'Lieu de départ';
+  public secondBtnLabel: string = 'Lieu de destination';
   public firstData: OSMResultStored;
   public secondData: OSMResultStored;
   public allStop: Stop[];
@@ -119,26 +119,27 @@ export class Tab2Page {
     this.firstBtnLabel = data.name;
     this.firstData = data;
   }
-  
+
   OSMResultChooseSecond(data: OSMResultStored) {
     this.secondBtnLabel = data.name;
     this.secondData = data;
   }
 
   findBusByPlace() {
-    if(this.firstData && this.secondData && this.firstData.osm_id == this.secondData.osm_id) {
-      alert("Les deux lieux doivent etre different");
-    } else if(this.firstData && this.secondData) {
-
+    if (
+      this.firstData &&
+      this.secondData &&
+      this.firstData.osm_id == this.secondData.osm_id
+    ) {
+      alert('Les deux lieux doivent etre different');
+    } else if (this.firstData && this.secondData) {
       this.SearchBusByOSMResult(this.firstData, this.secondData);
-
     } else {
-      alert("Veuillez tous remplir.");
+      alert('Veuillez tous remplir.');
     }
   }
 
   SearchBusByOSMResult(begin: OSMResultStored, end: OSMResultStored) {
-
     const stopNearBegin: Stop[] = begin.nearStop;
     const stopNearEnd: Stop[] = end.nearStop;
 
@@ -146,16 +147,37 @@ export class Tab2Page {
 
     stopNearBegin.map((stopBegin: Stop) => {
       stopNearEnd.map((stopEnd: Stop) => {
-        const busFound: Bus[] = findBusByTwoStop(stopBegin.id, stopEnd.id);
-        busFoundByNearStop.concat(busFound);
-        console.log( stopBegin.label, " et ", stopEnd.label, " = ", busFound );
-        
+        const busFound: Bus[] = findBusByTwoStopLabel(
+          String(stopBegin.label),
+          String(stopEnd.label)
+        );
+        busFoundByNearStop.push(...busFound);
+
+        console.log(
+          'busFoundByNearStop',
+          busFoundByNearStop,
+          'busFound',
+          busFound
+        );
       });
     });
 
-    this.result = busFoundByNearStop;
+    const uniqueBus = Array.from(
+      busFoundByNearStop
+        .reduce((map, bus) => {
+          const existing = map.get(bus.tags.name);
 
+          if (!existing || bus.members.length < existing.members.length) {
+            map.set(bus.tags.name, bus);
+          }
+
+          return map;
+        }, new Map<string, Bus>())
+        .values()
+    );
+
+    this.result = uniqueBus;
+
+    console.log('busFoundByNearStop final', uniqueBus);
   }
-
-
 }

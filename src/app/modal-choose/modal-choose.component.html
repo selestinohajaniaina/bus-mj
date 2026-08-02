@@ -1,4 +1,4 @@
-<ion-modal [trigger]="trigger" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.75, 1]" #modalChoose>
+<ion-modal [trigger]="trigger" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.75, 1]" (willPresent)="loadPlaces()" #modalChoose>
   <ng-template>
     <ion-content class="ion-padding">
 
@@ -16,7 +16,7 @@
       </div>
 
       @if (isStorageEmpty) {
-        <ion-text color="light" size="small">Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.</ion-text>
+        <ion-text size="small">Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.</ion-text>
         <ion-button expand="block" shape="round" (click)="goToSearch(); modalChoose.dismiss()">
           <ion-text>Accéder à la recherche</ion-text>
           <ion-icon aria-hidden="true" name="chevron-forward-outline" slot="end"></ion-icon>
