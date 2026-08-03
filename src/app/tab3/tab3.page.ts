@@ -36,7 +36,6 @@ export class Tab3Page {
   ngOnInit() {
     this.allStop = findStopAll();
     this.initMap();
-    this.getGPS();
   }
 
   initMap() {
@@ -50,14 +49,18 @@ export class Tab3Page {
     });
 
     if (this.allStop) {
-      this.allStop.map((e) => {
-        this.addMarker({
-          longitude: e.lon,
-          latitude: e.lat,
-          label: String(e.label),
+      this.map.on('load', () => {
+        this.allStop.forEach((stop) => {
+          this.addMarker({
+            longitude: stop.lon,
+            latitude: stop.lat,
+            label: String(stop.label),
+          });
         });
+        this.getGPS();
       });
     }
+
   }
 
   addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
@@ -84,9 +87,9 @@ export class Tab3Page {
   ) {
     const routeId = `route-${Math.abs(
       coordinate1.longitude +
-      coordinate1.latitude +
-      coordinate2.longitude +
-      coordinate2.latitude
+        coordinate1.latitude +
+        coordinate2.longitude +
+        coordinate2.latitude
     )}-${text}`;
 
     this.map.addSource(routeId, {
@@ -171,7 +174,6 @@ export class Tab3Page {
         //   );
         // });
         // });
-
       },
       (error) => {
         this.haveGPSPermission = false;
@@ -220,6 +222,8 @@ export class Tab3Page {
           );
         });
       });
+    } else {
+      
     }
   }
 

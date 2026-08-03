@@ -49,6 +49,12 @@
           </div>
         </ion-card-content>
       </ion-card>
+
+      <p class="description ion-padding">
+        Vous prenez ce bus au <ion-text color="primary">{{ bus.members[0].label }}</ion-text> et vous descendez au
+        <ion-text color="primary">{{ bus.members[bus.members.length - 1].label }}</ion-text>
+      </p>
+
       <div class="arret">
         <div>Votre Trajet:</div>
         <app-stop-list [StopList]="bus.members" />
