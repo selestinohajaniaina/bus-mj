@@ -1,7 +1,12 @@
-<ion-modal [trigger]="trigger" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.75, 1]" (willPresent)="loadPlaces()" #modalChoose>
+<ion-modal
+  [trigger]="trigger"
+  [initialBreakpoint]="0.75"
+  [breakpoints]="[0, 0.75, 1]"
+  (willPresent)="loadPlaces()"
+  #modalChoose
+>
   <ng-template>
     <ion-content class="ion-padding">
-
       <ion-img src="assets/map.gif" />
 
       <ion-title>RECHERCHER UN LIEU ENREGISTRÉ</ion-title>
@@ -11,21 +16,55 @@
       </ion-text>
 
       <div class="input-search">
-        <ion-input type="search" placeholder="Adresse ou lieu à Mahajanga" [(ngModel)]="querySearch"><ion-icon
-            name="search-outline" slot="start"></ion-icon></ion-input>
+        <ion-input
+          type="search"
+          placeholder="Adresse ou lieu à Mahajanga"
+          [(ngModel)]="querySearch"
+          ><ion-icon name="search-outline" slot="start"></ion-icon
+        ></ion-input>
       </div>
 
       @if (isStorageEmpty) {
-        <ion-text size="small">Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.</ion-text>
-        <ion-button expand="block" shape="round" (click)="goToSearch(); modalChoose.dismiss()">
-          <ion-text>Accéder à la recherche</ion-text>
-          <ion-icon aria-hidden="true" name="chevron-forward-outline" slot="end"></ion-icon>
-        </ion-button>
+      <ion-text size="small"
+        >Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis
+        la page de recherche.</ion-text
+      >
+      <ion-button
+        expand="block"
+        shape="round"
+        (click)="goToSearch(); modalChoose.dismiss()"
+      >
+        <ion-text>Accéder à la recherche</ion-text>
+        <ion-icon
+          aria-hidden="true"
+          name="chevron-forward-outline"
+          slot="end"
+        ></ion-icon>
+      </ion-button>
       }
 
+      @if(myPositionOSM && querySearch == '') {
+        <ion-card>
+          <ion-card-content
+            class="desc"
+            (click)="chooseOSMResult(myPositionOSM); modalChoose.dismiss()"
+          >
+            <ion-card-title>{{ myPositionOSM.name }}</ion-card-title>
+            <ion-text>{{ myPositionOSM.display_name }}</ion-text>
+            <p>
+              <ion-badge color="success"></ion-badge>
+              @if( myPositionOSM.nearStopLength > 0 ) {
+              {{ myPositionOSM.nearStopLength }} Arret(s) proche }
+            </p>
+          </ion-card-content>
+        </ion-card>
+      }
 
       <ion-card *ngFor="let p of placeResult; let i = index">
-        <ion-card-content class="desc" (click)="chooseOSMResult(p); modalChoose.dismiss()">
+        <ion-card-content
+          class="desc"
+          (click)="chooseOSMResult(p); modalChoose.dismiss()"
+        >
           <ion-card-title>{{ p.name }}</ion-card-title>
           <ion-text>{{ p.display_name }}</ion-text>
           <p>
@@ -37,11 +76,14 @@
       </ion-card>
 
       <ion-fab slot="fixed" vertical="top" horizontal="start">
-        <ion-fab-button color="light" (click)="modalChoose.dismiss()" size="small">
+        <ion-fab-button
+          color="light"
+          (click)="modalChoose.dismiss()"
+          size="small"
+        >
           <ion-icon name="chevron-down"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-
     </ion-content>
   </ng-template>
 </ion-modal>

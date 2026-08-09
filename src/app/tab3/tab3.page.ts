@@ -6,6 +6,8 @@ import * as maplibregl from 'maplibre-gl';
 import { Geolocation } from '@capacitor/geolocation';
 import { Capacitor } from '@capacitor/core';
 import * as turf from '@turf/turf';
+import { LocalisationService } from '../service/localisation.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -24,7 +26,10 @@ export class Tab3Page {
   public myPosition: MapMarker;
   public allStop: Stop[];
 
-  constructor() {
+  constructor(
+    private localisation: LocalisationService,
+    private toastController: ToastController
+  ) {
     const theme = localStorage.getItem('theme');
     if (theme == 'dark') {
       this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/dark';
@@ -60,7 +65,6 @@ export class Tab3Page {
         this.getGPS();
       });
     }
-
   }
 
   addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
@@ -155,28 +159,28 @@ export class Tab3Page {
         this.mySpeed = position.coords.speed ?? 0;
         this.addMarker(this.myPosition, '#e74c3c');
         this.setCenter(this.myPosition);
-        const stopNearsMe = this.getNearsStop(this.myPosition);
+        const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
         stopNearsMe.map((e) => {
           this.drawDistance(
             this.myPosition,
             { longitude: e.lon, latitude: e.lat },
-            `${Math.round(e.distance)}m`
+            this.localisation.getDisplayDistance(e.distance)
           );
         });
 
-        // this.map.on('load', () => {
-        // stopNearsMe.map((e) => {
-        //   this.drawDistance(
-        //     this.myPosition,
-        //     { longitude: e.lon, latitude: e.lat },
-        //     `${Math.round(e.distance)}m`
-        //   );
-        // });
-        // });
+        if (!this.localisation.isInMahajanga(this.myPosition)) {
+          this.showToast('Vous êtes en dehors de la ville de Mahajanga.');
+        }
+
+        // save my position
+        this.localisation.savePosition(this.myPosition);
       },
       (error) => {
         this.haveGPSPermission = false;
+        this.showToast(
+          'Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.'
+        );
       },
       {
         enableHighAccuracy: true,
@@ -212,38 +216,23 @@ export class Tab3Page {
       this.mySpeed = position.coords.speed ?? 0;
       this.addMarker(this.myPosition, '#e74c3c');
       this.setCenter(this.myPosition);
-      const stopNearsMe = this.getNearsStop(this.myPosition);
-      this.map.on('load', () => {
-        stopNearsMe.map((e) => {
-          this.drawDistance(
-            this.myPosition,
-            { longitude: e.lon, latitude: e.lat },
-            `${Math.round(e.distance)}m`
-          );
-        });
+      const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
+
+      stopNearsMe.map((e) => {
+        this.drawDistance(
+          this.myPosition,
+          { longitude: e.lon, latitude: e.lat },
+          this.localisation.getDisplayDistance(e.distance)
+        );
       });
+
+      // save my position
+      this.localisation.savePosition(this.myPosition);
     } else {
-      
+      this.showToast(
+        'Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.'
+      );
     }
-  }
-
-  getNearsStop(coordinate: Coordinates) {
-    const myPoint = turf.point([coordinate.longitude, coordinate.latitude]);
-
-    const sortedStops = this.allStop
-      .map((stop) => ({
-        ...stop,
-        distance: turf.distance(myPoint, turf.point([stop.lon, stop.lat]), {
-          units: 'meters',
-        }),
-      }))
-      .sort((a, b) => a.distance - b.distance);
-
-    const nearbyStops = sortedStops
-      .filter((stop) => stop.distance <= 300)
-      .slice(0, 10);
-
-    return nearbyStops.length > 0 ? nearbyStops : sortedStops.slice(0, 1);
   }
 
   showOsmData(data: OSMResult) {
@@ -266,7 +255,7 @@ export class Tab3Page {
           this.drawDistance(
             { longitude, latitude },
             { longitude: dis.lon, latitude: dis.lat },
-            this.getDisplayDistance(_distance)
+            this.localisation.getDisplayDistance(_distance)
           );
         });
       }
@@ -278,10 +267,12 @@ export class Tab3Page {
     return turf.distance(point1, point2, { units: 'meters' });
   }
 
-  getDisplayDistance(distance: number) {
-    if (distance >= 1000) {
-      return `${(distance / 1000).toFixed(1)} km`;
-    }
-    return `${Math.round(distance)} m`;
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 }

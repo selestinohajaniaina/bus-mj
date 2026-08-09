@@ -7,6 +7,7 @@ import {
 } from 'bus-mj';
 import { Stop, Bus } from '../interface/bus';
 import { OSMResultStored } from '../interface/Map';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -63,7 +64,7 @@ export class Tab2Page {
     }
   }
 
-  constructor() {}
+  constructor(private toastController: ToastController) {}
 
   ngOnInit() {
     this.allStop = findStopAll().sort((a, b) =>
@@ -73,17 +74,20 @@ export class Tab2Page {
 
   findBus() {
     if (this.depart == 'c' || this.fin == 'c') {
-      alert("Choisissez l'arrêt de départ et celui d'arrivée.");
+      this.showToast("Choisissez l'arrêt de départ et celui d'arrivée.");
     } else if (this.depart == this.fin) {
-      alert('Les deux arrêts doivent être différents.');
+      this.showToast('Les deux arrêts doivent être différents.');
     } else {
+
+      this.result = findBusByTwoStopLabel(this.depart, this.fin);
+
       console.log(this.depart, this.fin);
       this.departOld = this.depart;
       this.finOld = this.fin;
       this.isShowEmpty = false;
-      this.result = findBusByTwoStopLabel(this.depart, this.fin);
-      if (!this.result[0]) {
+      if (this.result.length == 0) {
         this.isShowEmpty = true;
+        this.showToast("Auccun resultat trouvé...");
       }
     }
   }
@@ -178,6 +182,19 @@ export class Tab2Page {
 
     this.result = uniqueBus;
 
+    if( this.result.length === 0 ) {
+      this.showToast("Auccun resultat trouvé...");
+    }
+
     console.log('busFoundByNearStop final', uniqueBus);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 }

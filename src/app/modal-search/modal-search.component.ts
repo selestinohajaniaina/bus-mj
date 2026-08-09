@@ -6,6 +6,8 @@ import { Stop } from '../interface/bus';
 import { Coordinates } from '../interface/Map';
 import * as turf from '@turf/turf';
 import { StorageService } from '../service/storage.service';
+import { LocalisationService } from '../service/localisation.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-search',
@@ -25,7 +27,7 @@ export class ModalSearchComponent implements OnInit {
   public placeResult: OSMResult[];
   public placeResultLength: number = 0;
 
-  constructor(private http: HttpClient, private storage: StorageService) { }
+  constructor(private http: HttpClient, private storage: StorageService, private localisation: LocalisationService, private toastController: ToastController) { }
 
   ngOnInit() { }
 
@@ -67,7 +69,7 @@ export class ModalSearchComponent implements OnInit {
               this.placeResult.push({
                 ...e,
                 distance,
-                display_distance: this.getDisplayDistance(distance),
+                display_distance: this.localisation.getDisplayDistance(distance),
                 nearStop,
                 nearStopLength,
               });
@@ -85,7 +87,7 @@ export class ModalSearchComponent implements OnInit {
             const OsmStopResult = this.stopToOsmResult(stopResult);
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
             this.placeResultLength = this.placeResult.length;
-            alert("Pas d'accès Internet ou serveur inaccessible");
+            this.showToast("Pas d'accès Internet ou serveur inaccessible");
           },
         });
     }
@@ -119,7 +121,7 @@ export class ModalSearchComponent implements OnInit {
         return {
           ...stop,
           distance,
-          display_distance: this.getDisplayDistance(distance),
+          display_distance: this.localisation.getDisplayDistance(distance),
         };
       })
       .sort((a, b) => a.distance - b.distance);
@@ -131,13 +133,6 @@ export class ModalSearchComponent implements OnInit {
 
   getDistance(point1: turf.Coord, point2: turf.Coord) {
     return turf.distance(point1, point2, { units: 'meters' });
-  }
-
-  getDisplayDistance(distance: number) {
-    if (distance >= 1000) {
-      return `${(distance / 1000).toFixed(1)} km`;
-    }
-    return `${Math.round(distance)} m`;
   }
 
   stopToOsmResult(stop: Stop[]): OSMResult[] {
@@ -154,7 +149,7 @@ export class ModalSearchComponent implements OnInit {
         lat: st.lat,
         type: st.type,
         distance,
-        display_distance: this.getDisplayDistance(distance),
+        display_distance: this.localisation.getDisplayDistance(distance),
         nearStop: [],
         nearStopLength: 0,
       };
@@ -174,6 +169,15 @@ export class ModalSearchComponent implements OnInit {
 
   afficherSurCarte(osmData: OSMResult) {
     this.osmDataEmit.emit(osmData);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 
 }
