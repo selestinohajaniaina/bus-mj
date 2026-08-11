@@ -13,15 +13,14 @@
 
   <ion-list lines="none">
     <ion-item>
-      <h1>Bus Nakay <ion-badge color="light">v1.0</ion-badge></h1>
+      <h1>Bus Nakay <ion-badge color="light">v2.0</ion-badge></h1>
       <p>
         Application dédiée à la recherche et à l’optimisation des trajets en
-        transports publics à Majunga.<br />
-        Envie d’améliorer le projet ? Intégrez et exploitez l’API via
-        <ion-badge color="light">npm install bus-mj</ion-badge>
+        transports publics à Majunga.
       </p>
     </ion-item>
     <ion-item>
+      <ion-icon name="moon-outline" slot="start"></ion-icon>
       <ion-toggle
         [(ngModel)]="paletteToggle"
         (ionChange)="toggleChange($event)"
@@ -29,28 +28,29 @@
         >Theme sombre</ion-toggle
       >
     </ion-item>
-    <ion-item
-      button
-      href="https://www.npmjs.com/package/bus-mj"
-      target="_blank"
-    >
-      <ion-icon slot="start" name="logo-nodejs"></ion-icon>
-      <ion-label>
-        <h3>API bus-mj <ion-badge color="light">v2.2.4</ion-badge></h3>
-        <p>Documentation et installation npm</p>
-      </ion-label>
+
+    <ion-item>
+      <ion-icon name="language-outline" slot="start"></ion-icon>
+      Langue d'affichage
+      <ion-select slot="end" value="fr">
+        <ion-select-option value="mg">🇲🇬 Malagasy</ion-select-option>
+        <ion-select-option value="fr">🇫🇷 Francais</ion-select-option>
+        <ion-select-option value="en">🇬🇧 English</ion-select-option>
+        <ion-select-option value="sp">🇪🇸 Spain</ion-select-option>
+        <ion-select-option value="gr">🇩🇪 Germany</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item
-      button
-      href="https://github.com/selestinohajaniaina/bus-mahajanga-api"
-      target="_blank"
-    >
-      <ion-icon slot="start" name="code-slash-outline"></ion-icon>
-      <ion-label>
-        <h3>Code source</h3>
-        <p>Projet open source collaboratif</p>
-      </ion-label>
+    <ion-item>
+      <ion-icon name="bookmarks-outline" slot="start"></ion-icon>
+      Lieux enregistrés
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="time-outline" slot="start"></ion-icon>
+      Historique des recherches
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
 
     <ion-item button href="mailto:selestinoolivier@gmail.com">

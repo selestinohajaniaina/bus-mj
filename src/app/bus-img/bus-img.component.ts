@@ -11,6 +11,7 @@ export class BusImgComponent  implements OnInit {
   @Input() secondBand: string;
   @Input() busColor: string;
   @Input() busBoard: string | null;
+  @Input() ref: string;
 
   constructor() { }
 
