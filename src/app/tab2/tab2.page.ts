@@ -147,6 +147,9 @@ export class Tab2Page {
     const stopNearBegin: Stop[] = begin.nearStop;
     const stopNearEnd: Stop[] = end.nearStop;
 
+    console.log("1: ", begin, "\n2: ", end);
+    
+
     const busFoundByNearStop: Bus[] = [];
 
     stopNearBegin.map((stopBegin: Stop) => {

@@ -7,18 +7,35 @@
     </p>
   </div>
   <ion-card class="search-title">
-    <h4 class="ion-text-center">Rechercher votre Arret</h4>
+    <ion-list lines="none">
+      <ion-item>
+        @if(searchByStop) {
+          <ion-icon aria-hidden="true" name="trail-sign-outline" slot="start"></ion-icon>
+          <ion-label>Recherche par Arret</ion-label>
+        } @else {
+          <ion-icon aria-hidden="true" name="location-outline" slot="start"></ion-icon>
+          <ion-label>Recherche par Lieux</ion-label>
+        }
+      </ion-item>
+    </ion-list>
   </ion-card>
 
   <!-- RECHERCHE PAR ARRET -->
 
   <div class="search" *ngIf="searchByStop">
     <div class="input-search">
-      <ion-input type="search" placeholder="Arrêt de départ" [(ngModel)]="stop_1">
+      <ion-input
+        type="search"
+        placeholder="Arrêt de départ"
+        [(ngModel)]="stop_1"
+      >
         <ion-icon name="search-outline" slot="start"></ion-icon>
       </ion-input>
       <div class="stop-indice" *ngIf="isShowStopHelp">
-        <ion-card *ngFor="let stop of stopFiltered" (click)="choisir(stop.label!)">
+        <ion-card
+          *ngFor="let stop of stopFiltered"
+          (click)="choisir(stop.label!)"
+        >
           <ion-card-content>
             <ion-icon name="locate-outline" size="small"></ion-icon>
             <ion-text>{{ stop.label }}</ion-text>
@@ -28,11 +45,18 @@
     </div>
 
     <div class="input-search">
-      <ion-input type="search" placeholder="Arrêt de destination" [(ngModel)]="stop_2">
+      <ion-input
+        type="search"
+        placeholder="Arrêt de destination"
+        [(ngModel)]="stop_2"
+      >
         <ion-icon name="search-outline" slot="start"></ion-icon>
       </ion-input>
       <div class="stop-indice" *ngIf="isShowStopHelp2">
-        <ion-card *ngFor="let stop of stopFiltered" (click)="choisir2(stop.label!)">
+        <ion-card
+          *ngFor="let stop of stopFiltered"
+          (click)="choisir2(stop.label!)"
+        >
           <ion-card-content>
             <ion-icon name="locate-outline" size="small"></ion-icon>
             <ion-text>{{ stop.label }}</ion-text>
@@ -43,13 +67,20 @@
 
     <ion-button expand="block" shape="round" (click)="findBus()">
       <ion-text>Lancer la rechercher</ion-text>
-      <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>
+      <ion-icon
+        aria-hidden="true"
+        name="search-circle-outline"
+        slot="end"
+      ></ion-icon>
     </ion-button>
 
-    <p class="btn-switch ion-margin ion-padding ion-text-center" (click)="searchByStop=false">Rechercher par les places
+    <p
+      class="btn-switch ion-margin ion-padding ion-text-center"
+      (click)="searchByStop=false"
+    >
+      Rechercher par les places
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </p>
-
   </div>
 
   <!-- RECHERCHE PAR PLACE -->
@@ -57,28 +88,43 @@
   <div class="search" *ngIf="!searchByStop">
     <div class="button-search">
       <button id="open-modal-search-choose-depart">
-        <ion-icon name="search-outline" slot="start"></ion-icon>{{ firstBtnLabel }}
+        <ion-icon name="search-outline" slot="start"></ion-icon>{{ firstBtnLabel
+        }}
       </button>
     </div>
 
-
     <div class="button-search">
       <button id="open-modal-search-choose-fin">
-        <ion-icon name="search-outline" slot="start"></ion-icon>{{ secondBtnLabel }}
+        <ion-icon name="search-outline" slot="start"></ion-icon>{{
+        secondBtnLabel }}
       </button>
     </div>
 
     <ion-button expand="block" shape="round" (click)="findBusByPlace()">
       <ion-text>Lancer la rechercher</ion-text>
-      <ion-icon aria-hidden="true" name="search-circle-outline" slot="end"></ion-icon>
+      <ion-icon
+        aria-hidden="true"
+        name="search-circle-outline"
+        slot="end"
+      ></ion-icon>
     </ion-button>
 
-    <p class="btn-switch ion-margin ion-padding ion-text-center" (click)="searchByStop=true"> <ion-icon
-        name="chevron-back-outline" slot="start"> </ion-icon>Rechercher par les arrets</p>
+    <p
+      class="btn-switch ion-margin ion-padding ion-text-center"
+      (click)="searchByStop=true"
+    >
+      <ion-icon name="chevron-back-outline" slot="start"> </ion-icon>Rechercher
+      par les arrets
+    </p>
 
-    <app-modal-choose trigger="open-modal-search-choose-depart" (OSMResultChooseEmitter)="OSMResultChooseFirst($event)" />
-    <app-modal-choose trigger="open-modal-search-choose-fin" (OSMResultChooseEmitter)="OSMResultChooseSecond($event)" />
-
+    <app-modal-choose
+      trigger="open-modal-search-choose-depart"
+      (OSMResultChooseEmitter)="OSMResultChooseFirst($event)"
+    />
+    <app-modal-choose
+      trigger="open-modal-search-choose-fin"
+      (OSMResultChooseEmitter)="OSMResultChooseSecond($event)"
+    />
   </div>
 
   <div class="contener" *ngIf="result && result.length">
@@ -86,8 +132,11 @@
     <ion-card *ngFor="let bus of result" id="open-modal-{{bus.id}}">
       <ion-card-content class="desc">
         <ion-card-title>{{ bus.tags.name }}</ion-card-title>
-        <ion-text>{{ bus.members[0].label }} ... {{ bus.members[bus.members.length - 1].label }}</ion-text>
-        <p> <ion-badge>{{bus.members.length}}</ion-badge>Arrets</p>
+        <ion-text
+          >{{ bus.members[0].label }} ... {{ bus.members[bus.members.length -
+          1].label }}</ion-text
+        >
+        <p><ion-badge>{{bus.members.length}}</ion-badge>Arrets</p>
       </ion-card-content>
       <app-modal-bus [trigger]="'open-modal-' + bus.id" [bus]="bus" />
     </ion-card>
@@ -95,9 +144,9 @@
 
   <div *ngIf="isShowEmpty" class="emptyFilter">
     <i>
-      Pas des Bus direct entre " {{ departOld }} " et " {{ finOld }} ", Veuillez choisir un autre arrêt. <br>
+      Pas des Bus direct entre " {{ departOld }} " et " {{ finOld }} ", Veuillez
+      choisir un autre arrêt. <br />
       <!-- [Collaborez avec nous pour améliorer notre application.] -->
     </i>
   </div>
-
 </ion-content>
