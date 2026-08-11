@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>Mes lieux enregistrés</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="clearSearch()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-text color="medium">
+    Les lieux que vous avez enregistrés pour un accès rapide et facile.
+  </ion-text>
+
+  <div class="input-search">
+    <ion-input
+      type="search"
+      placeholder="Adresse ou lieu à Mahajanga"
+      [(ngModel)]="querySearch"
+      ><ion-icon name="search-outline" slot="start"></ion-icon
+    ></ion-input>
+  </div>
+
+  <ion-card *ngFor="let p of placeResult; let i = index">
+    <ion-card-content class="desc">
+      <ion-card-title>{{ p.name }}</ion-card-title>
+      <ion-text>{{ p.display_name }}</ion-text>
+      <p>
+        <ion-badge color="success">{{ p.display_distance }}</ion-badge>
+        @if( p.nearStopLength > 0 ) { {{ p.nearStopLength }} Arret(s) proche }
+        @else { Arret bus }
+      </p>
+      <div class="btn-action">
+        @if( p.nearStopLength > 0 ) {
+        <ion-button
+          *ngIf="isSaved(p)"
+          shape="round"
+          size="small"
+          class="save"
+          (click)="unSave(p)"
+        >
+          <ion-icon slot="icon-only" name="bookmark" size="small"></ion-icon>
+        </ion-button>
+        <ion-button
+          *ngIf="!isSaved(p)"
+          shape="round"
+          size="small"
+          class="save"
+          (click)="save(p)"
+        >
+          <ion-icon
+            slot="icon-only"
+            name="bookmark-outline"
+            size="small"
+          ></ion-icon>
+        </ion-button>
+        }
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  @if(placeResult.length == 0) {
+  <div class="empty">
+    <ion-title size="small" color="medium">
+      <i>Aucun resultat trouvée pour « {{ querySearch }} »</i>
+    </ion-title>
+  </div>
+  }
+</ion-content>

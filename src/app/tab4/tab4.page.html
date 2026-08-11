@@ -41,9 +41,10 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item routerLink="/saved">
       <ion-icon name="bookmarks-outline" slot="start"></ion-icon>
       Lieux enregistrés
+      <ion-note slot="end">({{ savedPlacesCount }})</ion-note>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
 

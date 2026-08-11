@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'bus',
     loadChildren: () => import('./bus/bus.module').then( m => m.BusPageModule)
+  },
+  {
+    path: 'saved',
+    loadChildren: () => import('./saved/saved.module').then( m => m.SavedPageModule)
   }
 ];
 @NgModule({

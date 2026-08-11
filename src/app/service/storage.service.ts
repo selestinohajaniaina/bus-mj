@@ -76,4 +76,12 @@ export class StorageService {
   isEmpty(): boolean {
     return this.getAllMyPlaces().length === 0;
   }
+
+  /**
+   * Compter le nombre de lieux enregistrés.
+   */
+  count(): number {
+    return this.getAllMyPlaces().length;
+  }
+  
 }
