@@ -27,3 +27,11 @@ export interface Stop {
   lon: number,
   label: string | null,
 }
+
+export interface SearchHistory {
+  type: string,
+  id: number,
+  display_name: string,
+  description: string,
+  saved_at: string
+}

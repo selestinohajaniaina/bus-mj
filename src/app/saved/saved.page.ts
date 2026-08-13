@@ -3,6 +3,7 @@ import { OSMResult, OSMResultStored } from '../interface/Map';
 import { StorageService } from '../service/storage.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { SearchHistory } from '../interface/bus';
 
 @Component({
   selector: 'app-saved',
@@ -67,6 +68,7 @@ export class SavedPage implements OnInit {
           handler: () => {
             this.storage.clearMyPlaces();
             this.loadPlaces();
+            this.addToHistory();
           }
         }
       ]
@@ -77,6 +79,17 @@ export class SavedPage implements OnInit {
 
   goToSearch() {
     this.router.navigate(['/tabs/tab3']);
+  }
+
+  addToHistory() {
+    const history: SearchHistory = {
+      type: 'OSMResultStored',
+      id: this.storage.getHistoryId(),
+      display_name: 'Lieux enregistrés',
+      description: 'Vous avez vidé les lieux enregistrés',
+      saved_at: new Date().toISOString()
+    };
+    this.storage.addHistory(history);
   }
 
 }

@@ -5,9 +5,10 @@ import {
   findStopAll,
   findBusByTwoStopLabel,
 } from 'bus-mj';
-import { Stop, Bus } from '../interface/bus';
+import { Stop, Bus, SearchHistory } from '../interface/bus';
 import { OSMResultStored } from '../interface/Map';
 import { ToastController } from '@ionic/angular';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-tab2',
@@ -64,7 +65,10 @@ export class Tab2Page {
     }
   }
 
-  constructor(private toastController: ToastController) {}
+  constructor(
+    private toastController: ToastController,
+    private storage: StorageService
+  ) {}
 
   ngOnInit() {
     this.allStop = findStopAll().sort((a, b) =>
@@ -78,16 +82,27 @@ export class Tab2Page {
     } else if (this.depart == this.fin) {
       this.showToast('Les deux arrêts doivent être différents.');
     } else {
-
       this.result = findBusByTwoStopLabel(this.depart, this.fin);
-
+      // pour garder en mémoire les deux arrêts de la recherche précédente
       this.departOld = this.depart;
       this.finOld = this.fin;
       this.isShowEmpty = false;
+
       if (this.result.length == 0) {
         this.isShowEmpty = true;
-        this.showToast("Auccun resultat trouvé...");
+        this.showToast('Auccun resultat trouvé...');
+      } else {
+        // ajout au hitorique de recherche
+        const history: SearchHistory = {
+          type: 'Bus',
+          id: this.storage.getHistoryId(),
+          display_name: `${this.depart} et ${this.fin}`,
+          description: `Vous avez recherché un trajet entre deux arrêts: ${this.depart} et ${this.fin}`,
+          saved_at: new Date().toISOString(),
+        };
+        this.storage.addHistory(history);
       }
+
     }
   }
 
@@ -134,11 +149,11 @@ export class Tab2Page {
       this.secondData &&
       this.firstData.osm_id == this.secondData.osm_id
     ) {
-      alert('Les deux lieux doivent etre different');
+      this.showToast('Les deux lieux doivent etre different');
     } else if (this.firstData && this.secondData) {
       this.SearchBusByOSMResult(this.firstData, this.secondData);
     } else {
-      alert('Veuillez tous remplir.');
+      this.showToast('Veuillez tous remplir.');
     }
   }
 
@@ -155,7 +170,6 @@ export class Tab2Page {
           String(stopEnd.label)
         );
         busFoundByNearStop.push(...busFound);
-
       });
     });
 
@@ -175,8 +189,18 @@ export class Tab2Page {
 
     this.result = uniqueBus;
 
-    if( this.result.length === 0 ) {
-      this.showToast("Auccun resultat trouvé...");
+    if (this.result.length === 0) {
+      this.showToast('Auccun resultat trouvé...');
+    } else {
+      // ajout au hitorique de recherche
+        const history: SearchHistory = {
+          type: 'Bus',
+          id: this.storage.getHistoryId(),
+          display_name: `${begin.name} et ${end.name}`,
+          description: `Vous avez recherché un trajet entre deux lieux: ${begin.name} et ${end.name}`,
+          saved_at: new Date().toISOString(),
+        };
+        this.storage.addHistory(history);
     }
 
   }

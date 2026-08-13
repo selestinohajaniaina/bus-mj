@@ -9,6 +9,7 @@ import { StorageService } from '../service/storage.service';
 export class Tab4Page implements OnInit {
   public paletteToggle!: boolean;
   public savedPlacesCount!: number;
+  public savedHistoryCount!: number;
 
   constructor(private storage: StorageService) {
     const theme = localStorage.getItem('theme');
@@ -16,11 +17,16 @@ export class Tab4Page implements OnInit {
   }
 
   ngOnInit() {
-    this.savedPlacesCount = this.storage.count();
+    this.initData();
   }
 
   ionViewWillEnter() {
-    this.savedPlacesCount = this.storage.count();
+    this.initData();
+  }
+
+  initData() {
+    this.savedPlacesCount = this.storage.countPlaces();
+    this.savedHistoryCount = this.storage.countHistory();
   }
 
   toggleChange(event: CustomEvent) {

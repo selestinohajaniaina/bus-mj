@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { MapMarker, OSMResult } from '../interface/Map';
-import { Stop } from '../interface/bus';
+import { SearchHistory, Stop } from '../interface/bus';
 import { Coordinates } from '../interface/Map';
 import * as turf from '@turf/turf';
 import { StorageService } from '../service/storage.service';
@@ -73,6 +73,18 @@ export class ModalSearchComponent implements OnInit {
               });
             });
 
+            if(result.length > 0) {
+              // ajout au hitorique de recherche
+              const history: SearchHistory = {
+                type: 'Search',
+                id: this.storage.getHistoryId(),
+                display_name: `« ${this.querySearch} »`,
+                description: `Vous avez recherché des lieux avec le mot-clé : ${this.querySearch}`,
+                saved_at: new Date().toISOString(),
+              };
+              this.storage.addHistory(history);
+            }
+
             const stopResult = this.filterStop(this.querySearch);
             const OsmStopResult = this.stopToOsmResult(stopResult);
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
@@ -99,10 +111,12 @@ export class ModalSearchComponent implements OnInit {
 
   save(place: OSMResult) {
     this.storage.addMyPlace(place);
+    this.showToast(`Vous avez enregistré le lieu : ${place.display_name}`);
   }
 
   unSave(place: OSMResult) {
     this.storage.removeMyPlace(place.osm_id);
+    this.showToast(`Vous avez enlevé le lieu : ${place.display_name}`);
   }
 
   getNearsStop(coordinate: Coordinates) {
