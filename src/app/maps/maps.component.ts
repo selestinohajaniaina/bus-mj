@@ -38,8 +38,6 @@ export class MapsComponent implements OnInit {
   ngOnInit() {}
 
   initMap() {
-    console.log('init map');
-
     let semiData = 0;
 
     this.used = 0;
@@ -85,7 +83,6 @@ export class MapsComponent implements OnInit {
   }
 
   destroyMap() {
-    console.log('destroyMap called');
     this.map.remove();
   }
 

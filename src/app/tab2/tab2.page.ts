@@ -81,7 +81,6 @@ export class Tab2Page {
 
       this.result = findBusByTwoStopLabel(this.depart, this.fin);
 
-      console.log(this.depart, this.fin);
       this.departOld = this.depart;
       this.finOld = this.fin;
       this.isShowEmpty = false;
@@ -147,9 +146,6 @@ export class Tab2Page {
     const stopNearBegin: Stop[] = begin.nearStop;
     const stopNearEnd: Stop[] = end.nearStop;
 
-    console.log("1: ", begin, "\n2: ", end);
-    
-
     const busFoundByNearStop: Bus[] = [];
 
     stopNearBegin.map((stopBegin: Stop) => {
@@ -160,12 +156,6 @@ export class Tab2Page {
         );
         busFoundByNearStop.push(...busFound);
 
-        console.log(
-          'busFoundByNearStop',
-          busFoundByNearStop,
-          'busFound',
-          busFound
-        );
       });
     });
 
@@ -189,7 +179,6 @@ export class Tab2Page {
       this.showToast("Auccun resultat trouvé...");
     }
 
-    console.log('busFoundByNearStop final', uniqueBus);
   }
 
   async showToast(message: string) {

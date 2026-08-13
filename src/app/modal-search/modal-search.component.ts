@@ -51,8 +51,6 @@ export class ModalSearchComponent implements OnInit {
         .subscribe({
           next: (result: any) => {
             this.chargeShow = false;
-            console.log(result);
-
             result.map((e: OSMResult) => {
               const distance = this.getDistance(
                 turf.point([

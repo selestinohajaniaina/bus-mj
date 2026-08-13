@@ -53,7 +53,13 @@ export class ModalChooseComponent implements OnInit {
 
   loadPlaces() {
     this.placeResult = this.storage.getAllMyPlaces();
-    this.isStorageEmpty = this.placeResult.length > 0 ? false : true;
+    if(this.placeResult.length > 0) {
+      this.isStorageEmpty = false;
+    } else {
+      this.isStorageEmpty = true;
+      const stopExample: Stop[] = this.allStop.slice(0, 10);
+      this.placeResult = this.stopToOsmResultStored(stopExample);
+    }
     const myP = this.localisation.getMyPostion();
     if (myP)
       this.myPositionToOSMResult({

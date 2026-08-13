@@ -161,6 +161,14 @@ export class Tab3Page {
         this.setCenter(this.myPosition);
         const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
+        if (!this.localisation.isInMahajanga(this.myPosition)) {
+          this.showToast('Vous êtes en dehors de la ville de Mahajanga.');
+          return;
+        }
+
+        // save my position
+        this.localisation.savePosition(this.myPosition);
+
         stopNearsMe.map((e) => {
           this.drawDistance(
             this.myPosition,
@@ -169,12 +177,6 @@ export class Tab3Page {
           );
         });
 
-        if (!this.localisation.isInMahajanga(this.myPosition)) {
-          this.showToast('Vous êtes en dehors de la ville de Mahajanga.');
-        }
-
-        // save my position
-        this.localisation.savePosition(this.myPosition);
       },
       (error) => {
         this.haveGPSPermission = false;
