@@ -63,11 +63,28 @@
     </ion-card-content>
   </ion-card>
 
-  @if(placeResult.length == 0) {
+  @if(placeResult.length == 0 && !isStorageEmpty) {
   <div class="empty">
     <ion-title size="small" color="medium">
       <i>Aucun resultat trouvée pour « {{ querySearch }} »</i>
     </ion-title>
   </div>
+  } @if (isStorageEmpty) {
+  <ion-text size="small"
+    >Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la
+    page de recherche.</ion-text
+  >
+  <ion-button
+    expand="block"
+    shape="round"
+    (click)="goToSearch()"
+  >
+    <ion-text>Accéder à la recherche</ion-text>
+    <ion-icon
+      aria-hidden="true"
+      name="chevron-forward-outline"
+      slot="end"
+    ></ion-icon>
+  </ion-button>
   }
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OSMResult, OSMResultStored } from '../interface/Map';
 import { StorageService } from '../service/storage.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-saved',
@@ -26,7 +27,7 @@ export class SavedPage implements OnInit {
     }
   }
 
-  constructor(private storage: StorageService, private alert: AlertController) {}
+  constructor(private storage: StorageService, private alert: AlertController, private router: Router) {}
 
   ngOnInit() {
     this.loadPlaces();
@@ -73,4 +74,9 @@ export class SavedPage implements OnInit {
 
     await alert.present();
   }
+
+  goToSearch() {
+    this.router.navigate(['/tabs/tab3']);
+  }
+
 }

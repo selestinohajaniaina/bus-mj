@@ -19,6 +19,10 @@ export class Tab4Page implements OnInit {
     this.savedPlacesCount = this.storage.count();
   }
 
+  ionViewWillEnter() {
+    this.savedPlacesCount = this.storage.count();
+  }
+
   toggleChange(event: CustomEvent) {
     this.toggleDarkPalette(event.detail.checked);
   }
