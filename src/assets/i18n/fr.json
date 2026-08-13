@@ -1,0 +1,73 @@
+{
+  "KEY_WORDS": {
+    "AND": "et",
+    "FILL_ALL": "Veuillez tous remplir."
+  },
+  "ALERT": {
+    "CONFIRM": "Confirmer",
+    "CANCEL": "Annuler",
+    "CHARGEMENT": "Chargement"
+  },
+  "BUS": {
+    "CARACTERISTIC": "Caractéristiques à connaître sur ce bus",
+    "COLOR_BUS": "Couleur du bus",
+    "BAND_BUS": "Couleur de la bande sur le côté",
+    "COLOR_BOARD": "Couleur de la plaque",
+    "OPERATOR": "Operateur",
+    "STOP": "Arrêt bus",
+    "STOPS": "Arrêts",
+    "ROUTE": "Ligne(s)",
+    "ROUTES": "Lignes",
+    "OPERATORS": "Cooperative(s)",
+    "ROUTES_BUS": "Trajet du circulation",
+    "LINE_INFO": "Il y a {{count}} arrêts connus sur cette ligne, du point de départ «{{start}}» jusqu'à «{{end}}».",
+    "NO_DATA": "Les données ne sont pas encore complètes. Collaborez avec nous pour les améliorer."
+  },
+  "MAP": {
+    "VIEW_MAP": "Affichage sur Carte"
+  },
+  "COLOR": {
+    "RED": "rouge",
+    "BLUE": "bleu",
+    "GREEN": "vert",
+    "YELLOW": "jaune",
+    "ORANGE": "orange",
+    "WHITE": "blanc",
+    "GRAY": "gris",
+    "ALL": "toutes les couleurs"
+  },
+  "TAB1": {
+    "SUB_TITLE": "Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus, suivez votre trajet et naviguez sans connexion.",
+    "BEGIN": "Commencer"
+  },
+  "TAB2": {
+    "TITLE": "Déplacement",
+    "SUB_TITLE": "Prenez facilement votre bus avec l'application. Identifiez un arrêt où vous souhaitez commencer votre trajet.",
+    "SEARCH_BY_STOP": "Recherche par arrêt",
+    "TO_SEARCH_BY_STOP": "Rechercher par les arrêts",
+    "SEARCH_BY_PLACE": "Recherche par lieu",
+    "TO_SEARCH_BY_PLACE": "Rechercher par les places",
+    "RUN": "Lancer la recherche",
+    "GET_THIS_BUS": "Prenez les bus suivants ({{ count }})",
+    "STOP_BEGIN": "Arrêt de départ",
+    "STOP_END": "Arrêt de destination",
+    "PLACE_BEGIN": "Lieu de départ",
+    "PLACE_END": "Lieu de destination",
+    "NO_BUS_FOUND": "Pas des Bus direct entre «{{ departOld }}» et «{{ finOld }}», Veuillez choisir un autre arrêt.",
+    "NO_RESULTS": "Auccun resultat trouvé...",
+    "FILL_ALL_FIELDS": "Choisissez l'arrêt de départ et celui d'arrivée.",
+    "STOP_MUST_DIFFERENT": "Les deux arrêts doivent être différents.",
+    "PLACE_MUST_DIFFERENT": "Les deux lieux doivent être différents."
+  },
+  "TAB3": {
+    "TITLE": "Vous ne savez pas où vous êtes ?",
+    "SUB_TITLE": "Ne vous inquiétez pas, choisissez l'arrêt le plus proche de l'endroit où vous vous trouvez.",
+    "YOU_NOT_IN_MAHAJANGA": "Vous êtes en dehors de la ville de Mahajanga.",
+    "IMPOSSIBLE_TO_GET_COORD": "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
+  },
+  "MODAL_BUS": {
+    "YOUR_ROUTE": "Votre Trajet",
+    "GET_BUS_AT": "Vous prenez ce bus au",
+    "GET_OUT_AT": "et vous descendez au"
+  }
+}

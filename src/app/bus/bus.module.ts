@@ -11,6 +11,8 @@ import { BusImgModule } from '../bus-img/bus-img.module';
 import { StopListModule } from '../stop-list/stop-list.module';
 import { MapsModule } from '../maps/maps.module';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { MapsModule } from '../maps/maps.module';
     BusPageRoutingModule,
     BusImgModule,
     StopListModule,
-    MapsModule
+    MapsModule,
+    TranslatePipe
   ],
   declarations: [BusPage]
 })

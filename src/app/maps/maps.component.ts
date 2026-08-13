@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as maplibregl from 'maplibre-gl';
 import { Coordinates, MapMarker } from '../interface/Map';
 import { Stop } from '../interface/bus';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-maps',
@@ -12,7 +13,7 @@ export class MapsComponent implements OnInit {
   @Input() triggerElementId: string;
   @Input() stop: Stop[];
   @Input() routes: Stop[][];
-  @Input() title: string = 'Affichage sur Carte';
+  @Input() title: string = '';
 
   private map: maplibregl.Map;
   private mapCenter: Coordinates;
@@ -26,7 +27,7 @@ export class MapsComponent implements OnInit {
   ];
   private used = 0;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     const theme = localStorage.getItem("theme");
     if(theme == "dark") {
       this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/dark';

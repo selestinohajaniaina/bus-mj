@@ -9,6 +9,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { ModalBusModule } from '../modal-bus/modal-bus.module';
 import { ModalChooseModule } from '../modal-choose/modal-choose.module';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -17,7 +19,8 @@ import { ModalChooseModule } from '../modal-choose/modal-choose.module';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
     ModalBusModule,
-    ModalChooseModule
+    ModalChooseModule,
+    TranslatePipe
   ],
   declarations: [Tab2Page]
 })

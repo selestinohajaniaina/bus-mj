@@ -9,17 +9,12 @@
         ></ion-icon>
       </div>
       <h1>Bus Nakay</h1>
-      <p>
-        Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus,
-        suivez votre trajet et naviguez sans connexion.
-      </p>
+      <p>{{ 'TAB1.SUB_TITLE' | translate }}</p>
       <div class="button">
         <ion-button expand="round" routerLink="/tabs/tab2"
-          ><ion-icon slot="start" name="walk-outline"></ion-icon
-          >Commencer<ion-icon
-            slot="end"
-            name="arrow-forward-outline"
-          ></ion-icon>
+          ><ion-icon slot="start" name="walk-outline"></ion-icon>
+          {{ 'TAB1.BEGIN' | translate }}
+          <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
         </ion-button>
       </div>
     </div>
@@ -36,10 +31,10 @@
 
     <div class="container" *ngIf="chargeShow==true">
       <ion-spinner name="circles"></ion-spinner>
-      <ion-label id="label">Chargement ...</ion-label>
+      <ion-label id="label">{{ 'ALERT.CHARGEMENT' | translate }} ...</ion-label>
     </div>
 
-    <p class="counter">{{ allCooperative.length }} cooperative(s)</p>
+    <p class="counter">{{ allCooperative.length }} {{ 'BUS.OPERATORS' | translate }}</p>
 
     <div class="cooperativelist">
       <ion-card>
@@ -61,22 +56,21 @@
 
       <ion-card *ngFor="let coop of allCooperative; let i = index">
         <ion-card-content>
-          <ion-card-subtitle
-            [style.background]="getOperatorColor(coop)"
+          <ion-card-subtitle [style.background]="getOperatorColor(coop)"
             >{{ coop }}</ion-card-subtitle
           >
           <div class="nbr-container">
             <h1>{{ getBusByCooperative(coop) }}</h1>
             <div class="icon-text">
               <ion-icon name="flag-outline" size="large"></ion-icon>
-              <p>Lignes</p>
+              <p>{{ 'BUS.ROUTES' | translate }}</p>
             </div>
           </div>
         </ion-card-content>
       </ion-card>
     </div>
 
-    <p class="counter">{{ allBus.length }} ligne(s)</p>
+    <p class="counter">{{ allBus.length }} {{ 'BUS.ROUTE' | translate }}</p>
 
     <div class="buslist" *ngIf="chargeShow==false">
       <ion-card
@@ -88,7 +82,11 @@
           <ion-list lines="none">
             <ion-item>
               <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-              <ion-icon name="bus-outline" slot="start" class="bus-icon"></ion-icon>
+              <ion-icon
+                name="bus-outline"
+                slot="start"
+                class="bus-icon"
+              ></ion-icon>
               <ion-label>
                 {{ bus.tags.name }}
                 <ion-badge

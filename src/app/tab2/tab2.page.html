@@ -1,20 +1,25 @@
 <ion-content [fullscreen]="true">
   <div class="titre ion-padding">
-    <h1>Déplacement</h1>
-    <p>
-      Prenez facilement votre bus avec l'application. Identifiez un arrêt où
-      vous souhaitez commencer votre trajet.
-    </p>
+    <h1>{{ 'TAB2.TITLE' | translate }}</h1>
+    <p>{{ 'TAB2.SUB_TITLE' | translate }}</p>
   </div>
   <ion-card class="search-title">
     <ion-list lines="none">
       <ion-item>
         @if(searchByStop) {
-          <ion-icon aria-hidden="true" name="trail-sign-outline" slot="start"></ion-icon>
-          <ion-label>Recherche par Arret</ion-label>
+        <ion-icon
+          aria-hidden="true"
+          name="trail-sign-outline"
+          slot="start"
+        ></ion-icon>
+        <ion-label>{{ 'TAB2.SEARCH_BY_STOP' | translate }}</ion-label>
         } @else {
-          <ion-icon aria-hidden="true" name="location-outline" slot="start"></ion-icon>
-          <ion-label>Recherche par Lieux</ion-label>
+        <ion-icon
+          aria-hidden="true"
+          name="location-outline"
+          slot="start"
+        ></ion-icon>
+        <ion-label>{{ 'TAB2.SEARCH_BY_PLACE' | translate }}</ion-label>
         }
       </ion-item>
     </ion-list>
@@ -26,7 +31,7 @@
     <div class="input-search">
       <ion-input
         type="search"
-        placeholder="Arrêt de départ"
+        placeholder="{{ 'TAB2.STOP_BEGIN' | translate }}"
         [(ngModel)]="stop_1"
       >
         <ion-icon name="search-outline" slot="start"></ion-icon>
@@ -47,7 +52,7 @@
     <div class="input-search">
       <ion-input
         type="search"
-        placeholder="Arrêt de destination"
+        placeholder="{{ 'TAB2.STOP_END' | translate }}"
         [(ngModel)]="stop_2"
       >
         <ion-icon name="search-outline" slot="start"></ion-icon>
@@ -66,7 +71,7 @@
     </div>
 
     <ion-button expand="block" shape="round" (click)="findBus()">
-      <ion-text>Lancer la rechercher</ion-text>
+      <ion-text>{{ 'TAB2.RUN' | translate }}</ion-text>
       <ion-icon
         aria-hidden="true"
         name="search-circle-outline"
@@ -78,7 +83,7 @@
       class="btn-switch ion-margin ion-padding ion-text-center"
       (click)="searchByStop=false"
     >
-      Rechercher par les places
+      {{ 'TAB2.TO_SEARCH_BY_PLACE' | translate }}
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </p>
   </div>
@@ -88,20 +93,20 @@
   <div class="search" *ngIf="!searchByStop">
     <div class="button-search">
       <button id="open-modal-search-choose-depart">
-        <ion-icon name="search-outline" slot="start"></ion-icon>{{ firstBtnLabel
-        }}
+        <ion-icon name="search-outline" slot="start"></ion-icon>
+        {{ firstBtnLabel || 'TAB2.PLACE_BEGIN' | translate }}
       </button>
     </div>
 
     <div class="button-search">
       <button id="open-modal-search-choose-fin">
-        <ion-icon name="search-outline" slot="start"></ion-icon>{{
-        secondBtnLabel }}
+        <ion-icon name="search-outline" slot="start"></ion-icon>
+        {{ secondBtnLabel || 'TAB2.PLACE_END' | translate }}
       </button>
     </div>
 
     <ion-button expand="block" shape="round" (click)="findBusByPlace()">
-      <ion-text>Lancer la rechercher</ion-text>
+      <ion-text>{{ 'TAB2.RUN' | translate }}</ion-text>
       <ion-icon
         aria-hidden="true"
         name="search-circle-outline"
@@ -113,8 +118,8 @@
       class="btn-switch ion-margin ion-padding ion-text-center"
       (click)="searchByStop=true"
     >
-      <ion-icon name="chevron-back-outline" slot="start"> </ion-icon>Rechercher
-      par les arrets
+      <ion-icon name="chevron-back-outline" slot="start"> </ion-icon>
+      {{ 'TAB2.TO_SEARCH_BY_STOP' | translate }}
     </p>
 
     <app-modal-choose
@@ -128,25 +133,20 @@
   </div>
 
   <div class="contener" *ngIf="result && result.length">
-    <ion-title>Prenez les bus suivants ({{ result.length }}):</ion-title>
+    <ion-title>{{ 'TAB2.GET_THIS_BUS' | translate: { count: result.length } }}:</ion-title>
     <ion-card *ngFor="let bus of result" id="open-modal-{{bus.id}}">
       <ion-card-content class="desc">
         <ion-card-title>{{ bus.tags.name }}</ion-card-title>
-        <ion-text
-          >{{ bus.members[0].label }} ... {{ bus.members[bus.members.length -
-          1].label }}</ion-text
-        >
-        <p><ion-badge>{{bus.members.length}}</ion-badge>Arrets</p>
+        <ion-text>
+          {{ bus.members[0].label }} ... {{ bus.members[bus.members.length - 1].label }}
+          </ion-text>
+        <p><ion-badge>{{bus.members.length}}</ion-badge> {{ 'BUS.STOPS' | translate }}</p>
       </ion-card-content>
       <app-modal-bus [trigger]="'open-modal-' + bus.id" [bus]="bus" />
     </ion-card>
   </div>
 
   <div *ngIf="isShowEmpty" class="emptyFilter">
-    <i>
-      Pas des Bus direct entre " {{ departOld }} " et " {{ finOld }} ", Veuillez
-      choisir un autre arrêt. <br />
-      <!-- [Collaborez avec nous pour améliorer notre application.] -->
-    </i>
+    <i>{{ 'TAB2.NO_BUS_FOUND' | translate: { departOld, finOld } }}</i>
   </div>
 </ion-content>

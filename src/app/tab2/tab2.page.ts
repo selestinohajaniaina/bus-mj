@@ -9,6 +9,7 @@ import { Stop, Bus, SearchHistory } from '../interface/bus';
 import { OSMResultStored } from '../interface/Map';
 import { ToastController } from '@ionic/angular';
 import { StorageService } from '../service/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab2',
@@ -16,8 +17,8 @@ import { StorageService } from '../service/storage.service';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  public firstBtnLabel: string = 'Lieu de départ';
-  public secondBtnLabel: string = 'Lieu de destination';
+  public firstBtnLabel: string = '';
+  public secondBtnLabel: string = '';
   public firstData: OSMResultStored;
   public secondData: OSMResultStored;
   public allStop: Stop[];
@@ -67,7 +68,8 @@ export class Tab2Page {
 
   constructor(
     private toastController: ToastController,
-    private storage: StorageService
+    private storage: StorageService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -78,9 +80,9 @@ export class Tab2Page {
 
   findBus() {
     if (this.depart == 'c' || this.fin == 'c') {
-      this.showToast("Choisissez l'arrêt de départ et celui d'arrivée.");
+      this.showToast(this.translate.instant('TAB2.FILL_ALL_FIELDS'));
     } else if (this.depart == this.fin) {
-      this.showToast('Les deux arrêts doivent être différents.');
+      this.showToast(this.translate.instant('TAB2.STOP_MUST_DIFFERENT'));
     } else {
       this.result = findBusByTwoStopLabel(this.depart, this.fin);
       // pour garder en mémoire les deux arrêts de la recherche précédente
@@ -90,7 +92,7 @@ export class Tab2Page {
 
       if (this.result.length == 0) {
         this.isShowEmpty = true;
-        this.showToast('Auccun resultat trouvé...');
+        this.showToast(this.translate.instant('TAB2.NO_RESULTS'));
       } else {
         // ajout au hitorique de recherche
         const history: SearchHistory = {
@@ -102,7 +104,6 @@ export class Tab2Page {
         };
         this.storage.addHistory(history);
       }
-
     }
   }
 
@@ -149,11 +150,11 @@ export class Tab2Page {
       this.secondData &&
       this.firstData.osm_id == this.secondData.osm_id
     ) {
-      this.showToast('Les deux lieux doivent etre different');
+      this.showToast(this.translate.instant('TAB2.PLACE_MUST_DIFFERENT'));
     } else if (this.firstData && this.secondData) {
       this.SearchBusByOSMResult(this.firstData, this.secondData);
     } else {
-      this.showToast('Veuillez tous remplir.');
+      this.showToast(this.translate.instant('KEY_WORDS.FILL_ALL'));
     }
   }
 
@@ -193,16 +194,15 @@ export class Tab2Page {
       this.showToast('Auccun resultat trouvé...');
     } else {
       // ajout au hitorique de recherche
-        const history: SearchHistory = {
-          type: 'Bus',
-          id: this.storage.getHistoryId(),
-          display_name: `${begin.name} et ${end.name}`,
-          description: `Vous avez recherché un trajet entre deux lieux: ${begin.name} et ${end.name}`,
-          saved_at: new Date().toISOString(),
-        };
-        this.storage.addHistory(history);
+      const history: SearchHistory = {
+        type: 'Bus',
+        id: this.storage.getHistoryId(),
+        display_name: `${begin.name} et ${end.name}`,
+        description: `Vous avez recherché un trajet entre deux lieux: ${begin.name} et ${end.name}`,
+        saved_at: new Date().toISOString(),
+      };
+      this.storage.addHistory(history);
     }
-
   }
 
   async showToast(message: string) {

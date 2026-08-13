@@ -17,27 +17,27 @@
   </div>
   <ion-card>
     <ion-card-content>
-      <ion-card-title>Caractéristiques à connaître sur ce bus:</ion-card-title>
+      <ion-card-title>{{ 'BUS.CARACTERISTIC' | translate }}:</ion-card-title>
       <div class="desc">
-        Couleur du bus:
+        {{ 'BUS.COLOR_BUS' | translate }}:
         <ion-badge [color]="ionColorOf(bus.tags.color)"
           >{{ colorOf(bus.tags.color) }}</ion-badge
         >
       </div>
       <div class="desc">
-        Couleur de la bande sur le côté:
+        {{ 'BUS.BAND_BUS' | translate }}:
         <ion-badge *ngFor="let c of bus.tags.band" [color]="ionColorOf(c)"
           >{{ colorOf(c) }}</ion-badge
         >
       </div>
       <div class="desc">
-        Couleur de la plaque:
+        {{ 'BUS.COLOR_BOARD' | translate }}:
         <ion-badge [color]="ionColorOf(bus.tags.board || 'white')"
           >{{ colorOf(bus.tags.board || '') }}</ion-badge
         >
       </div>
       <div class="desc">
-        Operateur:
+        {{ 'BUS.OPERATOR' | translate }}:
         <ion-badge [style.background]="getOperatorColor(bus.tags.operator)"
           >{{ bus.tags.operator }}</ion-badge
         >
@@ -46,17 +46,14 @@
   </ion-card>
   <div class="arret" *ngIf="stops && stops.length">
     <div class="bus-desc">
-      Il y a {{ stops.length }} arrêts connus sur cette ligne, du point de
-      départ "{{ stops[0].label }}" jusqu'à "{{ stops[stops.length - 1].label
-      }}".
+      {{ 'BUS.LINE_INFO' | translate:{ count: stops.length, start: stops[0].label, end: stops[stops.length - 1].label } }}
     </div>
-    <div>Trajet du circulation:</div>
+    <div>{{ 'BUS.ROUTES_BUS' | translate }}:</div>
     <app-stop-list [StopList]="stops" />
   </div>
   <div class="data_empty">
     <i
-      >Les données ne sont pas encore complètes. Collaborez avec nous pour les
-      améliorer.</i
+      >{{ 'BUS.NO_DATA' | translate }}</i
     >
   </div>
 

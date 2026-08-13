@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Bus } from '../interface/bus';
 import { findBusAll, findOperatorAll, findBusDetailByOperator } from 'bus-mj';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab1',
