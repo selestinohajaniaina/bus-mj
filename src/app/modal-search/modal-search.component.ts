@@ -79,7 +79,7 @@ export class ModalSearchComponent implements OnInit {
                 type: 'Search',
                 id: this.storage.getHistoryId(),
                 display_name: `« ${this.querySearch} »`,
-                description: `Vous avez recherché des lieux avec le mot-clé : ${this.querySearch}`,
+                description: `Vous avez recherché des lieux avec le mot-clé : « ${this.querySearch} »`,
                 saved_at: new Date().toISOString(),
               };
               this.storage.addHistory(history);

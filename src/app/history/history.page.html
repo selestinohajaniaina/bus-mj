@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>Mes historiques</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearHistory()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-text color="medium">
+    Les lieux que vous avez enregistrés pour un accès rapide et facile.
+  </ion-text>
+
+  <div class="input-search">
+    <ion-input type="search" [(ngModel)]="querySearch" placeholder="Titre ou mot-clé de recherche"
+      ><ion-icon name="search-outline" slot="start"></ion-icon
+    ></ion-input>
+  </div>
+
+  <ion-card *ngFor="let h of historyResult; let i = index">
+    <ion-card-content class="desc">
+      <ion-card-title>{{ h.display_name }}</ion-card-title>
+      <ion-text>{{ h.description }}</ion-text>
+      <br>
+      <ion-text>{{ formatDate(h.saved_at) }}</ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  @if(historyResult.length == 0 && !isStorageEmpty) {
+  <div class="empty">
+    <ion-title size="small" color="medium">
+      <i>Aucun resultat trouvée pour « {{ querySearch }} »</i>
+    </ion-title>
+  </div>
+  } @if (isStorageEmpty) {
+  <ion-text size="small">
+    Aucun historique de recherche.
+  </ion-text>
+  }
+</ion-content>

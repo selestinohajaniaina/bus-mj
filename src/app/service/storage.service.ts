@@ -112,6 +112,20 @@ export class StorageService {
     return data ? (JSON.parse(data) as SearchHistory[]) : [];
   }
 
+    /**
+   * Recherche des historique par nom.
+   * @param {string} search - Le mot-clé de recherche.
+   * @returns {SearchHistory[]} La liste des historiques correspondants à la recherche.
+   */
+  getHistoryByName(search: string): SearchHistory[] {
+    const keyword = search.trim().toLowerCase();
+
+    return this.getHistory().filter(
+      (history) =>
+        history.display_name?.toLowerCase().includes(keyword)
+    );
+  }
+
   /**
    * Enregistre toute la liste.
    * @param {OSMResultStored[]} places - La liste des historiques à enregistrer.
@@ -136,6 +150,13 @@ export class StorageService {
    */
   countHistory(): number {
     return this.getHistory().length;
+  }
+
+    /**
+   * Supprime tous les historiques enregistrés.
+   */
+  clearHistory(): void {
+    localStorage.removeItem(this.HISTORY_KEY);
   }
   
 }
