@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OSMResult, OSMResultStored } from '../interface/Map';
 import { StorageService } from '../service/storage.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SearchHistory } from '../interface/bus';
 import { TranslateService } from '@ngx-translate/core';
@@ -35,7 +35,8 @@ export class SavedPage implements OnInit {
     private alert: AlertController,
     private router: Router,
     private translate: TranslateService,
-    private localisation: LocalisationService
+    private localisation: LocalisationService,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -58,10 +59,12 @@ export class SavedPage implements OnInit {
 
   save(place: OSMResult) {
     this.storage.addMyPlace(place);
+    this.showToast(this.translate.instant('MODAL_SEARCH.SAVE', {name: place.name}));
   }
 
   unSave(place: OSMResult) {
     this.storage.removeMyPlace(place.osm_id);
+    this.showToast(this.translate.instant('MODAL_SEARCH.UNSAVE', {name: place.name}));
   }
 
   async clearSearch() {
@@ -106,5 +109,14 @@ export class SavedPage implements OnInit {
 
   displayDistance(distance: number): string {
     return this.localisation.getDisplayDistance(distance);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 }
