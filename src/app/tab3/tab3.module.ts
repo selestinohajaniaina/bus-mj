@@ -8,6 +8,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { ModalSearchModule } from '../modal-search/modal-search.module';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -15,7 +17,8 @@ import { ModalSearchModule } from '../modal-search/modal-search.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab3PageRoutingModule,
-    ModalSearchModule
+    ModalSearchModule,
+    TranslatePipe
   ],
   declarations: [Tab3Page]
 })

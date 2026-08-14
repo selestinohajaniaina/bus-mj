@@ -1,12 +1,20 @@
 {
   "KEY_WORDS": {
     "AND": "et",
-    "FILL_ALL": "Veuillez tous remplir."
+    "FILL_ALL": "Veuillez tous remplir.",
+    "KM": "km",
+    "M": "m",
+    "MIN": "min",
+    "H": "h"
   },
   "ALERT": {
     "CONFIRM": "Confirmer",
     "CANCEL": "Annuler",
-    "CHARGEMENT": "Chargement"
+    "CHARGEMENT": "Chargement",
+    "CONFIRMATION": "Confirmation",
+    "DELETE_PLACE": "Voulez-vous vraiment supprimer tous les lieux enregistrés ?",
+    "DELETE_HISTORY": "Voulez-vous vraiment supprimer tous les historiques ?",
+    "DELETE": "Supprimer"
   },
   "BUS": {
     "CARACTERISTIC": "Caractéristiques à connaître sur ce bus",
@@ -16,6 +24,8 @@
     "OPERATOR": "Operateur",
     "STOP": "Arrêt bus",
     "STOPS": "Arrêts",
+    "NEAR_STOPS": "Arrêts proches",
+    "BUS_STOP": "Arrêt bus",
     "ROUTE": "Ligne(s)",
     "ROUTES": "Lignes",
     "OPERATORS": "Cooperative(s)",
@@ -24,7 +34,8 @@
     "NO_DATA": "Les données ne sont pas encore complètes. Collaborez avec nous pour les améliorer."
   },
   "MAP": {
-    "VIEW_MAP": "Affichage sur Carte"
+    "VIEW_MAP": "Affichage sur Carte",
+    "SHOW": "Afficher"
   },
   "COLOR": {
     "RED": "rouge",
@@ -63,11 +74,50 @@
     "TITLE": "Vous ne savez pas où vous êtes ?",
     "SUB_TITLE": "Ne vous inquiétez pas, choisissez l'arrêt le plus proche de l'endroit où vous vous trouvez.",
     "YOU_NOT_IN_MAHAJANGA": "Vous êtes en dehors de la ville de Mahajanga.",
-    "IMPOSSIBLE_TO_GET_COORD": "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
+    "IMPOSSIBLE_TO_GET_COORD": "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.",
+    "YOUR_POSITION": "Vous êtes ici"
+  },
+  "TAB4": {
+    "TITLE": "Paramètre",
+    "SUB_TITLE": "Application dédiée à la recherche et à l’optimisation des trajets en transports publics à Majunga.",
+    "DARK_MODE": "Theme sombre",
+    "LANGUAGE": "Langue",
+    "PLACE_SAVED": "Lieux enregistrés",
+    "HISTORY": "Historique"
+  },
+  "SAVED": {
+    "TITLE": "Mes lieux enregistrés",
+    "SUB_TITLE": "Les lieux que vous avez enregistrés pour un accès rapide et facile.",
+    "COME_TO_SEARCH": "Accéder à la recherche"
+  },
+  "HISTORY": {
+    "TITLE": "Mes historiques",
+    "SUB_TITLE": "Les historiques de votre trajet recherché et les places.",
+    "INPUT_KEY": "Titre ou mot-clé de recherche",
+    "NO_HISTORY": "Aucun historique de recherche."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Votre Trajet",
     "GET_BUS_AT": "Vous prenez ce bus au",
     "GET_OUT_AT": "et vous descendez au"
+  },
+  "MODAL_CHOOSE": {
+    "TITLE": "RECHERCHER UN LIEU ENREGISTRÉ",
+    "SUB_TITLE": "Recherchez un lieu enregistré pour afficher votre itinéraire.",
+    "INPUT_PLACE": "Adresse ou lieu à Mahajanga",
+    "TEXT_EMPTY": "Auccun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.",
+    "GO_TO_SEARCH": "Aller à la recherche",
+    "MY_POSITION": "Ma position actuelle"
+  },
+  "MODAL_SEARCH": {
+    "TITLE": "RECHERCHER UN ENDROIT",
+    "SUB_TITLE": "Recherchez un lieu, puis enregistrez les arrêts de bus les plus proches pour retrouver facilement votre bus.",
+    "TEXT_WARNING": "Une connexion Internet est requise pour rechercher des lieux.",
+    "SEARCH_RESULT": "Resultats de votre recherche ({{ placeResultLength }})",
+    "LOADING": "Recherche en cours ...",
+    "NO_RESULTS": "Auccun resultat pour « {{ querySearch }} »",
+    "NO_INTERNET": "Pas d'accès Internet ou serveur inaccessible",
+    "SAVE": "Vous avez enregistré le lieu : {{name}}",
+    "UNSAVE": "Vous avez enlevé le lieu : {{name}}"
   }
 }

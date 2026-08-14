@@ -8,6 +8,7 @@ import * as turf from '@turf/turf';
 import { StorageService } from '../service/storage.service';
 import { LocalisationService } from '../service/localisation.service';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-search',
@@ -27,9 +28,15 @@ export class ModalSearchComponent implements OnInit {
   public placeResult: OSMResult[];
   public placeResultLength: number = 0;
 
-  constructor(private http: HttpClient, private storage: StorageService, private localisation: LocalisationService, private toastController: ToastController) { }
+  constructor(
+    private http: HttpClient,
+    private storage: StorageService,
+    private localisation: LocalisationService,
+    private toastController: ToastController,
+    private translate: TranslateService
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   find() {
     if (this.querySearch == '' || !this.querySearch) {
@@ -67,13 +74,14 @@ export class ModalSearchComponent implements OnInit {
               this.placeResult.push({
                 ...e,
                 distance,
-                display_distance: this.localisation.getDisplayDistance(distance),
+                display_distance:
+                  this.localisation.getDisplayDistance(distance),
                 nearStop,
                 nearStopLength,
               });
             });
 
-            if(result.length > 0) {
+            if (result.length > 0) {
               // ajout au hitorique de recherche
               const history: SearchHistory = {
                 type: 'Search',
@@ -89,7 +97,6 @@ export class ModalSearchComponent implements OnInit {
             const OsmStopResult = this.stopToOsmResult(stopResult);
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
             this.placeResultLength = this.placeResult.length;
-
           },
           error: (err: any) => {
             this.chargeShow = false;
@@ -97,26 +104,24 @@ export class ModalSearchComponent implements OnInit {
             const OsmStopResult = this.stopToOsmResult(stopResult);
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
             this.placeResultLength = this.placeResult.length;
-            this.showToast("Pas d'accès Internet ou serveur inaccessible");
+            this.showToast(this.translate.instant('MODAL_SEARCH.NO_INTERNET'));
           },
         });
     }
   }
 
   isSaved(place: OSMResult): boolean {
-    return this.storage.getAllMyPlaces().some(
-      p => p.osm_id === place.osm_id
-    );
+    return this.storage.getAllMyPlaces().some((p) => p.osm_id === place.osm_id);
   }
 
   save(place: OSMResult) {
     this.storage.addMyPlace(place);
-    this.showToast(`Vous avez enregistré le lieu : ${place.display_name}`);
+    this.showToast(this.translate.instant('MODAL_SEARCH.SAVE', {name: place.name}));
   }
 
   unSave(place: OSMResult) {
     this.storage.removeMyPlace(place.osm_id);
-    this.showToast(`Vous avez enlevé le lieu : ${place.display_name}`);
+    this.showToast(this.translate.instant('MODAL_SEARCH.UNSAVE', {name: place.name}));
   }
 
   getNearsStop(coordinate: Coordinates) {
@@ -191,5 +196,4 @@ export class ModalSearchComponent implements OnInit {
 
     await toast.present();
   }
-
 }

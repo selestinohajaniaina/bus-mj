@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchHistory } from '../interface/bus';
 import { StorageService } from '../service/storage.service';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-history',
@@ -28,7 +29,8 @@ export class HistoryPage implements OnInit {
 
   constructor(
     private storage: StorageService,
-    private alert: AlertController
+    private alert: AlertController,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -42,16 +44,16 @@ export class HistoryPage implements OnInit {
 
   async clearHistory() {
     const alert = await this.alert.create({
-      header: 'Confirmation',
-      message: 'Voulez-vous vraiment supprimer tous les historiques ?',
+      header: this.translate.instant('ALERT.CONFIRMATION'),
+      message: this.translate.instant('ALERT.DELETE_HISTORY'),
       buttons: [
         {
-          text: 'Annuler',
+          text: this.translate.instant('ALERT.CANCEL'),
           role: 'cancel',
           cssClass: 'secondary',
         },
         {
-          text: 'Supprimer',
+          text: this.translate.instant('ALERT.DELETE'),
           handler: () => {
             this.storage.clearHistory();
             this.loadHistory();

@@ -7,6 +7,7 @@ import { LocalisationService } from '../service/localisation.service';
 import { Stop } from '../interface/bus';
 import * as turf from '@turf/turf';
 import { findStopAll } from 'bus-mj';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-choose',
@@ -44,7 +45,8 @@ export class ModalChooseComponent implements OnInit {
   constructor(
     private storage: StorageService,
     private router: Router,
-    private localisation: LocalisationService
+    private localisation: LocalisationService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -63,7 +65,7 @@ export class ModalChooseComponent implements OnInit {
     const myP = this.localisation.getMyPostion();
     if (myP)
       this.myPositionToOSMResult({
-        label: 'Ma position actuel',
+        label: this.translate.instant('MODAL_CHOOSE.MY_POSITION'),
         longitude: myP.longitude,
         latitude: myP.latitude,
       });
@@ -84,8 +86,8 @@ export class ModalChooseComponent implements OnInit {
   myPositionToOSMResult(position: MapMarker) {
     this.myPositionOSM = {
       osm_id: 0,
-      display_name: 'Ma position actuel',
-      name: 'Ma position actuel',
+      display_name: position.label,
+      name: position.label,
       lon: position.longitude,
       lat: position.latitude,
       type: 'place',

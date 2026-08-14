@@ -8,6 +8,7 @@ import { Capacitor } from '@capacitor/core';
 import * as turf from '@turf/turf';
 import { LocalisationService } from '../service/localisation.service';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab3',
@@ -28,7 +29,8 @@ export class Tab3Page {
 
   constructor(
     private localisation: LocalisationService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private translate: TranslateService
   ) {
     const theme = localStorage.getItem('theme');
     if (theme == 'dark') {
@@ -154,7 +156,7 @@ export class Tab3Page {
         this.myPosition = {
           longitude: position.coords.longitude,
           latitude: position.coords.latitude,
-          label: 'Vous etes ici',
+          label: this.translate.instant('TAB3.YOUR_POSITION'),
         };
         this.mySpeed = position.coords.speed ?? 0;
         this.addMarker(this.myPosition, '#e74c3c');
@@ -162,7 +164,7 @@ export class Tab3Page {
         const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
         if (!this.localisation.isInMahajanga(this.myPosition)) {
-          this.showToast('Vous êtes en dehors de la ville de Mahajanga.');
+          this.showToast(this.translate.instant('TAB3.YOU_NOT_IN_MAHAJANGA'));
           return;
         }
 
@@ -180,9 +182,7 @@ export class Tab3Page {
       },
       (error) => {
         this.haveGPSPermission = false;
-        this.showToast(
-          'Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.'
-        );
+        this.showToast(this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD'));
       },
       {
         enableHighAccuracy: true,
@@ -232,7 +232,7 @@ export class Tab3Page {
       this.localisation.savePosition(this.myPosition);
     } else {
       this.showToast(
-        'Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.'
+        this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD')
       );
     }
   }

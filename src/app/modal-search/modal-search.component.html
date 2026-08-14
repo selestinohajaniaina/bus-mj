@@ -3,32 +3,29 @@
     <ion-content class="ion-padding">
       <ion-img src="assets/map.gif" />
 
-      <ion-title>RECHERCHER UN ENDROIT</ion-title>
+      <ion-title>{{ 'MODAL_SEARCH.TITLE' | translate }}</ion-title>
 
-      <ion-text color="medium">
-        Recherchez un lieu, puis enregistrez les arrêts de bus les plus proches
-        pour retrouver facilement votre bus.
-      </ion-text>
+      <ion-text color="medium">{{ 'MODAL_SEARCH.SUB_TITLE' | translate }}</ion-text>
 
       <ion-text color="warning">
         <ion-icon name="warning"></ion-icon>
-        Une connexion Internet est requise pour rechercher des lieux.
+        {{ 'MODAL_SEARCH.TEXT_WARNING' | translate }}
       </ion-text>
 
       <div class="input-search">
-        <ion-input type="search" placeholder="Adresse ou lieu à Majunga" [(ngModel)]="querySearch"><ion-icon
+        <ion-input type="search" placeholder="{{ 'MODAL_CHOOSE.INPUT_PLACE' | translate }}" [(ngModel)]="querySearch"><ion-icon
             name="search-outline" slot="start"></ion-icon></ion-input>
       </div>
       <ion-button expand="block" shape="round" (click)="find()">
-        <ion-text>Lancer la rechercher</ion-text>
+        <ion-text>{{ 'TAB2.RUN' | translate }}</ion-text>
         <ion-icon aria-hidden="true" name="search" slot="end"></ion-icon>
       </ion-button>
 
       <div class="contener">
-        <ion-title size="small" color="medium">Resultats de votre recherche ({{ placeResultLength }}):</ion-title>
+        <ion-title size="small" color="medium">{{ 'MODAL_SEARCH.SEARCH_RESULT' | translate: { placeResultLength: placeResultLength } }}</ion-title>
         <div class="spin" *ngIf="chargeShow == true">
           <ion-spinner name="circles"></ion-spinner>
-          <ion-label id="label">Recherche en cour ...</ion-label>
+          <ion-label id="label">{{ 'MODAL_SEARCH.LOADING' | translate }}</ion-label>
         </div>
 
         @if(placeResult) {
@@ -39,12 +36,12 @@
             <p>
               <ion-badge color="success">{{ p.display_distance }}</ion-badge>
               @if( p.nearStopLength > 0 ) {
-              {{ p.nearStopLength }} Arret(s) proche } @else { Arret bus }
+              {{ p.nearStopLength }} {{ 'BUS.NEAR_STOPS' | translate }} } @else { {{ 'BUS.BUS_STOP' | translate }} }
             </p>
             <div class="btn-action">
               <ion-button shape="round" size="small" (click)="afficherSurCarte(p); modalSearch.dismiss()">
                 <ion-icon name="location" slot="start" size="small"></ion-icon>
-                <ion-text>Afficher</ion-text>
+                <ion-text>{{ 'MAP.SHOW' | translate }}</ion-text>
               </ion-button>
               @if( p.nearStopLength > 0 ) {
               <ion-button *ngIf="isSaved(p)" shape="round" size="small" class="save" (click)="unSave(p)">
@@ -59,7 +56,7 @@
         </ion-card>
         @if(placeResult.length == 0 && chargeShow == false) {
         <ion-title size="small" color="medium">
-          <i>Aucun resultat pour « {{ querySearch }} »</i>
+          <i>{{ 'MODAL_SEARCH.NO_RESULTS' | translate: { querySearch: querySearch } }}</i>
         </ion-title>
         } }
       </div>

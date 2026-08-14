@@ -9,32 +9,29 @@
     <ion-content class="ion-padding">
       <ion-img src="assets/map.gif" />
 
-      <ion-title>RECHERCHER UN LIEU ENREGISTRÉ</ion-title>
+      <ion-title>{{ 'MODAL_CHOOSE.TITLE' | translate }}</ion-title>
 
       <ion-text color="medium">
-        Recherchez un lieu enregistré pour afficher votre itinéraire.
+        {{ 'MODAL_CHOOSE.SUB_TITLE' | translate }}
       </ion-text>
 
       <div class="input-search">
         <ion-input
           type="search"
-          placeholder="Adresse ou lieu à Mahajanga"
+          placeholder="{{ 'MODAL_CHOOSE.INPUT_PLACE' | translate }}"
           [(ngModel)]="querySearch"
           ><ion-icon name="search-outline" slot="start"></ion-icon
         ></ion-input>
       </div>
 
       @if (isStorageEmpty) {
-      <ion-text size="small"
-        >Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis
-        la page de recherche.</ion-text
-      >
+      <ion-text size="small">{{ 'MODAL_CHOOSE.TEXT_EMPTY' | translate }}</ion-text>
       <ion-button
         expand="block"
         shape="round"
         (click)="goToSearch(); modalChoose.dismiss()"
       >
-        <ion-text>Accéder à la recherche</ion-text>
+        <ion-text>{{ 'MODAL_CHOOSE.GO_TO_SEARCH' | translate }}</ion-text>
         <ion-icon
           aria-hidden="true"
           name="chevron-forward-outline"
@@ -70,7 +67,7 @@
           <p>
             <ion-badge color="success">{{ p.display_distance }}</ion-badge>
             @if( p.nearStopLength > 0 ) {
-            {{ p.nearStopLength }} Arret(s) proche } @else { Arret bus }
+            {{ p.nearStopLength }} {{ 'BUS.NEAR_STOPS' | translate }} } @else { {{ 'BUS.BUS_STOP' | translate }} }
           </p>
         </ion-card-content>
       </ion-card>

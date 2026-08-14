@@ -1,23 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="warning">
-    <ion-title>Paramètre</ion-title>
+    <ion-title>{{ 'TAB4.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="warning">
-      <ion-title size="large">Paramètre</ion-title>
+      <ion-title size="large">{{ 'TAB4.TITLE' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-list lines="none">
     <ion-item>
       <h1>Bus Nakay <ion-badge color="light">v2.0</ion-badge></h1>
-      <p>
-        Application dédiée à la recherche et à l’optimisation des trajets en
-        transports publics à Majunga.
-      </p>
+      <p>{{ 'TAB4.SUB_TITLE' | translate }}</p>
     </ion-item>
     <ion-item>
       <ion-icon name="moon-outline" slot="start"></ion-icon>
@@ -25,13 +22,13 @@
         [(ngModel)]="paletteToggle"
         (ionChange)="toggleChange($event)"
         justify="space-between"
-        >Theme sombre</ion-toggle
+        >{{ 'TAB4.DARK_MODE' | translate }}</ion-toggle
       >
     </ion-item>
 
     <ion-item>
       <ion-icon name="language-outline" slot="start"></ion-icon>
-      Langue d'affichage
+      {{ 'TAB4.LANGUAGE' | translate }}
       <ion-select slot="end" value="fr">
         <ion-select-option value="mg">🇲🇬 Malagasy</ion-select-option>
         <ion-select-option value="fr">🇫🇷 Francais</ion-select-option>
@@ -43,14 +40,14 @@
 
     <ion-item routerLink="/saved">
       <ion-icon name="bookmarks-outline" slot="start"></ion-icon>
-      Lieux enregistrés
+      {{ 'TAB4.PLACE_SAVED' | translate }}
       <ion-note slot="end">({{ savedPlacesCount }})</ion-note>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
 
     <ion-item routerLink="/history">
       <ion-icon name="time-outline" slot="start"></ion-icon>
-      Historique des recherches
+      {{ 'TAB4.HISTORY' | translate }}
       <ion-note slot="end">({{ savedHistoryCount }})</ion-note>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>

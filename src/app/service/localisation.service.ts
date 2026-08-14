@@ -2,19 +2,20 @@ import { Injectable } from '@angular/core';
 import { Coordinates } from '../interface/Map';
 import * as turf from '@turf/turf';
 import { findStopAll } from 'bus-mj';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalisationService {
   private lSMPId: string = "busNakayMP";
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   getDisplayDistance(distance: number): string {
     if (distance >= 1000) {
-      return `${(distance / 1000).toFixed(1)} km`;
+      return `${(distance / 1000).toFixed(1)} ${this.translate.instant('KEY_WORDS.KM')}`;
     }
-    return `${Math.round(distance)} m`;
+    return `${Math.round(distance)} ${this.translate.instant('KEY_WORDS.M')}`;
   }
 
   // verification d'arrondissement de la position dans la ville de Mahajanga

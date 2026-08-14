@@ -4,6 +4,7 @@ import { StorageService } from '../service/storage.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SearchHistory } from '../interface/bus';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-saved',
@@ -28,7 +29,12 @@ export class SavedPage implements OnInit {
     }
   }
 
-  constructor(private storage: StorageService, private alert: AlertController, private router: Router) {}
+  constructor(
+    private storage: StorageService,
+    private alert: AlertController,
+    private router: Router,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.loadPlaces();
@@ -40,9 +46,7 @@ export class SavedPage implements OnInit {
   }
 
   isSaved(place: OSMResult): boolean {
-    return this.storage.getAllMyPlaces().some(
-      p => p.osm_id === place.osm_id
-    );
+    return this.storage.getAllMyPlaces().some((p) => p.osm_id === place.osm_id);
   }
 
   save(place: OSMResult) {
@@ -55,23 +59,23 @@ export class SavedPage implements OnInit {
 
   async clearSearch() {
     const alert = await this.alert.create({
-      header: 'Confirmation',
-      message: 'Voulez-vous vraiment supprimer tous les lieux enregistrés ?',
+      header: this.translate.instant('ALERT.CONFIRMATION'),
+      message: this.translate.instant('ALERT.DELETE_PLACE'),
       buttons: [
         {
-          text: 'Annuler',
+          text: this.translate.instant('ALERT.CANCEL'),
           role: 'cancel',
-          cssClass: 'secondary'
+          cssClass: 'secondary',
         },
         {
-          text: 'Supprimer',
+          text: this.translate.instant('ALERT.DELETE'),
           handler: () => {
             this.storage.clearMyPlaces();
             this.loadPlaces();
             this.addToHistory();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -87,9 +91,8 @@ export class SavedPage implements OnInit {
       id: this.storage.getHistoryId(),
       display_name: 'Lieux enregistrés',
       description: 'Vous avez vidé les lieux enregistrés',
-      saved_at: new Date().toISOString()
+      saved_at: new Date().toISOString(),
     };
     this.storage.addHistory(history);
   }
-
 }

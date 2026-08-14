@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="warning">
-    <ion-title>Mes lieux enregistrés</ion-title>
+    <ion-title>{{ 'SAVED.TITLE' | translate }}</ion-title>
     <ion-back-button slot="start"></ion-back-button>
 
     <ion-buttons slot="end">
@@ -12,14 +12,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-text color="medium">
-    Les lieux que vous avez enregistrés pour un accès rapide et facile.
-  </ion-text>
+  <ion-text color="medium"> {{ 'SAVED.SUB_TITLE' | translate }} </ion-text>
 
   <div class="input-search">
     <ion-input
       type="search"
-      placeholder="Adresse ou lieu à Mahajanga"
+      placeholder="{{ 'MODAL_CHOOSE.INPUT_PLACE' | translate }}"
       [(ngModel)]="querySearch"
       ><ion-icon name="search-outline" slot="start"></ion-icon
     ></ion-input>
@@ -31,8 +29,8 @@
       <ion-text>{{ p.display_name }}</ion-text>
       <p>
         <ion-badge color="success">{{ p.display_distance }}</ion-badge>
-        @if( p.nearStopLength > 0 ) { {{ p.nearStopLength }} Arret(s) proche }
-        @else { Arret bus }
+        @if( p.nearStopLength > 0 ) { {{ p.nearStopLength }} {{ 'BUS.NEAR_STOPS'
+        | translate }} } @else { {{ 'BUS.BUS_STOP' | translate }} }
       </p>
       <div class="btn-action">
         @if( p.nearStopLength > 0 ) {
@@ -66,20 +64,18 @@
   @if(placeResult.length == 0 && !isStorageEmpty) {
   <div class="empty">
     <ion-title size="small" color="medium">
-      <i>Aucun resultat trouvée pour « {{ querySearch }} »</i>
+      <i>
+        {{ 'MODAL_SEARCH.NO_RESULTS' | translate: { querySearch: querySearch }
+        }}
+      </i>
     </ion-title>
   </div>
   } @if (isStorageEmpty) {
-  <ion-text size="small"
-    >Aucun endroit enregistré. Vous devez d'abord en enregistrer un depuis la
-    page de recherche.</ion-text
-  >
-  <ion-button
-    expand="block"
-    shape="round"
-    (click)="goToSearch()"
-  >
-    <ion-text>Accéder à la recherche</ion-text>
+  <ion-text size="small">
+    {{ 'MODAL_SEARCH.NO_RESULTS' | translate: { querySearch: querySearch } }}
+  </ion-text>
+  <ion-button expand="block" shape="round" (click)="goToSearch()">
+    <ion-text>{{ 'SAVED.COME_TO_SEARCH' | translate }}</ion-text>
     <ion-icon
       aria-hidden="true"
       name="chevron-forward-outline"
