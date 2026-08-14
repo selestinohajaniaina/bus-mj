@@ -29,7 +29,7 @@
     <ion-item>
       <ion-icon name="language-outline" slot="start"></ion-icon>
       {{ 'TAB4.LANGUAGE' | translate }}
-      <ion-select slot="end" value="fr">
+      <ion-select slot="end" [value]="langPalette" (ionChange)="chooseLangPalette($event.detail.value)">
         <ion-select-option value="mg">🇲🇬 Malagasy</ion-select-option>
         <ion-select-option value="fr">🇫🇷 Francais</ion-select-option>
         <ion-select-option value="en">🇬🇧 English</ion-select-option>

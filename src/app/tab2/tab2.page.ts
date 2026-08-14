@@ -191,7 +191,7 @@ export class Tab2Page {
     this.result = uniqueBus;
 
     if (this.result.length === 0) {
-      this.showToast('Auccun resultat trouvé...');
+      this.showToast(this.translate.instant('TAB2.NO_RESULTS'));
     } else {
       // ajout au hitorique de recherche
       const history: SearchHistory = {

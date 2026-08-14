@@ -1,0 +1,124 @@
+{
+  "KEY_WORDS": {
+    "AND": "sy",
+    "FILL_ALL": "Fenoy daholo.",
+    "KM": "km",
+    "M": "m",
+    "MIN": "min",
+    "H": "ora"
+  },
+  "ALERT": {
+    "CONFIRM": "Alefa",
+    "CANCEL": "Averina",
+    "CHARGEMENT": "Eo am-piandrasana…",
+    "CONFIRMATION": "Fanamafisana",
+    "DELETE_PLACE": "Hofafaina daholo ve ny toerana rehetra notahirizina?",
+    "DELETE_HISTORY": "Hofafaina daholo ve ny tahiry?",
+    "DELETE": "Fafaina"
+  },
+  "BUS": {
+    "CARACTERISTIC": "Famantarana mila fantatra amin'ilay fiara fitateram-bahoaka",
+    "COLOR_BUS": "Lokony",
+    "BAND_BUS": "Tsipika eo amin'ny sisiny",
+    "COLOR_BOARD": "Lokon'ny tabilao",
+    "OPERATOR": "Kaoperativa",
+    "STOP": "Fijanonana",
+    "STOPS": "Fijanonana",
+    "NEAR_STOPS": "Fijanonana akaiky",
+    "BUS_STOP": "Fijanonana",
+    "ROUTE": "Làlana",
+    "ROUTES": "Làlana",
+    "OPERATORS": "Kaoperativa",
+    "OPERATORS_ALL": "KAOPERATIVA REHETRA",
+    "ROUTES_BUS": "Làlan'ny fiara fitateram-bahoaka",
+    "LINE_INFO": "Misy fijanonana {{count}}, manomboka any amin'ny «{{start}}» ka hatrany amin'ny «{{end}}».",
+    "NO_DATA": "Tsy mbola feno ny angona. Manasa anao hanampy anay."
+  },
+  "MAP": {
+    "VIEW_MAP": "Sarintany",
+    "SHOW": "Aseho"
+  },
+  "COLOR": {
+    "RED": "mena",
+    "BLUE": "manga",
+    "GREEN": "maitso",
+    "YELLOW": "mavo",
+    "ORANGE": "volomboasary",
+    "WHITE": "fotsy",
+    "GRAY": "volondavenona",
+    "ALL": "loko rehetra"
+  },
+  "TAB1": {
+    "SUB_TITLE": "Tsy manana aterineto? Tsy olana izany eh! Bus Nakay mandeha ihany!",
+    "BEGIN": "Hitady làlana"
+  },
+  "TAB2": {
+    "TITLE": "Hivezivezy",
+    "SUB_TITLE": "Safidio ny fijanonana tianao hanombohana. Amoray ny dianao miaraka amin'ny Bus Nakay",
+    "SEARCH_BY_STOP": "Mitady / Fijanonana",
+    "TO_SEARCH_BY_STOP": "Hitady fijanonana",
+    "SEARCH_BY_PLACE": "Mitady / Toerana",
+    "TO_SEARCH_BY_PLACE": "Hitady toerana",
+    "RUN": "Alefa ny fitadiavana",
+    "GET_THIS_BUS": "Makà amin'ireto ({{ count }})",
+    "STOP_BEGIN": "Fijanonana hiaingàna",
+    "STOP_END": "Fijanonana hialàna",
+    "PLACE_BEGIN": "Toerana hiaingàna",
+    "PLACE_END": "Toerana haleha",
+    "NO_BUS_FOUND": "Tsy misy fitaterana mivantana amin'ny «{{ departOld }}» sy «{{ finOld }}». Misafidiana fijanonana hafa.",
+    "NO_RESULTS": "Tsy nahitana valiny…",
+    "FILL_ALL_FIELDS": "Safidio ny fiaingana sy ny haleha.",
+    "STOP_MUST_DIFFERENT": "Aza ampitovizina.",
+    "PLACE_MUST_DIFFERENT": "Aza ampitovizina ireo toerana ireo."
+  },
+  "TAB3": {
+    "TITLE": "Tsy fantatrao ve izay hiaingàna?",
+    "SUB_TITLE": "Aza manahy, safidio fotsiny ny fijanonana akaiky anao indrindra!",
+    "YOU_NOT_IN_MAHAJANGA": "Any ivelan'ny tanànan'i Mahajanga ianao izany.",
+    "IMPOSSIBLE_TO_GET_COORD": "Tsy azo ny toerana misy anao. Hamarino ny fikirana momba ny toerana misy anao (GPS).",
+    "YOUR_POSITION": "Eto ianao"
+  },
+  "TAB4": {
+    "TITLE": "Fikirana",
+    "SUB_TITLE": "Rindranasa natokana hitadiavana sy hanatsarana ny dian'ny fitateram-bahoaka eto Mahajanga.",
+    "DARK_MODE": "Maody maizina",
+    "LANGUAGE": "Fiteny",
+    "PLACE_SAVED": "Toerana voatahiry",
+    "HISTORY": "Tahiry natao"
+  },
+  "SAVED": {
+    "TITLE": "Toerana voatahiriziko",
+    "SUB_TITLE": "Toerana voatahiry mba hahafahanao miditra amin'izany haingana sy mora.",
+    "COME_TO_SEARCH": "Hitady toerana"
+  },
+  "HISTORY": {
+    "TITLE": "Ireo tahiry nataoko",
+    "SUB_TITLE": "Tahirin'ireo fikarohana toerana nataonao.",
+    "INPUT_KEY": "Lohateny na teny nikarohina",
+    "NO_HISTORY": "Tsy misy tahiry mihintsy."
+  },
+  "MODAL_BUS": {
+    "YOUR_ROUTE": "Ny làlanao",
+    "GET_BUS_AT": "Raiso ilay fitateram-bahoaka eo ",
+    "GET_OUT_AT": "ary midìna eo "
+  },
+  "MODAL_CHOOSE": {
+    "TITLE": "HIKAROKA TOERANA VOATAHIRY",
+    "SUB_TITLE": "Mitadiava ao amin'ny toerana voatahiry mba hampisehoana ny làlanao.",
+    "INPUT_PLACE": "Adiresy na toerana eto Mahajanga",
+    "TEXT_EMPTY": "Tsy mbola misy toerana voatahiry. Mitadiava toerana aloha, ary tahirizo.",
+    "GO_TO_SEARCH": "Hitady toerana",
+    "MY_POSITION": "Misy ahy zao"
+  },
+  "MODAL_SEARCH": {
+    "TITLE": "HITADY TOERANA",
+    "SUB_TITLE": "Mitadiava toerana iray, avy eo tehirizo ireo fijanonana akaiky indrindra mba hahitanao fiara fitateram-bahoaka tokony raisinao.",
+    "TEXT_WARNING": "Mila manana aterineto ny fitadiavana toerana.",
+    "SEARCH_RESULT": "Valin'ny fikarohana ({{ placeResultLength }})",
+    "LOADING": "Eo am-pitadiavana…",
+    "NO_RESULTS": "Tsy nahitana valiny ny «{{ querySearch }}»",
+    "NO_INTERNET": "Tsy tonga aty aminay ny fitadiavana / tsy manana aterineto",
+    "SAVE": "Voatahiry ny toerana: {{name}}",
+    "UNSAVE": "Voafafa ny toerana: {{name}}"
+  }
+}
