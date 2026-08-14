@@ -94,10 +94,11 @@ export class SavedPage implements OnInit {
 
   addToHistory() {
     const history: SearchHistory = {
-      type: 'OSMResultStored',
+      type: 'ACTION',
       id: this.storage.getHistoryId(),
-      display_name: 'Lieux enregistrés',
-      description: 'Vous avez vidé les lieux enregistrés',
+      display_name: 'TAB4.PLACE_SAVED',
+      description: 'SAVED.CLEAR',
+      key_words: [],
       saved_at: new Date().toISOString(),
     };
     this.storage.addHistory(history);

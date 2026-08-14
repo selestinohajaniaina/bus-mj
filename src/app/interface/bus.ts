@@ -29,9 +29,10 @@ export interface Stop {
 }
 
 export interface SearchHistory {
-  type: string,
   id: number,
+  type: "SEARCH" | "STOP" | "PLACE" | "ACTION",
   display_name: string,
   description: string,
+  key_words: string[],
   saved_at: string
 }

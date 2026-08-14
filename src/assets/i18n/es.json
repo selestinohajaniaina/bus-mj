@@ -89,13 +89,20 @@
   "SAVED": {
     "TITLE": "Mis lugares guardados",
     "SUB_TITLE": "Lugares que ha guardado para acceder a ellos de forma rápida y sencilla.",
+    "CLEAR": "Has borrado tus lugares guardados",
     "COME_TO_SEARCH": "Ir a la búsqueda"
   },
   "HISTORY": {
     "TITLE": "Mi historial",
     "SUB_TITLE": "Historial de sus trayectos y búsquedas de lugares.",
     "INPUT_KEY": "Título o palabra clave de búsqueda",
-    "NO_HISTORY": "No hay historial de búsqueda."
+    "NO_HISTORY": "No hay historial de búsqueda.",
+    "DISPLAY_NAME": "{{begin}} y {{end}}",
+    "DESCRIPTION_PLACE": "Has buscado una ruta entre dos lugares: {{begin}} y {{end}}",
+    "DESCRIPTION_STOP": "Has buscado una ruta entre dos paradas: {{begin}} y {{end}}",
+    "SEARCH_DISPLAY_NAME": "«{{begin}}»",
+    "SEARCH_DESCRIPTION_PLACE": "Has buscado lugares utilizando la palabra clave: «{{begin}}»",
+    "CLEAR": "Has borrado tu historial de búsqueda."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Su trayecto",

@@ -20,7 +20,7 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
         prefix: './assets/i18n/',
         suffix: '.json'
       }),
-      fallbackLang: 'frm'
+      fallbackLang: 'fr'
     })
   ],
   bootstrap: [AppComponent],

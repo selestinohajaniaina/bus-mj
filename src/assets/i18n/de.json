@@ -89,13 +89,20 @@
   "SAVED": {
     "TITLE": "Meine gespeicherten Orte",
     "SUB_TITLE": "Orte, die Sie für einen schnellen und einfachen Zugriff gespeichert haben.",
+    "CLEAR": "Sie haben Ihre gespeicherten Orte gelöscht",
     "COME_TO_SEARCH": "Zur Suche"
   },
   "HISTORY": {
     "TITLE": "Mein Verlauf",
     "SUB_TITLE": "Verlauf Ihrer Fahrten und Ortssuchen.",
     "INPUT_KEY": "Titel oder Suchbegriff",
-    "NO_HISTORY": "Kein Suchverlauf."
+    "NO_HISTORY": "Kein Suchverlauf.",
+    "DISPLAY_NAME": "{{begin}} und {{end}}",
+    "DESCRIPTION_PLACE": "Sie haben nach einer Route zwischen zwei Orten gesucht: {{begin}} und {{end}}",
+    "DESCRIPTION_STOP": "Sie haben nach einer Route zwischen zwei Haltestellen gesucht: {{begin}} und {{end}}",
+    "SEARCH_DISPLAY_NAME": "„{{begin}}“",
+    "SEARCH_DESCRIPTION_PLACE": "Sie haben nach Orten mit dem Suchbegriff „{{begin}}“ gesucht",
+    "CLEAR": "Sie haben Ihren Suchverlauf gelöscht."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Ihre Route",

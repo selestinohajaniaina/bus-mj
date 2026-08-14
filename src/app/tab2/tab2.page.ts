@@ -96,10 +96,11 @@ export class Tab2Page {
       } else {
         // ajout au hitorique de recherche
         const history: SearchHistory = {
-          type: 'Bus',
+          type: 'PLACE',
           id: this.storage.getHistoryId(),
-          display_name: `${this.depart} et ${this.fin}`,
-          description: `Vous avez recherché un trajet entre deux arrêts: ${this.depart} et ${this.fin}`,
+          display_name: 'HISTORY.DISPLAY_NAME',
+          key_words: [this.depart, this.fin],
+          description: 'HISTORY.DESCRIPTION_STOP',
           saved_at: new Date().toISOString(),
         };
         this.storage.addHistory(history);
@@ -195,10 +196,11 @@ export class Tab2Page {
     } else {
       // ajout au hitorique de recherche
       const history: SearchHistory = {
-        type: 'Bus',
+        type: 'PLACE',
         id: this.storage.getHistoryId(),
-        display_name: `${begin.name} et ${end.name}`,
-        description: `Vous avez recherché un trajet entre deux lieux: ${begin.name} et ${end.name}`,
+        display_name: 'HISTORY.DISPLAY_NAME',
+        key_words: [begin.name, end.name],
+        description: 'HISTORY.DESCRIPTION_PLACE',
         saved_at: new Date().toISOString(),
       };
       this.storage.addHistory(history);

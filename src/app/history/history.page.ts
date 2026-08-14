@@ -34,6 +34,9 @@ export class HistoryPage implements OnInit {
   ) {}
 
   ngOnInit() {
+  }
+  
+  ionViewWillEnter() {
     this.loadHistory();
   }
 
@@ -73,13 +76,21 @@ export class HistoryPage implements OnInit {
 
   addToHistory() {
     const history: SearchHistory = {
-      type: 'History',
+      type: 'ACTION',
       id: this.storage.getHistoryId(),
-      display_name: 'Historique',
-      description: 'Vous avez vidé les historiques de recherche.',
+      display_name: 'TAB4.HISTORY',
+      description: 'HISTORY.CLEAR',
+      key_words: [],
       saved_at: new Date().toISOString(),
     };
     this.storage.addHistory(history);
+  }
+
+  formatHistory(history: SearchHistory) {
+    const display_name = this.translate.instant(history.display_name, {begin: history.key_words[0], end: history.key_words[1] });
+    const description = this.translate.instant(history.description, {begin: history.key_words[0], end: history.key_words[1] });
+    const datetime = this.formatDate(history.saved_at);
+    return {display_name, description, datetime};
   }
 
   formatDate(dateString: string): string {

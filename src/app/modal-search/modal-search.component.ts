@@ -84,10 +84,11 @@ export class ModalSearchComponent implements OnInit {
             if (result.length > 0) {
               // ajout au hitorique de recherche
               const history: SearchHistory = {
-                type: 'Search',
+                type: 'SEARCH',
                 id: this.storage.getHistoryId(),
-                display_name: `« ${this.querySearch} »`,
-                description: `Vous avez recherché des lieux avec le mot-clé : « ${this.querySearch} »`,
+                display_name: 'HISTORY.SEARCH_DISPLAY_NAME',
+                description: 'HISTORY.SEARCH_DESCRIPTION_PLACE',
+                key_words: [this.querySearch],
                 saved_at: new Date().toISOString(),
               };
               this.storage.addHistory(history);

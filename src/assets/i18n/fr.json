@@ -89,13 +89,20 @@
   "SAVED": {
     "TITLE": "Mes lieux enregistrés",
     "SUB_TITLE": "Les lieux que vous avez enregistrés pour un accès rapide et facile.",
+    "CLEAR": "Vous avez vidé les lieux enregistrés",
     "COME_TO_SEARCH": "Accéder à la recherche"
   },
   "HISTORY": {
     "TITLE": "Mon historique",
     "SUB_TITLE": "Historique de vos trajets et de vos recherches de lieux.",
     "INPUT_KEY": "Titre ou mot-clé de recherche",
-    "NO_HISTORY": "Aucun historique de recherche."
+    "NO_HISTORY": "Aucun historique de recherche.",
+    "DISPLAY_NAME": "{{begin}} et {{end}}",
+    "DESCRIPTION_PLACE": "Vous avez recherché un trajet entre deux lieux: {{begin}} et {{end}}",
+    "DESCRIPTION_STOP": "Vous avez recherché un trajet entre deux arrêts: {{begin}} et {{end}}",
+    "SEARCH_DISPLAY_NAME": "« {{begin}} »",
+    "SEARCH_DESCRIPTION_PLACE": "Vous avez recherché des lieux avec le mot-clé : « {{begin}} »",
+    "CLEAR": "Vous avez vidé les historiques de recherche."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Votre trajet",

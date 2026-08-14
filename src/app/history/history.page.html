@@ -26,10 +26,10 @@
 
   <ion-card *ngFor="let h of historyResult; let i = index">
     <ion-card-content class="desc">
-      <ion-card-title>{{ h.display_name }}</ion-card-title>
-      <ion-text>{{ h.description }}</ion-text>
+      <ion-card-title>{{ formatHistory(h).display_name }}</ion-card-title>
+      <ion-text>{{ formatHistory(h).description }}</ion-text>
       <br />
-      <ion-text>{{ formatDate(h.saved_at) }}</ion-text>
+      <ion-text>{{ formatHistory(h).datetime }}</ion-text>
     </ion-card-content>
   </ion-card>
 

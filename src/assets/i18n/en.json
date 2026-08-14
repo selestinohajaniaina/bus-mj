@@ -89,13 +89,20 @@
   "SAVED": {
     "TITLE": "My saved places",
     "SUB_TITLE": "Places you have saved for quick and easy access.",
+    "CLEAR": "You have cleared your saved places",
     "COME_TO_SEARCH": "Go to search"
   },
   "HISTORY": {
     "TITLE": "My history",
     "SUB_TITLE": "History of your trips and place searches.",
     "INPUT_KEY": "Search title or keyword",
-    "NO_HISTORY": "No search history."
+    "NO_HISTORY": "No search history.",
+    "DISPLAY_NAME": "{{begin}} and {{end}}",
+    "DESCRIPTION_PLACE": "You searched for a route between two places: {{begin}} and {{end}}",
+    "DESCRIPTION_STOP": "You searched for a route between two stops: {{begin}} and {{end}}",
+    "SEARCH_DISPLAY_NAME": "“{{begin}}”",
+    "SEARCH_DESCRIPTION_PLACE": "You searched for places using the keyword: “{{begin}}”",
+    "CLEAR": "You have cleared your search history."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Your route",

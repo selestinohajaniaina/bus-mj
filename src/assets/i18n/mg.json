@@ -89,13 +89,20 @@
   "SAVED": {
     "TITLE": "Toerana voatahiriziko",
     "SUB_TITLE": "Toerana voatahiry mba hahafahanao miditra amin'izany haingana sy mora.",
+    "CLEAR": "Nofafainao ireo toerana voatahiry.",
     "COME_TO_SEARCH": "Hitady toerana"
   },
   "HISTORY": {
     "TITLE": "Ireo tahiry nataoko",
     "SUB_TITLE": "Tahirin'ireo fikarohana toerana nataonao.",
     "INPUT_KEY": "Lohateny na teny nikarohina",
-    "NO_HISTORY": "Tsy misy tahiry mihintsy."
+    "NO_HISTORY": "Tsy misy tahiry mihintsy.",
+    "DISPLAY_NAME": "{{begin}} sy {{end}}",
+    "DESCRIPTION_PLACE": "Nitady làlana amin'ny toerana roa ianao: {{begin}} sy {{end}}",
+    "DESCRIPTION_STOP": "Nitady làlana amin'ny fijanonana roa ianao: {{begin}} sy {{end}}",
+    "SEARCH_DISPLAY_NAME": "«{{begin}}»",
+    "SEARCH_DESCRIPTION_PLACE": "Nitady toerana tamin'ny alalan'ny teny hoe «{{begin}}» ianao",
+    "CLEAR": "Namafa ireo tahiry nokarohina ianao."
   },
   "MODAL_BUS": {
     "YOUR_ROUTE": "Ny làlanao",
