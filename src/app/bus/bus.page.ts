@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { findBusDetailById } from 'bus-mj';
 import { Bus, Stop } from '../interface/bus';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bus',
@@ -16,7 +17,8 @@ export class BusPage implements OnInit {
   public stops: Stop[] = [];
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -27,22 +29,7 @@ export class BusPage implements OnInit {
   }
 
   colorOf(propriety: string) {
-    switch (propriety) {
-      case 'yellow':
-        return 'jaune';
-      case 'orange':
-        return 'orange';
-      case 'blue':
-        return 'bleu';
-      case 'green':
-        return 'vert';
-      case 'red':
-        return 'rouge';
-      case 'white':
-        return 'blanc';
-      default:
-        return "toute couleur";
-    }
+    return propriety ? this.translate.instant(`COLOR.${propriety.toUpperCase()}`) : this.translate.instant('COLOR.ALL');
   }
 
   ionColorOf(propriety: string) {

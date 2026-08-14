@@ -10,7 +10,7 @@
   "ALERT": {
     "CONFIRM": "Confirmer",
     "CANCEL": "Annuler",
-    "CHARGEMENT": "Chargement",
+    "CHARGEMENT": "Chargement ...",
     "CONFIRMATION": "Confirmation",
     "DELETE_PLACE": "Voulez-vous vraiment supprimer tous les lieux enregistrés ?",
     "DELETE_HISTORY": "Voulez-vous vraiment supprimer tous les historiques ?",
@@ -29,6 +29,7 @@
     "ROUTE": "Ligne(s)",
     "ROUTES": "Lignes",
     "OPERATORS": "Cooperative(s)",
+    "OPERATORS_ALL": "TOUS COOPERATIVE",
     "ROUTES_BUS": "Trajet du circulation",
     "LINE_INFO": "Il y a {{count}} arrêts connus sur cette ligne, du point de départ «{{start}}» jusqu'à «{{end}}».",
     "NO_DATA": "Les données ne sont pas encore complètes. Collaborez avec nous pour les améliorer."
@@ -45,7 +46,7 @@
     "ORANGE": "orange",
     "WHITE": "blanc",
     "GRAY": "gris",
-    "ALL": "toutes les couleurs"
+    "ALL": "toute couleur"
   },
   "TAB1": {
     "SUB_TITLE": "Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus, suivez votre trajet et naviguez sans connexion.",

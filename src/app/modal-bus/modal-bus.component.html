@@ -18,17 +18,17 @@
       <p class="name">{{ busDetail.tags.name }}</p>
       <ion-card>
         <ion-card-content>
-          <ion-card-title
-            >Caractéristiques à connaître sur ce bus:</ion-card-title
-          >
+          <ion-card-title>
+            {{ "BUS.CARACTERISTIC" | translate }}:
+          </ion-card-title>
           <div class="desc">
-            Couleur du bus:
+            {{ 'BUS.COLOR_BUS' | translate }}:
             <ion-badge [color]="ionColorOf(bus.tags.color)">{{
               colorOf(bus.tags.color)
             }}</ion-badge>
           </div>
           <div class="desc">
-            Couleur de la bande sur le côté:
+            {{ 'BUS.BAND_BUS' | translate }}:
             <ion-badge
               *ngFor="let c of bus.tags.band"
               [color]="ionColorOf(c)"
@@ -36,13 +36,13 @@
             >
           </div>
           <div class="desc">
-            Couleur de la plaque:
+            {{ 'BUS.COLOR_BOARD' | translate }}:
             <ion-badge [color]="ionColorOf(bus.tags.board || 'white')">{{
               colorOf(bus.tags.board || "")
             }}</ion-badge>
           </div>
           <div class="desc">
-            Operateur:
+            {{ 'BUS.OPERATOR' | translate }}:
             <ion-badge
               [style.background]="getOperatorColor(bus.tags.operator)"
               >{{ bus.tags.operator }}</ion-badge
@@ -52,12 +52,16 @@
       </ion-card>
 
       <p class="description ion-padding">
-        Vous prenez ce bus au <ion-text color="primary">{{ bus.members[0].label }}</ion-text> et vous descendez au
-        <ion-text color="primary">{{ bus.members[bus.members.length - 1].label }}</ion-text>
+        {{ 'MODAL_BUS.GET_BUS_AT' | translate }}
+        <ion-text color="primary">{{ bus.members[0].label }}</ion-text>
+        {{ 'MODAL_BUS.GET_OUT_AT' | translate }}
+        <ion-text color="primary">{{
+          bus.members[bus.members.length - 1].label
+        }}</ion-text>
       </p>
 
       <div class="arret">
-        <div>Votre Trajet:</div>
+        <div>{{ 'MODAL_BUS.YOUR_ROUTE' | translate }}:</div>
         <app-stop-list [StopList]="bus.members" />
       </div>
 

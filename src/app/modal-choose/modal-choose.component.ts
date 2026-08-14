@@ -139,4 +139,8 @@ export class ModalChooseComponent implements OnInit {
     return turf.distance(point1, point2, { units: 'meters' });
   }
 
+  displayDistance(distance: number): string {
+    return this.localisation.getDisplayDistance(distance);
+  }
+
 }

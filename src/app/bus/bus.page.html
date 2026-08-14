@@ -20,41 +20,40 @@
       <ion-card-title>{{ 'BUS.CARACTERISTIC' | translate }}:</ion-card-title>
       <div class="desc">
         {{ 'BUS.COLOR_BUS' | translate }}:
-        <ion-badge [color]="ionColorOf(bus.tags.color)"
-          >{{ colorOf(bus.tags.color) }}</ion-badge
-        >
+        <ion-badge [color]="ionColorOf(bus.tags.color)">
+          {{ colorOf(bus.tags.color) }}
+        </ion-badge>
       </div>
       <div class="desc">
         {{ 'BUS.BAND_BUS' | translate }}:
-        <ion-badge *ngFor="let c of bus.tags.band" [color]="ionColorOf(c)"
-          >{{ colorOf(c) }}</ion-badge
-        >
+        <ion-badge *ngFor="let c of bus.tags.band" [color]="ionColorOf(c)">
+          {{ colorOf(c) }}
+        </ion-badge>
       </div>
       <div class="desc">
         {{ 'BUS.COLOR_BOARD' | translate }}:
-        <ion-badge [color]="ionColorOf(bus.tags.board || 'white')"
-          >{{ colorOf(bus.tags.board || '') }}</ion-badge
-        >
+        <ion-badge [color]="ionColorOf(bus.tags.board || 'white')">
+          {{ colorOf(bus.tags.board || '') }}
+        </ion-badge>
       </div>
       <div class="desc">
         {{ 'BUS.OPERATOR' | translate }}:
-        <ion-badge [style.background]="getOperatorColor(bus.tags.operator)"
-          >{{ bus.tags.operator }}</ion-badge
-        >
+        <ion-badge [style.background]="getOperatorColor(bus.tags.operator)">
+          {{ bus.tags.operator }}
+        </ion-badge>
       </div>
     </ion-card-content>
   </ion-card>
   <div class="arret" *ngIf="stops && stops.length">
     <div class="bus-desc">
-      {{ 'BUS.LINE_INFO' | translate:{ count: stops.length, start: stops[0].label, end: stops[stops.length - 1].label } }}
+      {{ 'BUS.LINE_INFO' | translate:{ count: stops.length, start:
+      stops[0].label, end: stops[stops.length - 1].label } }}
     </div>
     <div>{{ 'BUS.ROUTES_BUS' | translate }}:</div>
     <app-stop-list [StopList]="stops" />
   </div>
   <div class="data_empty">
-    <i
-      >{{ 'BUS.NO_DATA' | translate }}</i
-    >
+    <i> {{ 'BUS.NO_DATA' | translate }} </i>
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">

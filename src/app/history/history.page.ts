@@ -39,6 +39,11 @@ export class HistoryPage implements OnInit {
 
   loadHistory() {
     this.historyResult = this.storage.getHistory();
+
+    this.historyResult.sort((a, b) => {
+      return new Date(b.saved_at).getTime() - new Date(a.saved_at).getTime();
+    });
+
     this.isStorageEmpty = this.historyResult.length > 0 ? false : true;
   }
 

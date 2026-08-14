@@ -29,12 +29,9 @@
       </svg>
     </div>
 
-    <div class="container" *ngIf="chargeShow==true">
-      <ion-spinner name="circles"></ion-spinner>
-      <ion-label id="label">{{ 'ALERT.CHARGEMENT' | translate }} ...</ion-label>
-    </div>
-
-    <p class="counter">{{ allCooperative.length }} {{ 'BUS.OPERATORS' | translate }}</p>
+    <p class="counter">
+      {{ allCooperative.length }} {{ 'BUS.OPERATORS' | translate }}
+    </p>
 
     <div class="cooperativelist">
       <ion-card>
@@ -42,7 +39,7 @@
           <ion-card-subtitle
             color="light"
             [style.background]="getOperatorColor('')"
-            >TOUS COOPERATIVE</ion-card-subtitle
+            >{{ 'BUS.OPERATORS_ALL' | translate }}</ion-card-subtitle
           >
           <div class="nbr-container">
             <h1>{{ allBus.length }}</h1>
@@ -71,6 +68,11 @@
     </div>
 
     <p class="counter">{{ allBus.length }} {{ 'BUS.ROUTE' | translate }}</p>
+
+    <div class="container" *ngIf="chargeShow==true">
+      <ion-spinner name="circles"></ion-spinner>
+      <ion-label id="label">{{ 'ALERT.CHARGEMENT' | translate }}</ion-label>
+    </div>
 
     <div class="buslist" *ngIf="chargeShow==false">
       <ion-card

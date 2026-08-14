@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Bus } from '../interface/bus';
 import { IonModal } from '@ionic/angular';
 import { findBusDetailById } from 'bus-mj';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-bus',
@@ -14,27 +15,14 @@ export class ModalBusComponent implements OnInit {
   @Input() trigger: string;
   public busDetail: Bus;
 
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
     this.busDetail = findBusDetailById(this.bus.id);
   }
 
   colorOf(propriety: string) {
-    switch (propriety) {
-      case 'yellow':
-        return 'jaune';
-      case 'blue':
-        return 'bleu';
-      case 'green':
-        return 'vert';
-      case 'red':
-        return 'rouge';
-      case 'white':
-        return 'blanc';
-      default:
-        return 'toute couleur';
-    }
+    return propriety ? this.translate.instant(`COLOR.${propriety.toUpperCase()}`) : this.translate.instant('COLOR.ALL');
   }
 
   ionColorOf(propriety: string) {

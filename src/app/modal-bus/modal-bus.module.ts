@@ -5,8 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { BusImgModule } from '../bus-img/bus-img.module';
 import { StopListModule } from '../stop-list/stop-list.module';
 import { MapsModule } from '../maps/maps.module';
-
-
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ModalBusComponent],
@@ -15,7 +14,8 @@ import { MapsModule } from '../maps/maps.module';
     IonicModule,
     BusImgModule,
     StopListModule,
-    MapsModule
+    MapsModule,
+    TranslatePipe
   ],
   exports: [ModalBusComponent]
 })

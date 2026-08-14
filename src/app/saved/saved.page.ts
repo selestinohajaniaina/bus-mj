@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SearchHistory } from '../interface/bus';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalisationService } from '../service/localisation.service';
 
 @Component({
   selector: 'app-saved',
@@ -33,7 +34,8 @@ export class SavedPage implements OnInit {
     private storage: StorageService,
     private alert: AlertController,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private localisation: LocalisationService
   ) {}
 
   ngOnInit() {
@@ -42,6 +44,11 @@ export class SavedPage implements OnInit {
 
   loadPlaces() {
     this.placeResult = this.storage.getAllMyPlaces();
+
+    this.placeResult.sort((a, b) => {
+      return new Date(b.saved_at).getTime() - new Date(a.saved_at).getTime();
+    });
+
     this.isStorageEmpty = this.placeResult.length > 0 ? false : true;
   }
 
@@ -94,5 +101,9 @@ export class SavedPage implements OnInit {
       saved_at: new Date().toISOString(),
     };
     this.storage.addHistory(history);
+  }
+
+  displayDistance(distance: number): string {
+    return this.localisation.getDisplayDistance(distance);
   }
 }
