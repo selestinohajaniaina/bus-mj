@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Bus } from '../interface/bus';
 import { findBusAll, findOperatorAll, findBusDetailByOperator } from 'bus-mj';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab1',
@@ -9,6 +8,7 @@ import { TranslateLoader, TranslateService } from '@ngx-translate/core';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
+  public allBusSource: Bus[];
   public allBus: Bus[];
   public allCooperative: string[];
   public chargeShow: boolean = true;
@@ -27,7 +27,8 @@ export class Tab1Page {
   constructor() {}
 
   ngOnInit() {
-    this.allBus = findBusAll();
+    this.allBusSource = findBusAll();
+    this.allBus = this.allBusSource;
     this.allCooperative = findOperatorAll();
     setTimeout(() => {
       this.chargeShow = this.allBus.length === 0 ? true : false;
@@ -36,6 +37,10 @@ export class Tab1Page {
 
   getBusByCooperative(coop: string) {
     return findBusDetailByOperator(coop).length;
+  }
+
+  getBusByOperator(operator: string) {
+    this.allBus = operator ? this.allBusSource.filter((op) => op.tags.operator === operator) : this.allBusSource;
   }
 
   getOperatorColor(operator: string): string {

@@ -34,7 +34,7 @@
     </p>
 
     <div class="cooperativelist">
-      <ion-card>
+      <ion-card (click)="getBusByOperator('')">
         <ion-card-content>
           <ion-card-subtitle
             color="light"
@@ -42,16 +42,16 @@
             >{{ 'BUS.OPERATORS_ALL' | translate }}</ion-card-subtitle
           >
           <div class="nbr-container">
-            <h1>{{ allBus.length }}</h1>
+            <h1>{{ allBusSource.length }}</h1>
             <div class="icon-text">
               <ion-icon name="flag-outline" size="large"></ion-icon>
-              <p>Lignes</p>
+              <p>{{ 'BUS.ROUTES' | translate }}</p>
             </div>
           </div>
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngFor="let coop of allCooperative; let i = index">
+      <ion-card *ngFor="let coop of allCooperative; let i = index" (click)="getBusByOperator(coop)">
         <ion-card-content>
           <ion-card-subtitle [style.background]="getOperatorColor(coop)"
             >{{ coop }}</ion-card-subtitle
