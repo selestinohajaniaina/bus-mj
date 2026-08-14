@@ -1,0 +1,124 @@
+{
+  "KEY_WORDS": {
+    "AND": "y",
+    "FILL_ALL": "Por favor, complete todos los campos.",
+    "KM": "km",
+    "M": "m",
+    "MIN": "min",
+    "H": "h"
+  },
+  "ALERT": {
+    "CONFIRM": "Confirmar",
+    "CANCEL": "Cancelar",
+    "CHARGEMENT": "Cargando…",
+    "CONFIRMATION": "Confirmación",
+    "DELETE_PLACE": "¿Está seguro de que desea eliminar todos los lugares guardados?",
+    "DELETE_HISTORY": "¿Está seguro de que desea eliminar todo el historial?",
+    "DELETE": "Eliminar"
+  },
+  "BUS": {
+    "CARACTERISTIC": "Características que debe conocer de este autobús",
+    "COLOR_BUS": "Color del autobús",
+    "BAND_BUS": "Color de la franja lateral",
+    "COLOR_BOARD": "Color de la placa",
+    "OPERATOR": "Operador",
+    "STOP": "Parada de autobús",
+    "STOPS": "Paradas",
+    "NEAR_STOPS": "Paradas cercanas",
+    "BUS_STOP": "Parada de autobús",
+    "ROUTE": "Línea(s)",
+    "ROUTES": "Líneas",
+    "OPERATORS": "Cooperativa(s)",
+    "OPERATORS_ALL": "TODAS LAS COOPERATIVAS",
+    "ROUTES_BUS": "Itinerario de la línea",
+    "LINE_INFO": "Hay {{count}} paradas conocidas en esta línea, desde el punto de partida «{{start}}» hasta «{{end}}».",
+    "NO_DATA": "Los datos aún no están completos. Colabore con nosotros para mejorarlos."
+  },
+  "MAP": {
+    "VIEW_MAP": "Ver en el mapa",
+    "SHOW": "Mostrar"
+  },
+  "COLOR": {
+    "RED": "rojo",
+    "BLUE": "azul",
+    "GREEN": "verde",
+    "YELLOW": "amarillo",
+    "ORANGE": "naranja",
+    "WHITE": "blanco",
+    "GRAY": "gris",
+    "ALL": "todos los colores"
+  },
+  "TAB1": {
+    "SUB_TITLE": "Muévase fácilmente por Mahajanga con Bus Nakay: encuentre su autobús, siga su recorrido y navegue sin conexión a Internet.",
+    "BEGIN": "Comenzar"
+  },
+  "TAB2": {
+    "TITLE": "Desplazamiento",
+    "SUB_TITLE": "Tome su autobús fácilmente con la aplicación. Identifique una parada donde desea comenzar su trayecto.",
+    "SEARCH_BY_STOP": "Buscar por parada",
+    "TO_SEARCH_BY_STOP": "Buscar por parada",
+    "SEARCH_BY_PLACE": "Buscar por lugar",
+    "TO_SEARCH_BY_PLACE": "Buscar por lugar",
+    "RUN": "Iniciar búsqueda",
+    "GET_THIS_BUS": "Tome los siguientes autobuses ({{ count }})",
+    "STOP_BEGIN": "Parada de salida",
+    "STOP_END": "Parada de destino",
+    "PLACE_BEGIN": "Lugar de salida",
+    "PLACE_END": "Lugar de destino",
+    "NO_BUS_FOUND": "No hay ningún autobús directo entre «{{ departOld }}» y «{{ finOld }}». Elija otra parada.",
+    "NO_RESULTS": "No se encontraron resultados…",
+    "FILL_ALL_FIELDS": "Seleccione la parada de salida y la parada de llegada.",
+    "STOP_MUST_DIFFERENT": "Las dos paradas deben ser diferentes.",
+    "PLACE_MUST_DIFFERENT": "Los dos lugares deben ser diferentes."
+  },
+  "TAB3": {
+    "TITLE": "¿No sabe dónde está?",
+    "SUB_TITLE": "No se preocupe, elija la parada más cercana a su ubicación actual.",
+    "YOU_NOT_IN_MAHAJANGA": "Está fuera de la ciudad de Mahajanga.",
+    "IMPOSSIBLE_TO_GET_COORD": "No se puede obtener su ubicación. Compruebe la configuración de ubicación.",
+    "YOUR_POSITION": "Está aquí"
+  },
+  "TAB4": {
+    "TITLE": "Configuración",
+    "SUB_TITLE": "Aplicación dedicada a la búsqueda y optimización de rutas de transporte público en Mahajanga.",
+    "DARK_MODE": "Modo oscuro",
+    "LANGUAGE": "Idioma",
+    "PLACE_SAVED": "Lugares guardados",
+    "HISTORY": "Historial"
+  },
+  "SAVED": {
+    "TITLE": "Mis lugares guardados",
+    "SUB_TITLE": "Lugares que ha guardado para acceder a ellos de forma rápida y sencilla.",
+    "COME_TO_SEARCH": "Ir a la búsqueda"
+  },
+  "HISTORY": {
+    "TITLE": "Mi historial",
+    "SUB_TITLE": "Historial de sus trayectos y búsquedas de lugares.",
+    "INPUT_KEY": "Título o palabra clave de búsqueda",
+    "NO_HISTORY": "No hay historial de búsqueda."
+  },
+  "MODAL_BUS": {
+    "YOUR_ROUTE": "Su trayecto",
+    "GET_BUS_AT": "Toma este autobús en",
+    "GET_OUT_AT": "y se baja en"
+  },
+  "MODAL_CHOOSE": {
+    "TITLE": "BUSCAR UN LUGAR GUARDADO",
+    "SUB_TITLE": "Busque un lugar guardado para mostrar su ruta.",
+    "INPUT_PLACE": "Dirección o lugar en Mahajanga",
+    "TEXT_EMPTY": "No hay lugares guardados. Primero debe guardar uno desde la página de búsqueda.",
+    "GO_TO_SEARCH": "Ir a la búsqueda",
+    "MY_POSITION": "Mi ubicación actual"
+  },
+  "MODAL_SEARCH": {
+    "TITLE": "BUSCAR UN LUGAR",
+    "SUB_TITLE": "Busque un lugar y luego guarde las paradas de autobús más cercanas para encontrar fácilmente su autobús.",
+    "TEXT_WARNING": "Se necesita una conexión a Internet para buscar lugares.",
+    "SEARCH_RESULT": "Resultados de búsqueda ({{ placeResultLength }})",
+    "LOADING": "Buscando…",
+    "NO_RESULTS": "No hay resultados para «{{ querySearch }}»",
+    "NO_INTERNET": "Sin acceso a Internet o servidor no disponible",
+    "SAVE": "Ha guardado el lugar: {{name}}",
+    "UNSAVE": "Ha eliminado el lugar: {{name}}"
+  }
+}
