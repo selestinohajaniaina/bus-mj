@@ -83,6 +83,7 @@ export class SavedPage implements OnInit {
             this.storage.clearMyPlaces();
             this.loadPlaces();
             this.addToHistory();
+            this.showToast(this.translate.instant('SAVED.CLEAR'));
           },
         },
       ],

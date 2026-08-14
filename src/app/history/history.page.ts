@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchHistory } from '../interface/bus';
 import { StorageService } from '../service/storage.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -30,7 +30,8 @@ export class HistoryPage implements OnInit {
   constructor(
     private storage: StorageService,
     private alert: AlertController,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -66,6 +67,7 @@ export class HistoryPage implements OnInit {
             this.storage.clearHistory();
             this.loadHistory();
             this.addToHistory();
+            this.showToast(this.translate.instant('HISTORY.CLEAR'));
           },
         },
       ],
@@ -96,5 +98,14 @@ export class HistoryPage implements OnInit {
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     return date.toLocaleString();
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+    });
+
+    await toast.present();
   }
 }
