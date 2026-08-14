@@ -1,0 +1,124 @@
+{
+  "KEY_WORDS": {
+    "AND": "and",
+    "FILL_ALL": "Please fill in all fields.",
+    "KM": "km",
+    "M": "m",
+    "MIN": "min",
+    "H": "h"
+  },
+  "ALERT": {
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "CHARGEMENT": "Loading…",
+    "CONFIRMATION": "Confirmation",
+    "DELETE_PLACE": "Are you sure you want to delete all saved places?",
+    "DELETE_HISTORY": "Are you sure you want to delete your entire history?",
+    "DELETE": "Delete"
+  },
+  "BUS": {
+    "CARACTERISTIC": "Bus features to know",
+    "COLOR_BUS": "Bus color",
+    "BAND_BUS": "Color of the side stripe",
+    "COLOR_BOARD": "Plate color",
+    "OPERATOR": "Operator",
+    "STOP": "Bus stop",
+    "STOPS": "Stops",
+    "NEAR_STOPS": "Nearby stops",
+    "BUS_STOP": "Bus stop",
+    "ROUTE": "Route(s)",
+    "ROUTES": "Routes",
+    "OPERATORS": "Cooperative(s)",
+    "OPERATORS_ALL": "ALL COOPERATIVES",
+    "ROUTES_BUS": "Route itinerary",
+    "LINE_INFO": "There are {{count}} known stops on this route, from the starting point “{{start}}” to “{{end}}”.",
+    "NO_DATA": "The data is not yet complete. Collaborate with us to improve it."
+  },
+  "MAP": {
+    "VIEW_MAP": "View on map",
+    "SHOW": "Show"
+  },
+  "COLOR": {
+    "RED": "red",
+    "BLUE": "blue",
+    "GREEN": "green",
+    "YELLOW": "yellow",
+    "ORANGE": "orange",
+    "WHITE": "white",
+    "GRAY": "gray",
+    "ALL": "all colors"
+  },
+  "TAB1": {
+    "SUB_TITLE": "Get around Mahajanga easily with Bus Nakay: find your bus, follow your route, and navigate without an internet connection.",
+    "BEGIN": "Get started"
+  },
+  "TAB2": {
+    "TITLE": "Trip",
+    "SUB_TITLE": "Take your bus easily with the app. Find a stop where you want to start your journey.",
+    "SEARCH_BY_STOP": "Search by stop",
+    "TO_SEARCH_BY_STOP": "Search by stop",
+    "SEARCH_BY_PLACE": "Search by place",
+    "TO_SEARCH_BY_PLACE": "Search by place",
+    "RUN": "Start search",
+    "GET_THIS_BUS": "Take the following bus(es) ({{ count }})",
+    "STOP_BEGIN": "Departure stop",
+    "STOP_END": "Destination stop",
+    "PLACE_BEGIN": "Departure place",
+    "PLACE_END": "Destination place",
+    "NO_BUS_FOUND": "No direct bus between “{{ departOld }}” and “{{ finOld }}”. Please choose another stop.",
+    "NO_RESULTS": "No results found…",
+    "FILL_ALL_FIELDS": "Choose the departure stop and the arrival stop.",
+    "STOP_MUST_DIFFERENT": "The two stops must be different.",
+    "PLACE_MUST_DIFFERENT": "The two places must be different."
+  },
+  "TAB3": {
+    "TITLE": "Don't know where you are?",
+    "SUB_TITLE": "Don't worry, choose the stop closest to your current location.",
+    "YOU_NOT_IN_MAHAJANGA": "You are outside the city of Mahajanga.",
+    "IMPOSSIBLE_TO_GET_COORD": "Unable to retrieve your location. Please check your location settings.",
+    "YOUR_POSITION": "You are here"
+  },
+  "TAB4": {
+    "TITLE": "Settings",
+    "SUB_TITLE": "An app dedicated to finding and optimizing public transport routes in Mahajanga.",
+    "DARK_MODE": "Dark mode",
+    "LANGUAGE": "Language",
+    "PLACE_SAVED": "Saved places",
+    "HISTORY": "History"
+  },
+  "SAVED": {
+    "TITLE": "My saved places",
+    "SUB_TITLE": "Places you have saved for quick and easy access.",
+    "COME_TO_SEARCH": "Go to search"
+  },
+  "HISTORY": {
+    "TITLE": "My history",
+    "SUB_TITLE": "History of your trips and place searches.",
+    "INPUT_KEY": "Search title or keyword",
+    "NO_HISTORY": "No search history."
+  },
+  "MODAL_BUS": {
+    "YOUR_ROUTE": "Your route",
+    "GET_BUS_AT": "You take this bus at",
+    "GET_OUT_AT": "and get off at"
+  },
+  "MODAL_CHOOSE": {
+    "TITLE": "SEARCH FOR A SAVED PLACE",
+    "SUB_TITLE": "Search for a saved place to display your route.",
+    "INPUT_PLACE": "Address or place in Mahajanga",
+    "TEXT_EMPTY": "No saved places. You must first save one from the search page.",
+    "GO_TO_SEARCH": "Go to search",
+    "MY_POSITION": "My current location"
+  },
+  "MODAL_SEARCH": {
+    "TITLE": "SEARCH FOR A PLACE",
+    "SUB_TITLE": "Search for a place, then save the nearest bus stops to easily find your bus later.",
+    "TEXT_WARNING": "An internet connection is required to search for places.",
+    "SEARCH_RESULT": "Search results ({{ placeResultLength }})",
+    "LOADING": "Searching…",
+    "NO_RESULTS": "No results for “{{ querySearch }}”",
+    "NO_INTERNET": "No internet access or server unavailable",
+    "SAVE": "You saved the place: {{name}}",
+    "UNSAVE": "You removed the place: {{name}}"
+  }
+}
