@@ -1,7 +1,7 @@
 {
   "KEY_WORDS": {
     "AND": "et",
-    "FILL_ALL": "Veuillez tous remplir.",
+    "FILL_ALL": "Veuillez tout remplir.",
     "KM": "km",
     "M": "m",
     "MIN": "min",
@@ -10,10 +10,10 @@
   "ALERT": {
     "CONFIRM": "Confirmer",
     "CANCEL": "Annuler",
-    "CHARGEMENT": "Chargement ...",
+    "CHARGEMENT": "Chargement…",
     "CONFIRMATION": "Confirmation",
     "DELETE_PLACE": "Voulez-vous vraiment supprimer tous les lieux enregistrés ?",
-    "DELETE_HISTORY": "Voulez-vous vraiment supprimer tous les historiques ?",
+    "DELETE_HISTORY": "Voulez-vous vraiment supprimer tout l’historique ?",
     "DELETE": "Supprimer"
   },
   "BUS": {
@@ -21,21 +21,21 @@
     "COLOR_BUS": "Couleur du bus",
     "BAND_BUS": "Couleur de la bande sur le côté",
     "COLOR_BOARD": "Couleur de la plaque",
-    "OPERATOR": "Operateur",
-    "STOP": "Arrêt bus",
+    "OPERATOR": "Opérateur",
+    "STOP": "Arrêt de bus",
     "STOPS": "Arrêts",
     "NEAR_STOPS": "Arrêts proches",
-    "BUS_STOP": "Arrêt bus",
+    "BUS_STOP": "Arrêt de bus",
     "ROUTE": "Ligne(s)",
     "ROUTES": "Lignes",
-    "OPERATORS": "Cooperative(s)",
-    "OPERATORS_ALL": "TOUS COOPERATIVE",
-    "ROUTES_BUS": "Trajet du circulation",
-    "LINE_INFO": "Il y a {{count}} arrêts connus sur cette ligne, du point de départ «{{start}}» jusqu'à «{{end}}».",
+    "OPERATORS": "Coopérative(s)",
+    "OPERATORS_ALL": "TOUTES LES COOPÉRATIVES",
+    "ROUTES_BUS": "Itinéraire de la ligne",
+    "LINE_INFO": "Il y a {{count}} arrêts connus sur cette ligne, du point de départ « {{start}} » jusqu’à « {{end}} ».",
     "NO_DATA": "Les données ne sont pas encore complètes. Collaborez avec nous pour les améliorer."
   },
   "MAP": {
-    "VIEW_MAP": "Affichage sur Carte",
+    "VIEW_MAP": "Affichage sur la carte",
     "SHOW": "Afficher"
   },
   "COLOR": {
@@ -46,7 +46,7 @@
     "ORANGE": "orange",
     "WHITE": "blanc",
     "GRAY": "gris",
-    "ALL": "toute couleur"
+    "ALL": "toutes les couleurs"
   },
   "TAB1": {
     "SUB_TITLE": "Déplacez-vous facilement à Mahajanga avec Bus Nakay : trouvez votre bus, suivez votre trajet et naviguez sans connexion.",
@@ -54,34 +54,34 @@
   },
   "TAB2": {
     "TITLE": "Déplacement",
-    "SUB_TITLE": "Prenez facilement votre bus avec l'application. Identifiez un arrêt où vous souhaitez commencer votre trajet.",
+    "SUB_TITLE": "Prenez facilement votre bus avec l’application. Identifiez un arrêt où vous souhaitez commencer votre trajet.",
     "SEARCH_BY_STOP": "Recherche par arrêt",
-    "TO_SEARCH_BY_STOP": "Rechercher par les arrêts",
+    "TO_SEARCH_BY_STOP": "Rechercher par arrêt",
     "SEARCH_BY_PLACE": "Recherche par lieu",
-    "TO_SEARCH_BY_PLACE": "Rechercher par les places",
+    "TO_SEARCH_BY_PLACE": "Rechercher par lieu",
     "RUN": "Lancer la recherche",
     "GET_THIS_BUS": "Prenez les bus suivants ({{ count }})",
     "STOP_BEGIN": "Arrêt de départ",
     "STOP_END": "Arrêt de destination",
     "PLACE_BEGIN": "Lieu de départ",
     "PLACE_END": "Lieu de destination",
-    "NO_BUS_FOUND": "Pas des Bus direct entre «{{ departOld }}» et «{{ finOld }}», Veuillez choisir un autre arrêt.",
-    "NO_RESULTS": "Auccun resultat trouvé...",
-    "FILL_ALL_FIELDS": "Choisissez l'arrêt de départ et celui d'arrivée.",
+    "NO_BUS_FOUND": "Aucun bus direct entre « {{ departOld }} » et « {{ finOld }} ». Veuillez choisir un autre arrêt.",
+    "NO_RESULTS": "Aucun résultat trouvé…",
+    "FILL_ALL_FIELDS": "Choisissez l’arrêt de départ et celui d’arrivée.",
     "STOP_MUST_DIFFERENT": "Les deux arrêts doivent être différents.",
     "PLACE_MUST_DIFFERENT": "Les deux lieux doivent être différents."
   },
   "TAB3": {
     "TITLE": "Vous ne savez pas où vous êtes ?",
-    "SUB_TITLE": "Ne vous inquiétez pas, choisissez l'arrêt le plus proche de l'endroit où vous vous trouvez.",
+    "SUB_TITLE": "Ne vous inquiétez pas, choisissez l’arrêt le plus proche de l’endroit où vous vous trouvez.",
     "YOU_NOT_IN_MAHAJANGA": "Vous êtes en dehors de la ville de Mahajanga.",
     "IMPOSSIBLE_TO_GET_COORD": "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation.",
     "YOUR_POSITION": "Vous êtes ici"
   },
   "TAB4": {
-    "TITLE": "Paramètre",
-    "SUB_TITLE": "Application dédiée à la recherche et à l’optimisation des trajets en transports publics à Majunga.",
-    "DARK_MODE": "Theme sombre",
+    "TITLE": "Paramètres",
+    "SUB_TITLE": "Application dédiée à la recherche et à l’optimisation des trajets en transports publics à Mahajanga.",
+    "DARK_MODE": "Thème sombre",
     "LANGUAGE": "Langue",
     "PLACE_SAVED": "Lieux enregistrés",
     "HISTORY": "Historique"
@@ -92,21 +92,21 @@
     "COME_TO_SEARCH": "Accéder à la recherche"
   },
   "HISTORY": {
-    "TITLE": "Mes historiques",
-    "SUB_TITLE": "Les historiques de votre trajet recherché et les places.",
+    "TITLE": "Mon historique",
+    "SUB_TITLE": "Historique de vos trajets et de vos recherches de lieux.",
     "INPUT_KEY": "Titre ou mot-clé de recherche",
     "NO_HISTORY": "Aucun historique de recherche."
   },
   "MODAL_BUS": {
-    "YOUR_ROUTE": "Votre Trajet",
-    "GET_BUS_AT": "Vous prenez ce bus au",
-    "GET_OUT_AT": "et vous descendez au"
+    "YOUR_ROUTE": "Votre trajet",
+    "GET_BUS_AT": "Vous prenez ce bus à",
+    "GET_OUT_AT": "et vous descendez à"
   },
   "MODAL_CHOOSE": {
     "TITLE": "RECHERCHER UN LIEU ENREGISTRÉ",
     "SUB_TITLE": "Recherchez un lieu enregistré pour afficher votre itinéraire.",
     "INPUT_PLACE": "Adresse ou lieu à Mahajanga",
-    "TEXT_EMPTY": "Auccun endroit enregistré. Vous devez d'abord en enregistrer un depuis la page de recherche.",
+    "TEXT_EMPTY": "Aucun endroit enregistré. Vous devez d’abord en enregistrer un depuis la page de recherche.",
     "GO_TO_SEARCH": "Aller à la recherche",
     "MY_POSITION": "Ma position actuelle"
   },
@@ -114,11 +114,11 @@
     "TITLE": "RECHERCHER UN ENDROIT",
     "SUB_TITLE": "Recherchez un lieu, puis enregistrez les arrêts de bus les plus proches pour retrouver facilement votre bus.",
     "TEXT_WARNING": "Une connexion Internet est requise pour rechercher des lieux.",
-    "SEARCH_RESULT": "Resultats de votre recherche ({{ placeResultLength }})",
-    "LOADING": "Recherche en cours ...",
-    "NO_RESULTS": "Auccun resultat pour « {{ querySearch }} »",
-    "NO_INTERNET": "Pas d'accès Internet ou serveur inaccessible",
+    "SEARCH_RESULT": "Résultats de votre recherche ({{ placeResultLength }})",
+    "LOADING": "Recherche en cours…",
+    "NO_RESULTS": "Aucun résultat pour « {{ querySearch }} »",
+    "NO_INTERNET": "Pas d’accès Internet ou serveur inaccessible",
     "SAVE": "Vous avez enregistré le lieu : {{name}}",
-    "UNSAVE": "Vous avez enlevé le lieu : {{name}}"
+    "UNSAVE": "Vous avez supprimé le lieu : {{name}}"
   }
 }
