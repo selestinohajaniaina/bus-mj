@@ -193,13 +193,17 @@ export class Tab2Page {
     );
 
     // Trie par ordre alphabetique
-    this.result = uniqueBus.sort((a, b) => {
-      const nameCompare = a.tags.name.localeCompare(b.tags.name);
-      if (nameCompare !== 0) {
-        return nameCompare;
-      }
-      return a.members.length - b.members.length;
-    });
+    this.result = uniqueBus
+      .filter((bus) =>
+        this.firstData.nearStop.some((stop) => stop.id == bus.members[0].id)
+      )
+      .sort((a, b) => {
+        const nameCompare = a.tags.name.localeCompare(b.tags.name);
+        if (nameCompare !== 0) {
+          return nameCompare;
+        }
+        return a.members.length - b.members.length;
+      });
 
     if (this.result.length === 0) {
       this.showToast(this.translate.instant('TAB2.NO_RESULTS'));
