@@ -71,14 +71,18 @@ export class ModalSearchComponent implements OnInit {
                 latitude: Number(e.lat),
               });
               const nearStopLength = nearStop.length;
-              this.placeResult.push({
+              const elementOSMResult = {
                 ...e,
                 distance,
                 display_distance:
                   this.localisation.getDisplayDistance(distance),
                 nearStop,
                 nearStopLength,
-              });
+              };
+              this.placeResult.push(elementOSMResult);
+              if(!this.isSaved(elementOSMResult)) {
+                this.save(elementOSMResult, false);
+              }
             });
 
             if (result.length > 0) {
@@ -115,14 +119,18 @@ export class ModalSearchComponent implements OnInit {
     return this.storage.getAllMyPlaces().some((p) => p.osm_id === place.osm_id);
   }
 
-  save(place: OSMResult) {
+  save(place: OSMResult, isAlerted: boolean = true) {
     this.storage.addMyPlace(place);
-    this.showToast(this.translate.instant('MODAL_SEARCH.SAVE', {name: place.name}));
+    if(isAlerted) this.showToast(
+      this.translate.instant('MODAL_SEARCH.SAVE', { name: place.name })
+    );
   }
 
   unSave(place: OSMResult) {
     this.storage.removeMyPlace(place.osm_id);
-    this.showToast(this.translate.instant('MODAL_SEARCH.UNSAVE', {name: place.name}));
+    this.showToast(
+      this.translate.instant('MODAL_SEARCH.UNSAVE', { name: place.name })
+    );
   }
 
   getNearsStop(coordinate: Coordinates) {
