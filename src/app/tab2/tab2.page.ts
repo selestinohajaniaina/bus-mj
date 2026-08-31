@@ -175,21 +175,24 @@ export class Tab2Page {
       });
     });
 
-    const uniqueBus = Array.from(
-      busFoundByNearStop
-        .reduce((map, bus) => {
-          const existing = map.get(bus.tags.name);
+    // const uniqueBus = Array.from(
+    //   busFoundByNearStop
+    //     .reduce((map, bus) => {
+    //       const existing = map.get(bus.tags.name);
 
-          if (!existing || bus.members.length < existing.members.length) {
-            map.set(bus.tags.name, bus);
-          }
+    //       if (!existing || bus.members.length < existing.members.length) {
+    //         map.set(bus.tags.name, bus);
+    //       }
 
-          return map;
-        }, new Map<string, Bus>())
-        .values()
-    );
+    //       return map;
+    //     }, new Map<string, Bus>())
+    //     .values()
+    // );
+    // this.result = uniqueBus;
 
-    this.result = uniqueBus;
+    this.result = busFoundByNearStop.sort((a, b) => {
+      return a.members.length - b.members.length;
+    });
 
     if (this.result.length === 0) {
       this.showToast(this.translate.instant('TAB2.NO_RESULTS'));
