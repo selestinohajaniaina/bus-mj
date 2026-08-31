@@ -10,3 +10,11 @@ ion-img {
     border-radius: 8px;
     padding: 5px;
 }
+
+.spin {
+    width: fit-content;
+    margin: 5px auto;
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}

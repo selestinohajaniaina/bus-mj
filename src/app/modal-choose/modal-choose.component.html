@@ -9,10 +9,10 @@
     <ion-content class="ion-padding">
       <ion-img src="assets/map.gif" />
 
-      <ion-title>{{ 'MODAL_CHOOSE.TITLE' | translate }}</ion-title>
+      <ion-title>{{ "MODAL_CHOOSE.TITLE" | translate }}</ion-title>
 
       <ion-text color="medium">
-        {{ 'MODAL_CHOOSE.SUB_TITLE' | translate }}
+        {{ "MODAL_CHOOSE.SUB_TITLE" | translate }}
       </ion-text>
 
       <div class="input-search">
@@ -24,37 +24,34 @@
         ></ion-input>
       </div>
 
-      @if (isStorageEmpty) {
-      <ion-text size="small">{{ 'MODAL_CHOOSE.TEXT_EMPTY' | translate }}</ion-text>
-      <ion-button
-        expand="block"
-        shape="round"
-        (click)="goToSearch(); modalChoose.dismiss()"
-      >
-        <ion-text>{{ 'MODAL_CHOOSE.GO_TO_SEARCH' | translate }}</ion-text>
-        <ion-icon
-          aria-hidden="true"
-          name="chevron-forward-outline"
-          slot="end"
-        ></ion-icon>
+      <ion-button expand="block" shape="round" (click)="find()">
+        <ion-text>{{ "TAB2.RUN" | translate }}</ion-text>
+        <ion-icon aria-hidden="true" name="search" slot="end"></ion-icon>
       </ion-button>
-      }
+
+      <div class="spin" *ngIf="chargeShow == true">
+        <ion-spinner name="circles"></ion-spinner>
+        <ion-label id="label">{{
+          "MODAL_SEARCH.LOADING" | translate
+        }}</ion-label>
+      </div>
 
       @if(myPositionOSM && querySearch == '') {
-        <ion-card>
-          <ion-card-content
-            class="desc"
-            (click)="chooseOSMResult(myPositionOSM); modalChoose.dismiss()"
-          >
-            <ion-card-title>{{ myPositionOSM.name }}</ion-card-title>
-            <ion-text>{{ myPositionOSM.display_name }}</ion-text>
-            <p>
-              <ion-badge color="success"></ion-badge>
-              @if( myPositionOSM.nearStopLength > 0 ) {
-              {{ myPositionOSM.nearStopLength }} {{ 'BUS.NEAR_STOPS' | translate }} }
-            </p>
-          </ion-card-content>
-        </ion-card>
+      <ion-card>
+        <ion-card-content
+          class="desc"
+          (click)="chooseOSMResult(myPositionOSM); modalChoose.dismiss()"
+        >
+          <ion-card-title>{{ myPositionOSM.name }}</ion-card-title>
+          <ion-text>{{ myPositionOSM.display_name }}</ion-text>
+          <p>
+            <ion-badge color="success"></ion-badge>
+            @if( myPositionOSM.nearStopLength > 0 ) {
+            {{ myPositionOSM.nearStopLength }}
+            {{ "BUS.NEAR_STOPS" | translate }} }
+          </p>
+        </ion-card-content>
+      </ion-card>
       }
 
       <ion-card *ngFor="let p of placeResult; let i = index">
@@ -65,9 +62,12 @@
           <ion-card-title>{{ p.name }}</ion-card-title>
           <ion-text>{{ p.display_name }}</ion-text>
           <p>
-            <ion-badge color="success">{{ displayDistance(p.distance) }}</ion-badge>
+            <ion-badge color="success">{{
+              displayDistance(p.distance)
+            }}</ion-badge>
             @if( p.nearStopLength > 0 ) {
-            {{ p.nearStopLength }} {{ 'BUS.NEAR_STOPS' | translate }} } @else { {{ 'BUS.BUS_STOP' | translate }} }
+            {{ p.nearStopLength }} {{ "BUS.NEAR_STOPS" | translate }} } @else {
+            {{ "BUS.BUS_STOP" | translate }} }
           </p>
         </ion-card-content>
       </ion-card>
