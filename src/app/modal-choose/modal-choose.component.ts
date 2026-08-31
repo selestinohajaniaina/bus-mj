@@ -184,13 +184,13 @@ export class ModalChooseComponent implements OnInit {
         next: (result: any) => {
           this.chargeShow = false;
           result.map((e: OSMResult) => {
-            const distance = this.getDistance(
+            const distance = this.myPositionOSM ? this.getDistance(
               turf.point([
                 Number(this.myPositionOSM.lon),
                 Number(this.myPositionOSM.lat),
               ]),
               turf.point([Number(e.lon), Number(e.lat)])
-            );
+            ) : 0;
             const nearStop = this.getNearsStop({
               longitude: Number(e.lon),
               latitude: Number(e.lat),

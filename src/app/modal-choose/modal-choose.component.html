@@ -62,7 +62,7 @@
           <ion-card-title>{{ p.name }}</ion-card-title>
           <ion-text>{{ p.display_name }}</ion-text>
           <p>
-            <ion-badge color="success">{{
+            <ion-badge color="success" *ngIf="p.distance>0">{{
               displayDistance(p.distance)
             }}</ion-badge>
             @if( p.nearStopLength > 0 ) {

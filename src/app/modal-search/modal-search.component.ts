@@ -59,13 +59,13 @@ export class ModalSearchComponent implements OnInit {
           next: (result: any) => {
             this.chargeShow = false;
             result.map((e: OSMResult) => {
-              const distance = this.getDistance(
+              const distance = this.myPosition ? this.getDistance(
                 turf.point([
                   this.myPosition.longitude,
                   this.myPosition.latitude,
                 ]),
                 turf.point([Number(e.lon), Number(e.lat)])
-              );
+              ) : 0;
               const nearStop = this.getNearsStop({
                 longitude: Number(e.lon),
                 latitude: Number(e.lat),
