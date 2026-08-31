@@ -133,18 +133,33 @@
   </div>
 
   <div class="contener" *ngIf="result && result.length">
-    <ion-title>{{ 'TAB2.GET_THIS_BUS' | translate: { count: result.length } }}:</ion-title>
-    <ion-card *ngFor="let bus of result" id="open-modal-{{bus.id}}">
+    <ion-title
+      >{{ 'TAB2.GET_THIS_BUS' | translate: { count: result.length }
+      }}:</ion-title
+    >
+    <ion-card
+      *ngFor="let bus of result"
+      id="open-modal-{{bus.id}}"
+      (click)="openBusModal(bus)"
+    >
       <ion-card-content class="desc">
         <ion-card-title>{{ bus.tags.name }}</ion-card-title>
         <ion-text>
-          {{ bus.members[0].label }} ... {{ bus.members[bus.members.length - 1].label }}
-          </ion-text>
-        <p><ion-badge>{{bus.members.length}}</ion-badge> {{ 'BUS.STOPS' | translate }}</p>
+          {{ bus.members[0].label }} ... {{ bus.members[bus.members.length -
+          1].label }}
+        </ion-text>
+        <p>
+          <ion-badge>{{bus.members.length}}</ion-badge> {{ 'BUS.STOPS' |
+          translate }}
+        </p>
       </ion-card-content>
-      <app-modal-bus [trigger]="'open-modal-' + bus.id" [bus]="bus" />
     </ion-card>
   </div>
+  <app-modal-bus
+    [bus]="busToShow"
+    [isOpen]="isBusModalOpen"
+    (closed)="isBusModalOpen = false"
+  />
 
   <div *ngIf="isShowEmpty" class="emptyFilter">
     <i>{{ 'TAB2.NO_BUS_FOUND' | translate: { departOld, finOld } }}</i>

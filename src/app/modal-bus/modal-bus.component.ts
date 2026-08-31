@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Bus } from '../interface/bus';
 import { IonModal } from '@ionic/angular';
 import { findBusDetailById } from 'bus-mj';
@@ -12,17 +19,24 @@ import { TranslateService } from '@ngx-translate/core';
 export class ModalBusComponent implements OnInit {
   @Input() bus: Bus;
   @Input() stopList: string;
-  @Input() trigger: string;
-  public busDetail: Bus;
+  @Input() isOpen = false;
+
+  @Output() closed = new EventEmitter<void>();
 
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    this.busDetail = findBusDetailById(this.bus.id);
+  }
+
+  onModalDismiss() {
+    this.isOpen = false;
+    this.closed.emit();
   }
 
   colorOf(propriety: string) {
-    return propriety ? this.translate.instant(`COLOR.${propriety.toUpperCase()}`) : this.translate.instant('COLOR.ALL');
+    return propriety
+      ? this.translate.instant(`COLOR.${propriety.toUpperCase()}`)
+      : this.translate.instant('COLOR.ALL');
   }
 
   ionColorOf(propriety: string) {

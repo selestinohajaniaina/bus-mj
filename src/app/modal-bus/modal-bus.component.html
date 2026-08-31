@@ -1,5 +1,6 @@
 <ion-modal
-  trigger="open-modal-{{ bus.id }}"
+  [isOpen]="isOpen"
+  (didDismiss)="onModalDismiss()"
   [initialBreakpoint]="0.75"
   [breakpoints]="[0, 0.75, 1]"
   #modal
@@ -15,7 +16,7 @@
           [ref]="bus.tags.ref"
         />
       </div>
-      <p class="name">{{ busDetail.tags.name }}</p>
+      <p class="name">{{ bus.tags.name }}</p>
       <ion-card>
         <ion-card-content>
           <ion-card-title>

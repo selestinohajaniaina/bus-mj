@@ -36,6 +36,9 @@ export class Tab2Page {
   public isShowStopHelp2: boolean = false;
   public busFilter: Bus[];
 
+  public busToShow: Bus;
+  public isBusModalOpen = false;
+
   public searchByStop: boolean = true;
 
   public get stop_1(): string | null {
@@ -217,5 +220,12 @@ export class Tab2Page {
     });
 
     await toast.present();
+  }
+
+  openBusModal(bus: Bus) {
+    console.log("tokon open");
+    
+    this.busToShow = bus;
+    this.isBusModalOpen = true;
   }
 }
