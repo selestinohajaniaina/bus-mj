@@ -178,22 +178,26 @@ export class Tab2Page {
       });
     });
 
-    // const uniqueBus = Array.from(
-    //   busFoundByNearStop
-    //     .reduce((map, bus) => {
-    //       const existing = map.get(bus.tags.name);
+    const uniqueBus = Array.from(
+      busFoundByNearStop
+        .reduce((map, bus) => {
+          const key = `${bus.tags.name}-${bus.members.length}`;
 
-    //       if (!existing || bus.members.length < existing.members.length) {
-    //         map.set(bus.tags.name, bus);
-    //       }
+          if (!map.has(key)) {
+            map.set(key, bus);
+          }
 
-    //       return map;
-    //     }, new Map<string, Bus>())
-    //     .values()
-    // );
-    // this.result = uniqueBus;
+          return map;
+        }, new Map<string, Bus>())
+        .values()
+    );
 
-    this.result = busFoundByNearStop.sort((a, b) => {
+    // Trie par ordre alphabetique
+    this.result = uniqueBus.sort((a, b) => {
+      const nameCompare = a.tags.name.localeCompare(b.tags.name);
+      if (nameCompare !== 0) {
+        return nameCompare;
+      }
       return a.members.length - b.members.length;
     });
 
@@ -223,8 +227,8 @@ export class Tab2Page {
   }
 
   openBusModal(bus: Bus) {
-    console.log("tokon open");
-    
+    console.log('tokon open');
+
     this.busToShow = bus;
     this.isBusModalOpen = true;
   }
