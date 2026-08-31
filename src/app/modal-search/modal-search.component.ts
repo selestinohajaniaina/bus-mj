@@ -163,10 +163,10 @@ export class ModalSearchComponent implements OnInit {
 
   stopToOsmResult(stop: Stop[]): OSMResult[] {
     return stop.map((st) => {
-      const distance = this.getDistance(
+      const distance = this.myPosition ? this.getDistance(
         turf.point([this.myPosition.longitude, this.myPosition.latitude]),
         turf.point([st.lon, st.lat])
-      );
+      ) : 0;
       return {
         osm_id: st.id,
         display_name: String(st.label),
