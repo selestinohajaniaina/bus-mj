@@ -84,7 +84,8 @@
     "DARK_MODE": "Dark mode",
     "LANGUAGE": "Language",
     "PLACE_SAVED": "Saved places",
-    "HISTORY": "History"
+    "HISTORY": "History",
+    "GUIDE": "User Guide"
   },
   "SAVED": {
     "TITLE": "My saved places",

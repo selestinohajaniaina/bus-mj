@@ -84,7 +84,8 @@
     "DARK_MODE": "Dunkelmodus",
     "LANGUAGE": "Sprache",
     "PLACE_SAVED": "Gespeicherte Orte",
-    "HISTORY": "Verlauf"
+    "HISTORY": "Verlauf",
+    "GUIDE": "Benutzerhandbuch"
   },
   "SAVED": {
     "TITLE": "Meine gespeicherten Orte",
