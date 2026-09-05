@@ -1,0 +1,248 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>{{ 'TAB4.GUIDE' | translate }}</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Introduction -->
+  <div class="ion-padding">
+    <ion-text color="medium">
+      <h2 style="margin: 0; font-weight: 700">Comment utiliser Bus-Nakay ?</h2>
+
+      <p style="margin-top: 8px; line-height: 1.5">
+        Découvrez en quelques étapes comment trouver facilement votre bus, votre
+        itinéraire et les lieux dont vous avez besoin.
+      </p>
+    </ion-text>
+  </div>
+
+  <ion-accordion-group>
+    <!-- Trouver un bus entre deux arrêts -->
+    <ion-accordion value="route">
+      <ion-item slot="header">
+        <ion-icon name="navigate-outline" slot="start" color="primary">
+        </ion-icon>
+
+        <ion-label>
+          <h3>Trouver un bus entre deux arrêts</h3>
+          <p>De votre départ jusqu'à votre destination</p>
+        </ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+        <p>
+          Vous souhaitez savoir quel bus prendre pour aller d'un arrêt à un
+          autre ? Bus-Nakay peut vous aider !
+        </p>
+
+        <ol>
+          <li>
+            Accédez à l'onglet
+            <ion-icon name="bus"></ion-icon>.
+          </li>
+
+          <li>Choisissez votre <strong>arrêt de départ</strong>.</li>
+
+          <li>Choisissez votre <strong>arrêt d'arrivée</strong>.</li>
+
+          <li>
+            Cliquez sur le bouton
+            <strong>Lancer la recherche</strong>.
+          </li>
+
+          <li>
+            Sélectionnez un bus pour consulter son parcours et ses différents
+            arrêts, ainsi que son itinéraire affiché sur la carte.
+          </li>
+        </ol>
+
+        <p>
+          <strong>Astuce :</strong>
+          utilisez cette fonctionnalité lorsque vous connaissez votre arrêt de
+          départ et votre arrêt d'arrivée.
+        </p>
+      </div>
+    </ion-accordion>
+
+    <!-- Trouver un bus depuis un lieu -->
+    <ion-accordion value="place">
+      <ion-item slot="header">
+        <ion-icon name="location-outline" slot="start" color="primary">
+        </ion-icon>
+
+        <ion-label>
+          <h3>Trouver un bus à partir d'un lieu</h3>
+          <p>Vous ne connaissez pas l'arrêt à utiliser ?</p>
+        </ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+        <p>
+          Vous connaissez votre destination, mais vous ne savez pas quel arrêt
+          ou quel bus utiliser ? Pas de problème !
+        </p>
+
+        <ol>
+          <li>
+            Accédez à l'onglet
+            <ion-icon name="bus"></ion-icon>.
+          </li>
+
+          <li>
+            Cliquez sur le lien
+            <strong>Rechercher par lieu</strong>.
+          </li>
+
+          <li>
+            Cliquez sur le champ
+            <strong>Lieu de départ</strong>.
+          </li>
+
+          <li>
+            Sélectionnez
+            <strong>Ma position actuelle</strong>.
+            <br />
+            <small>
+              Assurez-vous que l'application est autorisée à accéder à votre
+              position et que votre GPS est activé.
+            </small>
+          </li>
+
+          <li>
+            Cliquez sur le champ
+            <strong>Lieu de destination</strong>.
+          </li>
+
+          <li>
+            Recherchez et sélectionnez votre
+            <strong>lieu de destination</strong>.
+          </li>
+
+          <li>
+            Cliquez sur le bouton
+            <strong>Lancer la recherche</strong>.
+          </li>
+
+          <li>
+            Sélectionnez un bus pour consulter son parcours et ses différents
+            arrêts, ainsi que son itinéraire affiché sur la carte.
+          </li>
+        </ol>
+
+        <p>
+          <strong>Astuce :</strong>
+          cette méthode est particulièrement pratique lorsque vous connaissez le
+          nom d'un quartier, d'un lieu ou d'un endroit populaire, mais pas celui
+          de l'arrêt de bus.
+        </p>
+      </div>
+    </ion-accordion>
+
+    <!-- Rechercher un lieu -->
+    <ion-accordion value="stop">
+      <ion-item slot="header">
+        <ion-icon name="search-outline" slot="start" color="primary">
+        </ion-icon>
+
+        <ion-label>
+          <h3>Rechercher un lieu</h3>
+          <p>
+            Retrouvez rapidement l'emplacement d'un lieu à Mahajanga sur la
+            carte
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+        <p>
+          Vous souhaitez simplement retrouver un lieu à Mahajanga et voir son
+          emplacement sur la carte ? Voici comment faire :
+        </p>
+
+        <ol>
+          <li>
+            Accédez à l'onglet
+            <ion-icon name="map-outline"></ion-icon>.
+          </li>
+
+          <li>
+            Cliquez sur l'icône
+            <ion-icon name="search"></ion-icon>
+          </li>
+
+          <li>
+            Saisissez les <strong>mots-clés</strong> correspondant au lieu que
+            vous souhaitez rechercher.
+          </li>
+
+          <li>
+            Cliquez sur le bouton
+            <strong>
+              Lancer la recherche
+              <ion-icon name="search"></ion-icon> </strong
+            >.
+          </li>
+
+          <li>
+            Cliquez sur le bouton
+            <strong>
+              <ion-icon name="location"></ion-icon>
+              Afficher
+            </strong>
+            pour afficher le lieu sur la carte.
+          </li>
+        </ol>
+
+        <p>
+          <strong>Astuce :</strong>
+          le badge vert affiché sur chaque résultat indique la distance entre le
+          lieu et votre position actuelle.
+        </p>
+      </div>
+    </ion-accordion>
+
+    <!-- Astuces générales -->
+    <ion-accordion value="tips">
+      <ion-item slot="header">
+        <ion-icon name="bulb-outline" slot="start" color="primary"> </ion-icon>
+
+        <ion-label>
+          <h3>Quelques conseils</h3>
+          <p>Pour utiliser Bus-Nakay plus efficacement</p>
+        </ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+        <ul>
+          <li>
+            Activez votre <strong>localisation</strong> lorsque vous utilisez
+            Bus-Nakay afin de profiter pleinement des fonctionnalités basées sur
+            votre position.
+          </li>
+
+          <li>
+            Vérifiez que le <strong>bus que vous prenez</strong> correspond bien
+            à celui indiqué dans l'application.
+          </li>
+
+          <li>
+            N'oubliez pas de vérifier dans l'application
+            <strong>l'arrêt où vous devez descendre</strong>.
+          </li>
+
+          <li>
+            Utilisez <strong>l'affichage sur la carte</strong> pour mieux suivre
+            votre itinéraire et vous repérer tout au long de votre trajet.
+          </li>
+        </ul>
+
+        <p>
+          Avec Bus-Nakay, trouvez votre itinéraire simplement et voyagez plus
+          sereinement.
+        </p>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

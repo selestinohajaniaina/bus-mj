@@ -32,7 +32,7 @@
     "@ngx-translate/core": "^18.0.0",
     "@ngx-translate/http-loader": "^18.0.0",
     "@turf/turf": "^7.3.5",
-    "bus-mj": "^2.2.6",
+    "bus-mj": "^2.2.8",
     "ionicons": "^7.0.0",
     "maplibre-gl": "^5.24.0",
     "rxjs": "~7.8.0",
