@@ -8,8 +8,32 @@ import { SearchHistory } from '../interface/bus';
 export class StorageService {
   private readonly MY_PLACES_KEY = 'OSMResultStored';
   private readonly HISTORY_KEY = 'HistoryStored';
+  private readonly SEARCH_KEY = 'SearchKeyStored';
 
   constructor() {}
+
+  /**
+   * Get the second data stored if serach on tab2 is by place
+   * @returns data stored
+   */
+  getSearchKey(): OSMResultStored | null {
+    const data = localStorage.getItem(this.SEARCH_KEY);
+    return data ? (JSON.parse(data) as OSMResultStored) : null;
+  }
+
+  /**
+   * Store the second data if serach on tab2 is by place
+   */
+  saveSearchKey(place: OSMResultStored) {
+    localStorage.setItem(this.SEARCH_KEY, JSON.stringify(place));
+  }
+
+  /**
+   * remove the search data
+   */
+  clearSearchKey() {
+    localStorage.removeItem(this.SEARCH_KEY);
+  }
 
   /**
    * Retourne tous les lieux enregistrés.

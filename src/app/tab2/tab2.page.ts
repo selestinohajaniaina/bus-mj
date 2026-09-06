@@ -88,10 +88,11 @@ export class Tab2Page {
       this.showToast(this.translate.instant('TAB2.STOP_MUST_DIFFERENT'));
     } else {
       this.result = findBusByTwoStopLabel(this.depart, this.fin);
-      // pour garder en mémoire les deux arrêts de la recherche précédente
+      // pour garder les deux arrêts de la recherche précédente
       this.departOld = this.depart;
       this.finOld = this.fin;
       this.isShowEmpty = false;
+      this.storage.clearSearchKey();
 
       if (this.result.length == 0) {
         this.isShowEmpty = true;
@@ -157,6 +158,7 @@ export class Tab2Page {
       this.showToast(this.translate.instant('TAB2.PLACE_MUST_DIFFERENT'));
     } else if (this.firstData && this.secondData) {
       this.SearchBusByOSMResult(this.firstData, this.secondData);
+      this.storage.saveSearchKey(this.secondData);
     } else {
       this.showToast(this.translate.instant('KEY_WORDS.FILL_ALL'));
     }
