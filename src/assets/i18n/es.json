@@ -128,5 +128,58 @@
     "NO_INTERNET": "Sin acceso a Internet o servidor no disponible",
     "SAVE": "Ha guardado el lugar: {{name}}",
     "UNSAVE": "Ha eliminado el lugar: {{name}}"
+  },
+  "GUIDE": {
+    "TITLE": "¿Cómo utilizar Bus-Nakay?",
+    "INTRO": "Descubre en pocos pasos cómo encontrar fácilmente tu autobús, tu ruta y los lugares que necesitas.",
+
+    "ROUTE": {
+      "TITLE": "Encontrar un autobús entre dos paradas",
+      "SUBTITLE": "Desde tu punto de partida hasta tu destino",
+      "DESCRIPTION": "¿Quieres saber qué autobús tomar para ir de una parada a otra? ¡Bus-Nakay puede ayudarte!",
+      "STEP_1": "Accede a la pestaña",
+      "STEP_2": "Selecciona tu",
+      "STEP_3": "Selecciona tu",
+      "STEP_4": "Haz clic en el botón",
+      "STEP_5": "Selecciona un autobús para consultar su recorrido y sus diferentes paradas, así como su ruta mostrada en el mapa.",
+      "TIP_TITLE": "Consejo:",
+      "TIP": "utiliza esta función cuando conozcas tu parada de salida y tu parada de llegada."
+    },
+
+    "PLACE": {
+      "TITLE": "Encontrar un autobús desde un lugar",
+      "SUBTITLE": "¿No sabes qué parada utilizar?",
+      "DESCRIPTION": "¿Conoces tu destino, pero no sabes qué parada o autobús utilizar? ¡No hay problema!",
+      "STEP_2": "Haz clic en el enlace",
+      "STEP_3": "Haz clic en el campo",
+      "STEP_4": "Selecciona",
+      "GPS_WARNING": "Asegúrate de que la aplicación tiene permiso para acceder a tu ubicación y de que el GPS está activado.",
+      "STEP_5": "Haz clic en el campo",
+      "STEP_6": "Busca y selecciona tu lugar de destino.",
+      "TIP_TITLE": "Consejo:",
+      "TIP": "este método es especialmente práctico cuando conoces el nombre de un barrio, un lugar o un sitio conocido, pero no el nombre de la parada de autobús."
+    },
+
+    "STOP": {
+      "TITLE": "Buscar un lugar",
+      "SUBTITLE": "Encuentra rápidamente la ubicación de un lugar en Mahajanga en el mapa",
+      "DESCRIPTION": "¿Quieres simplemente encontrar un lugar en Mahajanga y ver su ubicación en el mapa? Así es como puedes hacerlo:",
+      "STEP_1": "Accede a la pestaña",
+      "STEP_2": "Haz clic en el icono de búsqueda.",
+      "STEP_3": "Introduce las <strong>palabras clave</strong> correspondientes al lugar que deseas buscar.",
+      "STEP_5": "Haz clic en el botón <strong>Mostrar</strong> para mostrar el lugar en el mapa.",
+      "TIP_TITLE": "Consejo:",
+      "TIP": "la etiqueta verde que aparece en cada resultado indica la distancia entre el lugar y tu ubicación actual."
+    },
+
+    "TIPS": {
+      "TITLE": "Algunos consejos",
+      "SUBTITLE": "Para utilizar Bus-Nakay de forma más eficaz",
+      "TIP_1": "Activa tu <strong>ubicación</strong> cuando utilices Bus-Nakay para aprovechar al máximo las funciones basadas en tu posición.",
+      "TIP_2": "Comprueba que el <strong>autobús que tomas</strong> corresponde al indicado en la aplicación.",
+      "TIP_3": "No olvides comprobar en la aplicación <strong>en qué parada debes bajar</strong>.",
+      "TIP_4": "Utiliza la <strong>vista del mapa</strong> para seguir mejor tu ruta y orientarte durante todo el trayecto.",
+      "CONCLUSION": "Con Bus-Nakay, encuentra tu ruta fácilmente y viaja con mayor tranquilidad."
+    }
   }
 }

@@ -128,5 +128,58 @@
     "NO_INTERNET": "No internet access or server unavailable",
     "SAVE": "You saved the place: {{name}}",
     "UNSAVE": "You removed the place: {{name}}"
+  },
+  "GUIDE": {
+    "TITLE": "How to use Bus-Nakay?",
+    "INTRO": "Discover in a few steps how to easily find your bus, your route, and the places you need.",
+
+    "ROUTE": {
+      "TITLE": "Find a bus between two stops",
+      "SUBTITLE": "From your departure point to your destination",
+      "DESCRIPTION": "Would you like to know which bus to take from one stop to another? Bus-Nakay can help you!",
+      "STEP_1": "Go to the",
+      "STEP_2": "Choose your",
+      "STEP_3": "Choose your",
+      "STEP_4": "Click the button",
+      "STEP_5": "Select a bus to view its route and different stops, as well as its route displayed on the map.",
+      "TIP_TITLE": "Tip:",
+      "TIP": "use this feature when you know your departure stop and arrival stop."
+    },
+
+    "PLACE": {
+      "TITLE": "Find a bus from a location",
+      "SUBTITLE": "Don't know which stop to use?",
+      "DESCRIPTION": "You know your destination, but you don't know which stop or bus to use? No problem!",
+      "STEP_2": "Click the link",
+      "STEP_3": "Click the field",
+      "STEP_4": "Select",
+      "GPS_WARNING": "Make sure the application is allowed to access your location and that your GPS is enabled.",
+      "STEP_5": "Click the field",
+      "STEP_6": "Search and select your destination.",
+      "TIP_TITLE": "Tip:",
+      "TIP": "this method is particularly useful when you know the name of a neighborhood, place, or popular location, but not the name of the bus stop."
+    },
+
+    "STOP": {
+      "TITLE": "Search for a place",
+      "SUBTITLE": "Quickly find the location of a place in Mahajanga on the map",
+      "DESCRIPTION": "Would you simply like to find a place in Mahajanga and see its location on the map? Here's how:",
+      "STEP_1": "Go to the",
+      "STEP_2": "Click the search icon.",
+      "STEP_3": "Enter the <strong>keywords</strong> corresponding to the place you want to search for.",
+      "STEP_5": "Click the <strong>Show</strong> button to display the place on the map.",
+      "TIP_TITLE": "Tip:",
+      "TIP": "the green badge displayed on each result indicates the distance between the place and your current location."
+    },
+
+    "TIPS": {
+      "TITLE": "A few tips",
+      "SUBTITLE": "To use Bus-Nakay more effectively",
+      "TIP_1": "Enable your <strong>location</strong> when using Bus-Nakay to take full advantage of the features based on your position.",
+      "TIP_2": "Make sure that the <strong>bus you take</strong> matches the one indicated in the application.",
+      "TIP_3": "Don't forget to check in the application <strong>which stop you need to get off at</strong>.",
+      "TIP_4": "Use the <strong>map view</strong> to better follow your route and find your way throughout your journey.",
+      "CONCLUSION": "With Bus-Nakay, find your route easily and travel with greater peace of mind."
+    }
   }
 }

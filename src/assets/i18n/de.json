@@ -128,5 +128,58 @@
     "NO_INTERNET": "Kein Internetzugang oder Server nicht verfügbar",
     "SAVE": "Sie haben den Ort gespeichert: {{name}}",
     "UNSAVE": "Sie haben den Ort gelöscht: {{name}}"
+  },
+  "GUIDE": {
+    "TITLE": "Wie verwendet man Bus-Nakay?",
+    "INTRO": "Erfahren Sie in wenigen Schritten, wie Sie ganz einfach Ihren Bus, Ihre Route und die benötigten Orte finden.",
+
+    "ROUTE": {
+      "TITLE": "Einen Bus zwischen zwei Haltestellen finden",
+      "SUBTITLE": "Von Ihrem Ausgangspunkt bis zu Ihrem Ziel",
+      "DESCRIPTION": "Sie möchten wissen, welchen Bus Sie von einer Haltestelle zu einer anderen nehmen müssen? Bus-Nakay kann Ihnen helfen!",
+      "STEP_1": "Gehen Sie zum Tab",
+      "STEP_2": "Wählen Sie Ihre",
+      "STEP_3": "Wählen Sie Ihre",
+      "STEP_4": "Klicken Sie auf die Schaltfläche",
+      "STEP_5": "Wählen Sie einen Bus aus, um seine Strecke und die verschiedenen Haltestellen sowie die auf der Karte angezeigte Route zu sehen.",
+      "TIP_TITLE": "Tipp:",
+      "TIP": "Verwenden Sie diese Funktion, wenn Sie Ihre Abfahrts- und Ankunftshaltestelle kennen."
+    },
+
+    "PLACE": {
+      "TITLE": "Einen Bus von einem Ort aus finden",
+      "SUBTITLE": "Sie wissen nicht, welche Haltestelle Sie verwenden sollen?",
+      "DESCRIPTION": "Sie kennen Ihr Ziel, wissen aber nicht, welche Haltestelle oder welchen Bus Sie benutzen sollen? Kein Problem!",
+      "STEP_2": "Klicken Sie auf den Link",
+      "STEP_3": "Klicken Sie auf das Feld",
+      "STEP_4": "Wählen Sie",
+      "GPS_WARNING": "Stellen Sie sicher, dass die Anwendung auf Ihren Standort zugreifen darf und Ihr GPS aktiviert ist.",
+      "STEP_5": "Klicken Sie auf das Feld",
+      "STEP_6": "Suchen und wählen Sie Ihren Zielort aus.",
+      "TIP_TITLE": "Tipp:",
+      "TIP": "Diese Methode ist besonders praktisch, wenn Sie den Namen eines Viertels, eines Ortes oder eines bekannten Platzes kennen, aber nicht den Namen der Bushaltestelle."
+    },
+
+    "STOP": {
+      "TITLE": "Einen Ort suchen",
+      "SUBTITLE": "Finden Sie schnell den Standort eines Ortes in Mahajanga auf der Karte",
+      "DESCRIPTION": "Möchten Sie einfach einen Ort in Mahajanga finden und seinen Standort auf der Karte sehen? So geht's:",
+      "STEP_1": "Gehen Sie zum Tab",
+      "STEP_2": "Klicken Sie auf das Suchsymbol.",
+      "STEP_3": "Geben Sie die <strong>Suchbegriffe</strong> für den gesuchten Ort ein.",
+      "STEP_5": "Klicken Sie auf die Schaltfläche <strong>Anzeigen</strong>, um den Ort auf der Karte anzuzeigen.",
+      "TIP_TITLE": "Tipp:",
+      "TIP": "Das grüne Symbol bei jedem Ergebnis zeigt die Entfernung zwischen dem Ort und Ihrem aktuellen Standort an."
+    },
+
+    "TIPS": {
+      "TITLE": "Einige Tipps",
+      "SUBTITLE": "Damit Sie Bus-Nakay effektiver nutzen können",
+      "TIP_1": "Aktivieren Sie Ihren <strong>Standort</strong>, wenn Sie Bus-Nakay verwenden, um die standortbasierten Funktionen vollständig nutzen zu können.",
+      "TIP_2": "Vergewissern Sie sich, dass der <strong>Bus, den Sie nehmen</strong>, mit dem in der Anwendung angegebenen Bus übereinstimmt.",
+      "TIP_3": "Vergessen Sie nicht, in der Anwendung zu überprüfen, <strong>an welcher Haltestelle Sie aussteigen müssen</strong>.",
+      "TIP_4": "Verwenden Sie die <strong>Kartenansicht</strong>, um Ihre Route besser zu verfolgen und sich während der gesamten Fahrt zu orientieren.",
+      "CONCLUSION": "Mit Bus-Nakay finden Sie Ihre Route ganz einfach und reisen entspannter."
+    }
   }
 }

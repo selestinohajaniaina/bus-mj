@@ -9,11 +9,12 @@
   <!-- Introduction -->
   <div class="ion-padding">
     <ion-text color="medium">
-      <h2 style="margin: 0; font-weight: 700">Comment utiliser Bus-Nakay ?</h2>
+      <h2 style="margin: 0; font-weight: 700">
+        {{ 'GUIDE.TITLE' | translate }}
+      </h2>
 
       <p style="margin-top: 8px; line-height: 1.5">
-        Découvrez en quelques étapes comment trouver facilement votre bus, votre
-        itinéraire et les lieux dont vous avez besoin.
+        {{ 'GUIDE.INTRO' | translate }}
       </p>
     </ion-text>
   </div>
@@ -24,44 +25,38 @@
       <ion-item slot="header">
         <ion-icon name="navigate-outline" slot="start" color="primary">
         </ion-icon>
-
         <ion-label>
-          <h3>Trouver un bus entre deux arrêts</h3>
-          <p>De votre départ jusqu'à votre destination</p>
+          <h3>{{ 'GUIDE.ROUTE.TITLE' | translate }}</h3>
+          <p>{{ 'GUIDE.ROUTE.SUBTITLE' | translate }}</p>
         </ion-label>
       </ion-item>
 
       <div class="ion-padding" slot="content">
-        <p>
-          Vous souhaitez savoir quel bus prendre pour aller d'un arrêt à un
-          autre ? Bus-Nakay peut vous aider !
-        </p>
+        <p>{{ 'GUIDE.ROUTE.DESCRIPTION' | translate }}</p>
 
         <ol>
           <li>
-            Accédez à l'onglet
+            {{ 'GUIDE.ROUTE.STEP_1' | translate }}
             <ion-icon name="bus"></ion-icon>.
           </li>
-
-          <li>Choisissez votre <strong>arrêt de départ</strong>.</li>
-
-          <li>Choisissez votre <strong>arrêt d'arrivée</strong>.</li>
-
           <li>
-            Cliquez sur le bouton
-            <strong>Lancer la recherche</strong>.
+            {{ 'GUIDE.ROUTE.STEP_2' | translate }}
+            <strong>{{ 'TAB2.STOP_BEGIN' | translate }}</strong>.
           </li>
-
           <li>
-            Sélectionnez un bus pour consulter son parcours et ses différents
-            arrêts, ainsi que son itinéraire affiché sur la carte.
+            {{ 'GUIDE.ROUTE.STEP_3' | translate }}
+            <strong>{{ 'TAB2.STOP_END' | translate }}</strong>.
           </li>
+          <li>
+            {{ 'GUIDE.ROUTE.STEP_4' | translate }}
+            <strong>{{ 'TAB2.RUN' | translate }}</strong>.
+          </li>
+          <li>{{ 'GUIDE.ROUTE.STEP_5' | translate }}</li>
         </ol>
 
         <p>
-          <strong>Astuce :</strong>
-          utilisez cette fonctionnalité lorsque vous connaissez votre arrêt de
-          départ et votre arrêt d'arrivée.
+          <strong>{{ 'GUIDE.ROUTE.TIP_TITLE' | translate }}</strong>
+          {{ 'GUIDE.ROUTE.TIP' | translate }}
         </p>
       </div>
     </ion-accordion>
@@ -71,71 +66,49 @@
       <ion-item slot="header">
         <ion-icon name="location-outline" slot="start" color="primary">
         </ion-icon>
-
         <ion-label>
-          <h3>Trouver un bus à partir d'un lieu</h3>
-          <p>Vous ne connaissez pas l'arrêt à utiliser ?</p>
+          <h3>{{ 'GUIDE.PLACE.TITLE' | translate }}</h3>
+          <p>{{ 'GUIDE.PLACE.SUBTITLE' | translate }}</p>
         </ion-label>
       </ion-item>
 
       <div class="ion-padding" slot="content">
-        <p>
-          Vous connaissez votre destination, mais vous ne savez pas quel arrêt
-          ou quel bus utiliser ? Pas de problème !
-        </p>
+        <p>{{ 'GUIDE.PLACE.DESCRIPTION' | translate }}</p>
 
         <ol>
           <li>
-            Accédez à l'onglet
+            {{ 'GUIDE.ROUTE.STEP_1' | translate }}
             <ion-icon name="bus"></ion-icon>.
           </li>
-
           <li>
-            Cliquez sur le lien
-            <strong>Rechercher par lieu</strong>.
+            {{ 'GUIDE.PLACE.STEP_2' | translate }}
+            <strong>{{ 'TAB2.TO_SEARCH_BY_PLACE' | translate }}</strong>.
           </li>
-
           <li>
-            Cliquez sur le champ
-            <strong>Lieu de départ</strong>.
+            {{ 'GUIDE.PLACE.STEP_3' | translate }}
+            <strong>{{ 'TAB2.PLACE_BEGIN' | translate }}</strong>.
           </li>
-
           <li>
-            Sélectionnez
-            <strong>Ma position actuelle</strong>.
+            {{ 'GUIDE.PLACE.STEP_4' | translate }}
+            <strong>{{ 'MODAL_CHOOSE.MY_POSITION' | translate }}</strong>.
             <br />
-            <small>
-              Assurez-vous que l'application est autorisée à accéder à votre
-              position et que votre GPS est activé.
-            </small>
+            <small> {{ 'GUIDE.PLACE.GPS_WARNING' | translate }} </small>
           </li>
-
           <li>
-            Cliquez sur le champ
-            <strong>Lieu de destination</strong>.
+            {{ 'GUIDE.PLACE.STEP_5' | translate }}
+            <strong>{{ 'TAB2.PLACE_END' | translate }}</strong>.
           </li>
-
+          <li>{{ 'GUIDE.PLACE.STEP_6' | translate }}</li>
           <li>
-            Recherchez et sélectionnez votre
-            <strong>lieu de destination</strong>.
+            {{ 'GUIDE.ROUTE.STEP_4' | translate }}
+            <strong>{{ 'TAB2.RUN' | translate }}</strong>.
           </li>
-
-          <li>
-            Cliquez sur le bouton
-            <strong>Lancer la recherche</strong>.
-          </li>
-
-          <li>
-            Sélectionnez un bus pour consulter son parcours et ses différents
-            arrêts, ainsi que son itinéraire affiché sur la carte.
-          </li>
+          <li>{{ 'GUIDE.ROUTE.STEP_5' | translate }}</li>
         </ol>
 
         <p>
-          <strong>Astuce :</strong>
-          cette méthode est particulièrement pratique lorsque vous connaissez le
-          nom d'un quartier, d'un lieu ou d'un endroit populaire, mais pas celui
-          de l'arrêt de bus.
+          <strong>{{ 'GUIDE.PLACE.TIP_TITLE' | translate }}</strong>
+          {{ 'GUIDE.PLACE.TIP' | translate }}
         </p>
       </div>
     </ion-accordion>
@@ -147,58 +120,34 @@
         </ion-icon>
 
         <ion-label>
-          <h3>Rechercher un lieu</h3>
-          <p>
-            Retrouvez rapidement l'emplacement d'un lieu à Mahajanga sur la
-            carte
-          </p>
+          <h3>{{ 'GUIDE.STOP.TITLE' | translate }}</h3>
+          <p>{{ 'GUIDE.STOP.SUBTITLE' | translate }}</p>
         </ion-label>
       </ion-item>
 
       <div class="ion-padding" slot="content">
-        <p>
-          Vous souhaitez simplement retrouver un lieu à Mahajanga et voir son
-          emplacement sur la carte ? Voici comment faire :
-        </p>
+        <p>{{ 'GUIDE.STOP.DESCRIPTION' | translate }}</p>
 
         <ol>
           <li>
-            Accédez à l'onglet
+            {{ 'GUIDE.STOP.STEP_1' | translate }}
             <ion-icon name="map-outline"></ion-icon>.
           </li>
-
           <li>
-            Cliquez sur l'icône
+            {{ 'GUIDE.STOP.STEP_2' | translate }}
             <ion-icon name="search"></ion-icon>
           </li>
-
+          <li [innerHTML]="'GUIDE.STOP.STEP_3' | translate"></li>
           <li>
-            Saisissez les <strong>mots-clés</strong> correspondant au lieu que
-            vous souhaitez rechercher.
+            {{ 'GUIDE.ROUTE.STEP_4' | translate }}
+            <strong>{{ 'TAB2.RUN' | translate }}</strong>.
           </li>
-
-          <li>
-            Cliquez sur le bouton
-            <strong>
-              Lancer la recherche
-              <ion-icon name="search"></ion-icon> </strong
-            >.
-          </li>
-
-          <li>
-            Cliquez sur le bouton
-            <strong>
-              <ion-icon name="location"></ion-icon>
-              Afficher
-            </strong>
-            pour afficher le lieu sur la carte.
-          </li>
+          <li [innerHTML]="'GUIDE.STOP.STEP_5' | translate"></li>
         </ol>
 
         <p>
-          <strong>Astuce :</strong>
-          le badge vert affiché sur chaque résultat indique la distance entre le
-          lieu et votre position actuelle.
+          <strong>{{ 'GUIDE.STOP.TIP_TITLE' | translate }}</strong>
+          {{ 'GUIDE.STOP.TIP' | translate }}
         </p>
       </div>
     </ion-accordion>
@@ -209,39 +158,23 @@
         <ion-icon name="bulb-outline" slot="start" color="primary"> </ion-icon>
 
         <ion-label>
-          <h3>Quelques conseils</h3>
-          <p>Pour utiliser Bus-Nakay plus efficacement</p>
+          <h3>{{ 'GUIDE.TIPS.TITLE' | translate }}</h3>
+          <p>{{ 'GUIDE.TIPS.SUBTITLE' | translate }}</p>
         </ion-label>
       </ion-item>
 
       <div class="ion-padding" slot="content">
         <ul>
-          <li>
-            Activez votre <strong>localisation</strong> lorsque vous utilisez
-            Bus-Nakay afin de profiter pleinement des fonctionnalités basées sur
-            votre position.
-          </li>
+          <li [innerHTML]="'GUIDE.TIPS.TIP_1' | translate"></li>
 
-          <li>
-            Vérifiez que le <strong>bus que vous prenez</strong> correspond bien
-            à celui indiqué dans l'application.
-          </li>
+          <li [innerHTML]="'GUIDE.TIPS.TIP_2' | translate"></li>
 
-          <li>
-            N'oubliez pas de vérifier dans l'application
-            <strong>l'arrêt où vous devez descendre</strong>.
-          </li>
+          <li [innerHTML]="'GUIDE.TIPS.TIP_3' | translate"></li>
 
-          <li>
-            Utilisez <strong>l'affichage sur la carte</strong> pour mieux suivre
-            votre itinéraire et vous repérer tout au long de votre trajet.
-          </li>
+          <li [innerHTML]="'GUIDE.TIPS.TIP_4' | translate"></li>
         </ul>
 
-        <p>
-          Avec Bus-Nakay, trouvez votre itinéraire simplement et voyagez plus
-          sereinement.
-        </p>
+        <p>{{ 'GUIDE.TIPS.CONCLUSION' | translate }}</p>
       </div>
     </ion-accordion>
   </ion-accordion-group>

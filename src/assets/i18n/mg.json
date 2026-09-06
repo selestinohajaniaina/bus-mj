@@ -128,5 +128,58 @@
     "NO_INTERNET": "Tsy tonga aty aminay ny fitadiavana / tsy manana aterineto",
     "SAVE": "Voatahiry ny toerana: {{name}}",
     "UNSAVE": "Voafafa ny toerana: {{name}}"
+  },
+  "GUIDE": {
+    "TITLE": "Ahoana ny fampiasana Bus-Nakay ?",
+    "INTRO": "Fantaro amin'ny dingana vitsivitsy ireo fomba hahitana zotra, ny làlana sy ireo toerana ilainao.",
+
+    "ROUTE": {
+      "TITLE": "Mitady bus eo anelanelan'ny fijanonana roa",
+      "SUBTITLE": "Manomboka amin'ny toerana hiaingana ka hatrany amin'ny toerana haleha",
+      "DESCRIPTION": "Te hahafantatra izay zotra tokony ho raisina avy amin'ny fijanonana iray mankany amin'ny iray hafa ve ianao?",
+      "STEP_1": "Midira ao amin'ny pejy",
+      "STEP_2": "Soraty ny",
+      "STEP_3": "Soraty ny",
+      "STEP_4": "Tsindrio ny",
+      "STEP_5": "Misafidiana bus iray hijerena ny làlany sy ireo fijanonany, ary koa ny làlany miseho eo amin'ny sarintany.",
+      "TIP_TITLE": "Torohevitra :",
+      "TIP": "ampiasao ity fomba ity rehefa fantatrao ny fijanonana hiaingana sy ny halehanao."
+    },
+
+    "PLACE": {
+      "TITLE": "Mitady bus avy amin'ny toerana iray",
+      "SUBTITLE": "Tsy fantatrao ny fijanonana tokony hampiasaina ?",
+      "DESCRIPTION": "Fantatrao ny toerana halehanao, saingy tsy fantatrao izay fijanonana na zotra tokony ho raisina?",
+      "STEP_2": "Tsindrio ny rohy",
+      "STEP_3": "Tsindrio ny",
+      "STEP_4": "Safidio ny",
+      "GPS_WARNING": "Omeo alàlana hampiasa ny toerana misy anao ny App.",
+      "STEP_5": "Tsindrio ny",
+      "STEP_6": "Tadiavo ary safidio ny toerana halehanao.",
+      "TIP_TITLE": "Torohevitra :",
+      "TIP": "tena ilaina ity fomba ity rehefa fantatrao ny anaran'ny fokontany, toerana na toerana malaza iray, saingy tsy fantatrao ny anaran'ny fiantsonan'ny bus."
+    },
+
+    "STOP": {
+      "TITLE": "Mitady toerana",
+      "SUBTITLE": "Hijery toerana fotsiny eo amin'ny sarintany Mahajanga",
+      "DESCRIPTION": "Te hahita fotsiny ny toerana iray eto Mahajanga sy hijery ny toerana misy azy eo amin'ny sarintany ve ianao? Izao no fomba fanaovana izany :",
+      "STEP_1": "Midira amin'ny pejy",
+      "STEP_2": "Tsindrio ny",
+      "STEP_3": "Ampidiro ny <strong>teny</strong> mifandraika amin'ny toerana tadiavinao.",
+      "STEP_5": "Tsindrio ny <strong>Asehoy</strong> mba hampisehoana ilay toerana eo amin'ny sarintany.",
+      "TIP_TITLE": "Torohevitra :",
+      "TIP": "ny marika maitso aseho amin'ny valin'ny fikarohana tsirairay dia manondro ny elanelana misy eo amin'ilay toerana sy ny toerana misy anao ankehitriny."
+    },
+
+    "TIPS": {
+      "TITLE": "Torohevitra vitsivitsy",
+      "SUBTITLE": "Mba hampiasana tsara kokoa ny Bus-Nakay",
+      "TIP_1": "Velomy ny <strong>localisation</strong> amin'ny findainao rehefa mampiasa Bus-Nakay.",
+      "TIP_2": "Hamarino tsara sao tsy mifanaraka amin'ilay zotra asehon'ny App ny <strong>zotra handehananao</strong>.",
+      "TIP_3": "Aza adino ny manamarina ny <strong>fijanonana tokony hidinanao</strong>.",
+      "TIP_4": "Ampiasao ny <strong>sarintany</strong> mba hanarahanao tsara kokoa ny lalanao sy hahafantaranao ny toerana misy anao mandritra ny dianao.",
+      "CONCLUSION": "Bus-Nakay, mora ampiasaina!."
+    }
   }
 }
