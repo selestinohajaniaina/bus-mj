@@ -34,11 +34,11 @@ export class LocalisationService {
       const hours = Math.floor(minutes / 60);
       const remainingMinutes = Math.round(minutes % 60);
       if (remainingMinutes > 0) {
-        return `${hours} h ${remainingMinutes} min`;
+        return `${hours} ${this.translate.instant('KEY_WORDS.H')} ${remainingMinutes} ${this.translate.instant('KEY_WORDS.MIN')}`;
       }
-      return `${hours} h`;
+      return `${hours} ${this.translate.instant('KEY_WORDS.H')}`;
     }
-    return `${Math.round(minutes)} min`;
+    return `${Math.round(minutes)} ${this.translate.instant('KEY_WORDS.MIN')}`;
   }
 
   // verification d'arrondissement de la position dans la ville de Mahajanga
