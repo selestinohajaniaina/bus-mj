@@ -242,9 +242,21 @@ export class Tab2Page {
     this.isBusModalOpen = true;
   }
 
-  getDistanceOfRoute(stops: Stop[]) {
+  distanceMeters(stops: Stop[]) {
     const route = turf.lineString(stops.map((stop) => [stop.lon, stop.lat]));
-    const distance = turf.length(route, { units: 'meters' });
+    return turf.length(route, { units: 'meters' });
+  }
+
+  getDistanceOfRoute(stops: Stop[]) {
+    const distance = this.distanceMeters(stops);
     return this.localisation.getDisplayDistance(distance);
+  }
+
+  getTimeTravel(stops: Stop[]) {
+    const AVERAGE_BUS_SPEED = 25; // km/h
+    const distanceKm = this.distanceMeters(stops) / 1000;
+    const timeHours = distanceKm / AVERAGE_BUS_SPEED;
+    const timeMinutes = timeHours * 60;
+    return this.localisation.getDisplayDuration(timeMinutes);
   }
 }

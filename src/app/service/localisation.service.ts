@@ -25,11 +25,11 @@ export class LocalisationService {
       const hours = Math.floor(minutes / 60);
       const remainingMinutes = Math.round(minutes % 60);
       if (remainingMinutes > 0) {
-        return `${hours}h ${remainingMinutes}min`;
+        return `${hours} h ${remainingMinutes} min`;
       }
-      return `${hours}h`;
+      return `${hours} h`;
     }
-    return `${Math.round(minutes)}min`;
+    return `${Math.round(minutes)} min`;
   }
 
   // verification d'arrondissement de la position dans la ville de Mahajanga
