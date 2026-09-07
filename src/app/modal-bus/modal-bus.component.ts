@@ -6,10 +6,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Bus } from '../interface/bus';
+import { Bus, Stop } from '../interface/bus';
 import { IonModal } from '@ionic/angular';
 import { findBusDetailById } from 'bus-mj';
 import { TranslateService } from '@ngx-translate/core';
+import * as turf from '@turf/turf';
+import { LocalisationService } from '../service/localisation.service';
 
 @Component({
   selector: 'app-modal-bus',
@@ -23,10 +25,12 @@ export class ModalBusComponent implements OnInit {
 
   @Output() closed = new EventEmitter<void>();
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private localisation: LocalisationService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onModalDismiss() {
     this.isOpen = false;
@@ -68,5 +72,23 @@ export class ModalBusComponent implements OnInit {
       AINA: '#D81B60',
     };
     return map[operator] || '#607D8B';
+  }
+
+  distanceMeters(stops: Stop[]) {
+    const route = turf.lineString(stops.map((stop) => [stop.lon, stop.lat]));
+    return turf.length(route, { units: 'meters' });
+  }
+
+  getDistanceOfRoute(stops: Stop[]) {
+    const distance = this.distanceMeters(stops);
+    return this.localisation.getDisplayDistance(distance);
+  }
+
+  getTimeTravel(stops: Stop[]) {
+    const AVERAGE_BUS_SPEED = 25; // km/h
+    const distanceKm = this.distanceMeters(stops) / 1000;
+    const timeHours = distanceKm / AVERAGE_BUS_SPEED;
+    const timeMinutes = timeHours * 60;
+    return this.localisation.getDisplayDuration(timeMinutes);
   }
 }

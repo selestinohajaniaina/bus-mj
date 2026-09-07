@@ -10,6 +10,8 @@ import { OSMResultStored } from '../interface/Map';
 import { ToastController } from '@ionic/angular';
 import { StorageService } from '../service/storage.service';
 import { TranslateService } from '@ngx-translate/core';
+import * as turf from '@turf/turf';
+import { LocalisationService } from '../service/localisation.service';
 
 @Component({
   selector: 'app-tab2',
@@ -72,7 +74,8 @@ export class Tab2Page {
   constructor(
     private toastController: ToastController,
     private storage: StorageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private localisation: LocalisationService
   ) {}
 
   ngOnInit() {
@@ -237,5 +240,11 @@ export class Tab2Page {
 
     this.busToShow = bus;
     this.isBusModalOpen = true;
+  }
+
+  getDistanceOfRoute(stops: Stop[]) {
+    const route = turf.lineString(stops.map((stop) => [stop.lon, stop.lat]));
+    const distance = turf.length(route, { units: 'meters' });
+    return this.localisation.getDisplayDistance(distance);
   }
 }

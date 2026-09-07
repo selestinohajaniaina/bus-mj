@@ -8,14 +8,28 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class LocalisationService {
-  private lSMPId: string = "busNakayMP";
+  private lSMPId: string = 'busNakayMP';
   constructor(private translate: TranslateService) {}
 
   getDisplayDistance(distance: number): string {
     if (distance >= 1000) {
-      return `${(distance / 1000).toFixed(1)} ${this.translate.instant('KEY_WORDS.KM')}`;
+      return `${(distance / 1000).toFixed(1)} ${this.translate.instant(
+        'KEY_WORDS.KM'
+      )}`;
     }
     return `${Math.round(distance)} ${this.translate.instant('KEY_WORDS.M')}`;
+  }
+
+  getDisplayDuration(minutes: number): string {
+    if (minutes >= 60) {
+      const hours = Math.floor(minutes / 60);
+      const remainingMinutes = Math.round(minutes % 60);
+      if (remainingMinutes > 0) {
+        return `${hours}h ${remainingMinutes}min`;
+      }
+      return `${hours}h`;
+    }
+    return `${Math.round(minutes)}min`;
   }
 
   // verification d'arrondissement de la position dans la ville de Mahajanga

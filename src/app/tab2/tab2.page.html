@@ -150,7 +150,7 @@
         </ion-text>
         <p>
           <ion-badge>{{bus.members.length}}</ion-badge> {{ 'BUS.STOPS' |
-          translate }}
+          translate }} ({{ getDistanceOfRoute(bus.members) }})
         </p>
       </ion-card-content>
     </ion-card>
