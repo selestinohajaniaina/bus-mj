@@ -85,10 +85,11 @@ export class ModalBusComponent implements OnInit {
   }
 
   getTimeTravel(stops: Stop[]) {
-    const AVERAGE_BUS_SPEED = 25; // km/h
+    const AVERAGE_BUS_SPEED = this.localisation.getAverageBusSpeed(); // 25 km/h
+    const AVERAGE_BUS_STOP_TIME = this.localisation.getAverageBusStopTime(); // 0.5 min
     const distanceKm = this.distanceMeters(stops) / 1000;
     const timeHours = distanceKm / AVERAGE_BUS_SPEED;
-    const timeMinutes = timeHours * 60;
+    const timeMinutes = timeHours * 60 + AVERAGE_BUS_STOP_TIME * stops.length; // +30sec par arrets
     return this.localisation.getDisplayDuration(timeMinutes);
   }
 }

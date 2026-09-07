@@ -9,8 +9,44 @@ export class StorageService {
   private readonly MY_PLACES_KEY = 'OSMResultStored';
   private readonly HISTORY_KEY = 'HistoryStored';
   private readonly SEARCH_KEY = 'SearchKeyStored';
+  private readonly SPEED_KEY = 'SpeedKeyStored';
+  private readonly TIME_STOP_KEY = 'TimeStopKeyStored';
 
   constructor() {}
+
+  /**
+   * get Speed on localStorage that user configure it
+   * @returns speed's number
+   */
+  getSpeed(): number {
+    const data = localStorage.getItem(this.SPEED_KEY);
+    return data ? (JSON.parse(data) as number) : 25; // km/h
+  }
+
+  /**
+   * save speed
+   * @param {number} speed user configure their speed
+   */
+  saveSpeed(speed: number) {
+    localStorage.setItem(this.SPEED_KEY, JSON.stringify(speed));
+  }
+
+  /**
+   * get Speed on localStorage that user configure it
+   * @returns speed's number
+   */
+  getTimeStop(): number {
+    const data = localStorage.getItem(this.TIME_STOP_KEY);
+    return data ? (JSON.parse(data) as number) : 0.5; // min
+  }
+
+  /**
+   * save speed
+   * @param {number} speed user configure their speed
+   */
+  saveTimeStop(min: number) {
+    localStorage.setItem(this.TIME_STOP_KEY, JSON.stringify(min));
+  }
 
   /**
    * Get the second data stored if serach on tab2 is by place

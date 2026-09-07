@@ -3,13 +3,22 @@ import { Coordinates } from '../interface/Map';
 import * as turf from '@turf/turf';
 import { findStopAll } from 'bus-mj';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalisationService {
   private lSMPId: string = 'busNakayMP';
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private storage: StorageService) {}
+
+  getAverageBusSpeed(): number {
+    return this.storage.getSpeed();
+  }
+
+  getAverageBusStopTime(): number {
+    return this.storage.getTimeStop();
+  }
 
   getDisplayDistance(distance: number): string {
     if (distance >= 1000) {
