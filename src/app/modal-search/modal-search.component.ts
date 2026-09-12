@@ -59,13 +59,15 @@ export class ModalSearchComponent implements OnInit {
           next: (result: any) => {
             this.chargeShow = false;
             result.map((e: OSMResult) => {
-              const distance = this.myPosition ? this.getDistance(
-                turf.point([
-                  this.myPosition.longitude,
-                  this.myPosition.latitude,
-                ]),
-                turf.point([Number(e.lon), Number(e.lat)])
-              ) : 0;
+              const distance = this.myPosition
+                ? this.getDistance(
+                    turf.point([
+                      this.myPosition.longitude,
+                      this.myPosition.latitude,
+                    ]),
+                    turf.point([Number(e.lon), Number(e.lat)])
+                  )
+                : 0;
               const nearStop = this.getNearsStop({
                 longitude: Number(e.lon),
                 latitude: Number(e.lat),
@@ -80,7 +82,7 @@ export class ModalSearchComponent implements OnInit {
                 nearStopLength,
               };
               this.placeResult.push(elementOSMResult);
-              if(!this.isSaved(elementOSMResult)) {
+              if (!this.isSaved(elementOSMResult)) {
                 this.save(elementOSMResult, false);
               }
             });
@@ -107,6 +109,28 @@ export class ModalSearchComponent implements OnInit {
             this.chargeShow = false;
             const stopResult = this.filterStop(this.querySearch);
             const OsmStopResult = this.stopToOsmResult(stopResult);
+            this.storage
+              .getMyPlacesByName(this.querySearch)
+              .map((e: OSMResult) => {
+                e.distance = this.myPosition
+                  ? this.getDistance(
+                      turf.point([
+                        this.myPosition.longitude,
+                        this.myPosition.latitude,
+                      ]),
+                      turf.point([Number(e.lon), Number(e.lat)])
+                    )
+                  : 0;
+                e.display_distance = this.localisation.getDisplayDistance(
+                  e.distance
+                );
+                e.nearStop = this.getNearsStop({
+                  longitude: Number(e.lon),
+                  latitude: Number(e.lat),
+                });
+                e.nearStopLength = e.nearStop.length;
+                this.placeResult.push(e);
+              });
             OsmStopResult.map((e: OSMResult) => this.placeResult.push(e));
             this.placeResultLength = this.placeResult.length;
             this.showToast(this.translate.instant('MODAL_SEARCH.NO_INTERNET'));
@@ -121,9 +145,10 @@ export class ModalSearchComponent implements OnInit {
 
   save(place: OSMResult, isAlerted: boolean = true) {
     this.storage.addMyPlace(place);
-    if(isAlerted) this.showToast(
-      this.translate.instant('MODAL_SEARCH.SAVE', { name: place.name })
-    );
+    if (isAlerted)
+      this.showToast(
+        this.translate.instant('MODAL_SEARCH.SAVE', { name: place.name })
+      );
   }
 
   unSave(place: OSMResult) {
@@ -163,10 +188,12 @@ export class ModalSearchComponent implements OnInit {
 
   stopToOsmResult(stop: Stop[]): OSMResult[] {
     return stop.map((st) => {
-      const distance = this.myPosition ? this.getDistance(
-        turf.point([this.myPosition.longitude, this.myPosition.latitude]),
-        turf.point([st.lon, st.lat])
-      ) : 0;
+      const distance = this.myPosition
+        ? this.getDistance(
+            turf.point([this.myPosition.longitude, this.myPosition.latitude]),
+            turf.point([st.lon, st.lat])
+          )
+        : 0;
       return {
         osm_id: st.id,
         display_name: String(st.label),
