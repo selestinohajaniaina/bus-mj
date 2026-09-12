@@ -150,6 +150,8 @@ export class Tab3Page {
   }
 
   async getWebPosition() {
+    console.log("geo", navigator.geolocation);
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.haveGPSPermission = true;
@@ -168,8 +170,8 @@ export class Tab3Page {
           return;
         }
 
-        // save my position
-        this.localisation.savePosition(this.myPosition);
+        console.log("my positio", this.myPosition);
+        
 
         stopNearsMe.map((e) => {
           this.drawDistance(
@@ -183,6 +185,8 @@ export class Tab3Page {
       (error) => {
         this.haveGPSPermission = false;
         this.showToast(this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD'));
+        console.log("error", error);
+        
       },
       {
         enableHighAccuracy: true,
@@ -228,8 +232,6 @@ export class Tab3Page {
         );
       });
 
-      // save my position
-      this.localisation.savePosition(this.myPosition);
     } else {
       this.showToast(
         this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD')
