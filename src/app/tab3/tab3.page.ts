@@ -19,7 +19,8 @@ export class Tab3Page {
   private map: maplibregl.Map;
   private mapCenter: Coordinates;
   private mapZoom: number = 13;
-  private mapStyleUrl: string = 'https://tiles.openfreemap.org/styles/positron';
+  private mapUrl: string = 'https://tiles.openfreemap.org/styles/';
+  private mapStyleLight: string = 'bright';
   private haveGPSPermission: boolean = false;
   private mySpeed: number = 0;
   private markedPlace: Coordinates[] = [];
@@ -27,18 +28,21 @@ export class Tab3Page {
   public myPosition: MapMarker;
   public allStop: Stop[];
 
+  private get mapStyle(): string {
+    const theme = localStorage.getItem('theme');
+    return theme == 'dark' ? theme : this.mapStyleLight;
+  }
+
+  
+  private get mapStyleUrl() : string {
+    return this.mapUrl + this.mapStyle;
+  }
+  
   constructor(
     private localisation: LocalisationService,
     private toastController: ToastController,
     private translate: TranslateService
-  ) {
-    const theme = localStorage.getItem('theme');
-    if (theme == 'dark') {
-      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/dark';
-    } else {
-      this.mapStyleUrl = 'https://tiles.openfreemap.org/styles/positron';
-    }
-  }
+  ) {}
 
   ngOnInit() {
     this.allStop = findStopAll();
@@ -150,8 +154,8 @@ export class Tab3Page {
   }
 
   async getWebPosition() {
-    console.log("geo", navigator.geolocation);
-    
+    console.log('geo', navigator.geolocation);
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.haveGPSPermission = true;
@@ -170,8 +174,7 @@ export class Tab3Page {
           return;
         }
 
-        console.log("my positio", this.myPosition);
-        
+        console.log('my positio', this.myPosition);
 
         stopNearsMe.map((e) => {
           this.drawDistance(
@@ -180,13 +183,11 @@ export class Tab3Page {
             this.localisation.getDisplayDistance(e.distance)
           );
         });
-
       },
       (error) => {
         this.haveGPSPermission = false;
         this.showToast(this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD'));
-        console.log("error", error);
-        
+        console.log('error', error);
       },
       {
         enableHighAccuracy: true,
@@ -231,11 +232,8 @@ export class Tab3Page {
           this.localisation.getDisplayDistance(e.distance)
         );
       });
-
     } else {
-      this.showToast(
-        this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD')
-      );
+      this.showToast(this.translate.instant('TAB3.IMPOSSIBLE_TO_GET_COORD'));
     }
   }
 
