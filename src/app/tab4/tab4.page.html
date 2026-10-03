@@ -28,9 +28,9 @@
 
     <ion-item>
       <ion-icon name="language-outline" slot="start"></ion-icon>
-      {{ 'TAB4.LANGUAGE' | translate }}
       <ion-select
-        slot="end"
+        [label]=" 'TAB4.LANGUAGE' | translate "
+        mode="ios"
         [value]="langPalette"
         (ionChange)="chooseLangPalette($event.detail.value)"
       >
