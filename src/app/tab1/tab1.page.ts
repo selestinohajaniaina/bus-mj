@@ -13,6 +13,7 @@ export class Tab1Page {
   public allCooperative: string[];
   public chargeShow: boolean = true;
   public Bus: Bus;
+  public operatorChoosen: string = '';
   public ionColor = [
     'tertiary',
     'medium',
@@ -40,6 +41,7 @@ export class Tab1Page {
   }
 
   getBusByOperator(operator: string) {
+    this.operatorChoosen = operator;
     this.allBus = operator ? this.allBusSource.filter((op) => op.tags.operator === operator) : this.allBusSource;
   }
 

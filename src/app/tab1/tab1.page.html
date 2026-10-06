@@ -34,7 +34,7 @@
     </p>
 
     <div class="cooperativelist">
-      <ion-card (click)="getBusByOperator('')">
+      <ion-card (click)="getBusByOperator('')" [class]="{ 'chooseThisOperator': operatorChoosen == '' }">
         <ion-card-content>
           <ion-card-subtitle
             color="light"
@@ -51,7 +51,7 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngFor="let coop of allCooperative; let i = index" (click)="getBusByOperator(coop)">
+      <ion-card *ngFor="let coop of allCooperative; let i = index" (click)="getBusByOperator(coop)" [class]="{ 'chooseThisOperator': operatorChoosen == coop }">
         <ion-card-content>
           <ion-card-subtitle [style.background]="getOperatorColor(coop)"
             >{{ coop }}</ion-card-subtitle
