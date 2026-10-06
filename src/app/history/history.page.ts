@@ -53,6 +53,7 @@ export class HistoryPage implements OnInit {
 
   async clearHistory() {
     const alert = await this.alert.create({
+      mode: 'ios',
       header: this.translate.instant('ALERT.CONFIRMATION'),
       message: this.translate.instant('ALERT.DELETE_HISTORY'),
       buttons: [

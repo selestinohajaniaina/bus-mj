@@ -69,6 +69,7 @@ export class SavedPage implements OnInit {
 
   async clearSearch() {
     const alert = await this.alert.create({
+      mode: 'ios',
       header: this.translate.instant('ALERT.CONFIRMATION'),
       message: this.translate.instant('ALERT.DELETE_PLACE'),
       buttons: [
