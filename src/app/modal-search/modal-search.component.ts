@@ -82,9 +82,6 @@ export class ModalSearchComponent implements OnInit {
                 nearStopLength,
               };
               this.placeResult.push(elementOSMResult);
-              if (!this.isSaved(elementOSMResult)) {
-                this.save(elementOSMResult, false);
-              }
             });
 
             if (result.length > 0) {
