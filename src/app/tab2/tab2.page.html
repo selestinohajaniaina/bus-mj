@@ -124,10 +124,12 @@
 
     <app-modal-choose
       trigger="open-modal-search-choose-depart"
+      [title]="'TAB2.PLACE_BEGIN' | translate"
       (OSMResultChooseEmitter)="OSMResultChooseFirst($event)"
     />
     <app-modal-choose
       trigger="open-modal-search-choose-fin"
+      [title]="'TAB2.PLACE_END' | translate"
       (OSMResultChooseEmitter)="OSMResultChooseSecond($event)"
     />
   </div>

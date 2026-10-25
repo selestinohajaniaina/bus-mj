@@ -143,7 +143,7 @@ export class LocalisationService {
       this.myPosition = {
         longitude: Number(position.coords.longitude),
         latitude: Number(position.coords.latitude),
-        label: 'Vous etes ici',
+        label: this.translate.instant('TAB3.YOUR_POSITION'),
       };
       this.mySpeed = position.coords.speed ?? 0;
     }

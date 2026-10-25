@@ -23,6 +23,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ModalChooseComponent implements OnInit {
   @Input() trigger: string;
+  @Input() title: string;
   @Output() OSMResultChooseEmitter: EventEmitter<OSMResultStored> =
     new EventEmitter();
 
@@ -32,6 +33,7 @@ export class ModalChooseComponent implements OnInit {
   public myPositionOSM: OSMResultStored;
   private allStop: Stop[] = [];
   private url: string = environment.searchUrl;
+  private myPosition: MapMarker | null;
 
   public chargeShow: boolean = false;
 
@@ -55,11 +57,21 @@ export class ModalChooseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.myPosition = this.localisation.getMyPostion();
     this.allStop = findStopAll();
   }
 
   loadPlaces() {
     this.placeResult = this.storage.getAllMyPlaces();
+    this.placeResult.map((e) => {
+      e.distance = this.myPosition
+        ? this.getDistance(
+            turf.point([this.myPosition.longitude, this.myPosition.latitude]),
+            turf.point([Number(e.lon), Number(e.lat)])
+          )
+        : 0;
+      e.display_distance = this.localisation.getDisplayDistance(e.distance);
+    });
     if (this.placeResult.length > 0) {
       this.isStorageEmpty = false;
     } else {
@@ -67,13 +79,7 @@ export class ModalChooseComponent implements OnInit {
       const stopExample: Stop[] = this.allStop.slice(0, 10);
       this.placeResult = this.stopToOsmResultStored(stopExample);
     }
-    const myP = this.localisation.getMyPostion();
-    if (myP)
-      this.myPositionToOSMResult({
-        label: this.translate.instant('MODAL_CHOOSE.MY_POSITION'),
-        longitude: myP.longitude,
-        latitude: myP.latitude,
-      });
+    if (this.myPosition) this.myPositionToOSMResult(this.myPosition);
   }
 
   goToSearch() {
@@ -117,13 +123,13 @@ export class ModalChooseComponent implements OnInit {
 
   stopToOsmResultStored(stop: Stop[]): OSMResultStored[] {
     return stop.map((st) => {
-      const distance = this.getDistance(
-        turf.point([
-          Number(this.localisation.getMyPostion()?.longitude),
-          Number(this.localisation.getMyPostion()?.latitude),
-        ]),
-        turf.point([st.lon, st.lat])
-      );
+      const distance = this.myPosition
+        ? this.getDistance(
+            turf.point([this.myPosition.longitude, this.myPosition.latitude]),
+            turf.point([st.lon, st.lat])
+          )
+        : 0;
+
       return {
         osm_id: st.id,
         display_name: String(st.label),
@@ -184,13 +190,15 @@ export class ModalChooseComponent implements OnInit {
         next: (result: any) => {
           this.chargeShow = false;
           result.map((e: OSMResult) => {
-            const distance = this.myPositionOSM ? this.getDistance(
-              turf.point([
-                Number(this.myPositionOSM.lon),
-                Number(this.myPositionOSM.lat),
-              ]),
-              turf.point([Number(e.lon), Number(e.lat)])
-            ) : 0;
+            const distance = this.myPositionOSM
+              ? this.getDistance(
+                  turf.point([
+                    Number(this.myPositionOSM.lon),
+                    Number(this.myPositionOSM.lat),
+                  ]),
+                  turf.point([Number(e.lon), Number(e.lat)])
+                )
+              : 0;
             const nearStop = this.getNearsStop({
               longitude: Number(e.lon),
               latitude: Number(e.lat),
