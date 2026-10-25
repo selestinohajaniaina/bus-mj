@@ -33,11 +33,10 @@ export class Tab3Page {
     return theme == 'dark' ? theme : this.mapStyleLight;
   }
 
-  
-  private get mapStyleUrl() : string {
+  private get mapStyleUrl(): string {
     return this.mapUrl + this.mapStyle;
   }
-  
+
   constructor(
     private localisation: LocalisationService,
     private toastController: ToastController,
@@ -74,11 +73,15 @@ export class Tab3Page {
   }
 
   addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
+    const popup = new maplibregl.Popup().setText(_marker.label);
+    popup.on('open', () => {
+      popup.getElement().style.color = 'black';
+    });
     const marker = new maplibregl.Marker({
       color: _color,
     })
       .setLngLat([_marker.longitude, _marker.latitude])
-      .setPopup(new maplibregl.Popup().setText(_marker.label))
+      .setPopup(popup)
       .addTo(this.map);
   }
 

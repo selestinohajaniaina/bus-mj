@@ -128,11 +128,15 @@ export class MapsComponent implements OnInit {
   }
 
   addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
+    const popup = new maplibregl.Popup().setText(_marker.label);
+    popup.on('open', () => {
+      popup.getElement().style.color = 'black';
+    });
     const marker = new maplibregl.Marker({
       color: _color,
     })
       .setLngLat([_marker.longitude, _marker.latitude])
-      .setPopup(new maplibregl.Popup().setText(_marker.label))
+      .setPopup(popup)
       .addTo(this.map);
     return marker;
   }
