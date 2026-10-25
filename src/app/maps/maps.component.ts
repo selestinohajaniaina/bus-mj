@@ -128,7 +128,9 @@ export class MapsComponent implements OnInit {
   }
 
   addMarker(_marker: MapMarker, _color: string = '#3FB1CE') {
-    const popup = new maplibregl.Popup().setText(_marker.label);
+    const popup = new maplibregl.Popup({ closeOnClick: false }).setText(
+      _marker.label
+    );
     popup.on('open', () => {
       popup.getElement().style.color = 'black';
     });
