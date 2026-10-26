@@ -83,8 +83,8 @@
       class="btn-switch ion-margin ion-padding ion-text-center"
       (click)="searchByStop=false"
     >
+    <ion-icon name="chevron-back-outline" slot="end"></ion-icon>
       {{ 'TAB2.TO_SEARCH_BY_PLACE' | translate }}
-      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </p>
   </div>
 
@@ -117,9 +117,9 @@
     <p
       class="btn-switch ion-margin ion-padding ion-text-center"
       (click)="searchByStop=true"
-    >
-      <ion-icon name="chevron-back-outline" slot="start"> </ion-icon>
+      >
       {{ 'TAB2.TO_SEARCH_BY_STOP' | translate }}
+      <ion-icon name="chevron-forward-outline" slot="start"> </ion-icon>
     </p>
 
     <app-modal-choose

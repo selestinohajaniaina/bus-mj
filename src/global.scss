@@ -46,4 +46,12 @@
   --ion-toolbar-background: #1f1f1f;
   --ion-tab-bar-background: #1f1f1f;
   --ion-card-background: #1e1e1e;
+
+  ion-card-title {
+    color: var(--ion-text-color) !important;
+  }
+
+  ion-toast {
+    --color: var(--ion-text-color);
+  }
 }

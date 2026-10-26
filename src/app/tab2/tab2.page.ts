@@ -41,7 +41,7 @@ export class Tab2Page {
   public busToShow: Bus;
   public isBusModalOpen = false;
 
-  public searchByStop: boolean = true;
+  public searchByStop: boolean = false;
 
   public get stop_1(): string | null {
     return this.valueSearch;
