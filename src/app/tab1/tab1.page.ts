@@ -25,6 +25,12 @@ export class Tab1Page {
     'success',
   ];
 
+  public get backgroundImage() : string {
+    const theme = localStorage.getItem("theme");
+    return `url(../../assets/map-img${ theme == 'dark' ? '-dark' : '' }.png)`;
+  }
+  
+
   constructor() {}
 
   ngOnInit() {

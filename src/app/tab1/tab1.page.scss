@@ -7,7 +7,6 @@
 
 .content {
     height: 100%;
-    background-image: url('../../assets/map-img.png') !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -64,13 +63,9 @@
         aspect-ratio: 1 / 1;
         max-width: 180px;
 
-        ion-card-subtitle {
-            border-radius: 20px;
-            text-align: center;
-            font-size: small;
-            background: var(--ion-color-primary);
-            padding: 2px;
-            color: white;
+        ion-badge {
+            width: 100%;
+            text-wrap: auto;
         }
 
         .nbr-container {

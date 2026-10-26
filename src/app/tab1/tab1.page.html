@@ -1,17 +1,17 @@
 <ion-content [fullscreen]="true">
-  <div class="content">
+  <div class="content" [style.background-image]="backgroundImage">
     <div class="titre ion-padding">
       <div class="menu">
         <ion-icon
           name="search-outline"
-          routerLink="/tabs/tab2"
+          routerLink="/tabs/tab3"
           size="large"
         ></ion-icon>
       </div>
       <h1>Bus Nakay</h1>
       <p>{{ 'TAB1.SUB_TITLE' | translate }}</p>
       <div class="button">
-        <ion-button expand="round" routerLink="/tabs/tab2"
+        <ion-button expand="round" routerLink="/tabs/tab2" mode="ios"
           ><ion-icon slot="start" name="walk-outline"></ion-icon>
           {{ 'TAB1.BEGIN' | translate }}
           <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
@@ -39,11 +39,9 @@
         [class]="{ 'chooseThisOperator': operatorChoosen == '' }"
       >
         <ion-card-content>
-          <ion-card-subtitle
-            color="light"
-            [style.background]="getOperatorColor('')"
-            >{{ 'BUS.OPERATORS_ALL' | translate }}</ion-card-subtitle
-          >
+          <ion-badge mode="ios" [style.background]="getOperatorColor('')">
+            {{ 'BUS.OPERATORS_ALL' | translate }}
+          </ion-badge>
           <div class="nbr-container">
             <h1>{{ allBusSource.length }}</h1>
             <div class="icon-text">
@@ -60,9 +58,9 @@
         [class]="{ 'chooseThisOperator': operatorChoosen == coop }"
       >
         <ion-card-content>
-          <ion-card-subtitle [style.background]="getOperatorColor(coop)"
-            >{{ coop }}</ion-card-subtitle
-          >
+          <ion-badge mode="ios" [style.background]="getOperatorColor(coop)">
+            {{ coop }}
+          </ion-badge>
           <div class="nbr-container">
             <h1>{{ getBusByCooperative(coop) }}</h1>
             <div class="icon-text">
@@ -104,9 +102,11 @@
               <ion-label>
                 {{ bus.tags.name }}
                 <ion-badge
+                  mode="ios"
                   [style.background]="getOperatorColor(bus.tags.operator)"
-                  >{{ bus.tags.operator }}</ion-badge
                 >
+                  {{ bus.tags.operator }}
+                </ion-badge>
               </ion-label>
             </ion-item>
           </ion-list>
