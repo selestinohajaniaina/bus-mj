@@ -214,7 +214,6 @@ export class ModalChooseComponent implements OnInit {
             };
             if (!this.isSaved(elementOSMResult)) {
               this.placeResult.push(elementOSMResult);
-              this.save(elementOSMResult);
             }
           });
         },

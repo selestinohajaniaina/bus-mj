@@ -11,10 +11,17 @@ ion-img {
     padding: 5px;
 }
 
+
 .spin {
     width: fit-content;
     margin: 5px auto;
     display: flex;
     gap: 3px;
     align-items: center;
+}
+
+.contener {
+    ion-title {
+        margin: 5% 0;
+    }
 }
