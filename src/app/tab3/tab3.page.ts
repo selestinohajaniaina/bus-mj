@@ -171,15 +171,14 @@ export class Tab3Page {
         };
         this.mySpeed = position.coords.speed ?? 0;
         this.addMarker(this.myPosition, '#e74c3c');
-        this.setCenter(this.myPosition);
-        const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
         if (!this.localisation.isInMahajanga(this.myPosition)) {
           this.showToast(this.translate.instant('TAB3.YOU_NOT_IN_MAHAJANGA'));
           return;
         }
 
-        console.log('my positio', this.myPosition);
+        this.setCenter(this.myPosition);
+        const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
         stopNearsMe.map((e) => {
           this.drawDistance(
@@ -227,6 +226,12 @@ export class Tab3Page {
       };
       this.mySpeed = position.coords.speed ?? 0;
       this.addMarker(this.myPosition, '#e74c3c');
+
+      if (!this.localisation.isInMahajanga(this.myPosition)) {
+        this.showToast(this.translate.instant('TAB3.YOU_NOT_IN_MAHAJANGA'));
+        return;
+      }
+
       this.setCenter(this.myPosition);
       const stopNearsMe = this.localisation.getNearsStop(this.myPosition);
 
